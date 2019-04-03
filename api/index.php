@@ -7,12 +7,12 @@
   header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
   include_once 'basic_auth.php';
-  include_once '../config/Database_mysqli.php';
+  include_once '../config/db_config.php';
   include_once '../config/reuse_function.php';
 
 // check if data recived is from raw - if so, asign it to $_REQUEST
-  if(!isset($_REQUEST['detect']))
-   {
+	if(!isset($_REQUEST['detect']))
+    {
   		// get raw json data
   		$_REQUEST = json_decode(file_get_contents('php://input'), true);
 	  	if(!isset($_REQUEST['detect']))

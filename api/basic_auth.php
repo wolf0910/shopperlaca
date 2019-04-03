@@ -36,7 +36,7 @@ $auth=0;
 $authorization = get_header('Authorization');
 if ( $authorization=='Basic SXRyeXNvaGFyZGFuZGdvdHNvZmFyOkluVGhlRW5kSXREaWRudEV2ZW5NQHR0ZXI=' )
 {
-$auth=1;
+	$auth=1;
 }
 
 
