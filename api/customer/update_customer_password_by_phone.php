@@ -33,8 +33,8 @@
   if (isset($_REQUEST['new_password']) )         
   { 
     $query = "UPDATE table_customer SET ";
-    $query .= "customer_password = '" . md5(mysqli_real_escape_string($db_connection, $_REQUEST['new_password']))        . "' "; 
-    $query .= "WHERE customer_phone = '" .mysqli_real_escape_string($db_connection, $_REQUEST['customer_phone'])."'"; 
+    $query .= "customer_password = '" . md5(mysqli_real_escape_string($conn, $_REQUEST['new_password']))        . "' "; 
+    $query .= "WHERE customer_phone = '" .mysqli_real_escape_string($conn, $_REQUEST['customer_phone'])."'"; 
     // check execute query
     if($conn->query($query)) {
       $check=1;
@@ -48,28 +48,29 @@
   $sql = "
     SELECT * FROM table_customer WHERE customer_phone= '".$_REQUEST['customer_phone']."'
    ";
-   $result = $conn->query($sql);
-   $user_arr=array();
-  if ($result->num_rows > 0) {
+  $result = $conn->query($sql);
+  $user_arr = array();
+  if ($result->num_rows > 0)
+  {
     while($row = $result->fetch_assoc()) 
     {                  
       $user_item = array(
-              'id_customer' => $row['id_customer'],
-              'customer_fullname' => $row['customer_fullname'],
-              'customer_address' => $row['customer_address'],
-              'customer_password' => $row['customer_password'],            
-              'customer_phone' => $row['customer_phone']             
-            );   
+        'id_customer' => $row['id_customer'],
+        'customer_fullname' => $row['customer_fullname'],
+        'customer_address' => $row['customer_address'],
+        'customer_password' => $row['customer_password'],            
+        'customer_phone' => $row['customer_phone']             
+      );   
     }
-    $user_arr['success']='true';
-    $user_arr['data']=$user_item;
-  // end get all user new info
+    $user_arr['success'] = 'true';
+    $user_arr['data'] = $user_item;
+    // end get all user new info
 
-  if( $check==0){
+    if( $check == 0){
       echo json_encode(
         array('success' => 'false','message' => 'update error !!!')
       );
-    }else{
+    } else {
       echo json_encode($user_arr);
     } 
   }

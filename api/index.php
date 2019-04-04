@@ -10,7 +10,7 @@
   include_once '../config/db_config.php';
   include_once '../config/reuse_function.php';
 
-// check if data recived is from raw - if so, asign it to $_REQUEST
+// check if data recived is from raw - if so, assign it to $_REQUEST
 	if(!isset($_REQUEST['detect']))
     {
   		// get raw json data
@@ -61,6 +61,12 @@
 		case 'create_customer':
 			{	
 				include_once 'customer/create_customer.php';
+				break;
+			}
+
+		case 'customer_login_check':
+			{	
+				include_once 'customer/customer_login_check.php';
 				break;
 			}
 

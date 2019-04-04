@@ -1,36 +1,41 @@
 <?php 
 
-if(isset($_REQUEST['id_user']))
+if(isset($_REQUEST['id_customer']))
 {
-  if($_REQUEST['id_user']==''){
-    unset($_REQUEST['id_user']);
+  if($_REQUEST['id_customer']==''){
+    unset($_REQUEST['id_customer']);
   }
 }
-if(isset($_REQUEST['customer_name']))
+
+if(isset($_REQUEST['receiver_name']))
 {
-  if($_REQUEST['customer_name']==''){
-    unset($_REQUEST['customer_name']);
+  if($_REQUEST['receiver_name']==''){
+    unset($_REQUEST['receiver_name']);
   }
 }
-if(isset($_REQUEST['customer_address']))
+
+if(isset($_REQUEST['receiver_address']))
 {
-  if($_REQUEST['customer_address']==''){
-    unset($_REQUEST['customer_address']);
+  if($_REQUEST['receiver_address']==''){
+    unset($_REQUEST['receiver_address']);
   }
 }
-if(isset($_REQUEST['customer_phone']))
+
+if(isset($_REQUEST['receiver_phone']))
 {
-  if($_REQUEST['customer_phone']==''){
-    unset($_REQUEST['customer_phone']);
+  if($_REQUEST['receiver_phone']==''){
+    unset($_REQUEST['receiver_phone']);
   }
 }
+
 // check input array product 
 if(isset($_REQUEST['id_product']))
 {
   if($_REQUEST['id_product']==''){
     unset($_REQUEST['id_product']);
   } else {
-    $id_product=explode(',', $_REQUEST['id_product']);
+    // turn id_product string into array
+    $id_product = explode(',', $_REQUEST['id_product']);
   }
 }
 // check input array quantity 
@@ -38,22 +43,23 @@ if(isset($_REQUEST['quantity']))
 {
   if($_REQUEST['quantity']==''){
     unset($_REQUEST['quantity']);
-  }else{
+  } else {
+    // turn quantity string into array
     $quantity=explode(',', $_REQUEST['quantity']);
   }
 }
 
 
 if( count($id_product) != count($quantity)){
-  echo json_encode( array('success'   => 'false','message' => 'array quantity and array id_product not match !!') );
+  echo json_encode( array('success' => 'false','message' => 'array quantity and array id_product not match !!') );
    exit();
 }
 
 
-if( isset($_REQUEST['id_user']) && isset($_REQUEST['customer_name']) && isset($_REQUEST['customer_address']) && isset($_REQUEST['customer_phone']) && isset($quantity) && isset($id_product) )
+if( isset($_REQUEST['id_customer']) && isset($_REQUEST['receiver_name']) && isset($_REQUEST['customer_address']) && isset($_REQUEST['customer_phone']) && isset($quantity) && isset($id_product) )
 {
   // insert into table_order
-  $sql = ' INSERT INTO table_order SET customer_name = "'.$_REQUEST['customer_name'].'", customer_address = "'.$_REQUEST['customer_address'].'", customer_phone = '.$_REQUEST['customer_phone'].', id_user="'.$_REQUEST['id_user'].'" ';
+  $sql = ' INSERT INTO table_order SET receiver_name = "'.$_REQUEST['receiver_name'].'", customer_address = "'.$_REQUEST['customer_address'].'", customer_phone = '.$_REQUEST['customer_phone'].', id_customer="'.$_REQUEST['id_customer'].'" ';
 
   $result=mysqli_query($db_connection,$sql);
   // insert into table_order_detail
@@ -87,8 +93,8 @@ if( isset($_REQUEST['id_user']) && isset($_REQUEST['customer_name']) && isset($_
     $product_item['order_detail']=array();
     $product_item = array(
       'id_order' => $row['id_order'],
-      'id_user' => $row['id_user'],
-      'customer_name' => $row['customer_name'],
+      'id_customer' => $row['id_customer'],
+      'receiver_name' => $row['receiver_name'],
       'customer_address' => $row['customer_address'],
       'customer_phone' => $row['customer_phone'],
       'status' => $row['status'],      
