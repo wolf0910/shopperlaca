@@ -6,12 +6,26 @@ if(isset($_REQUEST['id_customer']))
     unset($_REQUEST['id_customer']);
   }
 }
+if(!isset($_REQUEST['id_customer']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'id_customer missing !!!')
+    );
+    exit();
+}
 
 if(isset($_REQUEST['receiver_name']))
 {
   if($_REQUEST['receiver_name']==''){
     unset($_REQUEST['receiver_name']);
   }
+}
+if(!isset($_REQUEST['receiver_name']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'receiver_name missing !!!')
+    );
+    exit();
 }
 
 if(isset($_REQUEST['receiver_address']))
@@ -20,12 +34,41 @@ if(isset($_REQUEST['receiver_address']))
     unset($_REQUEST['receiver_address']);
   }
 }
+if(!isset($_REQUEST['receiver_address']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'receiver_address missing !!!')
+    );
+    exit();
+}
+
 
 if(isset($_REQUEST['receiver_phone']))
 {
   if($_REQUEST['receiver_phone']==''){
     unset($_REQUEST['receiver_phone']);
   }
+}
+if(!isset($_REQUEST['receiver_phone']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'receiver_phone missing !!!')
+    );
+    exit();
+}
+
+if(isset($_REQUEST['receiver_id_district']))
+{
+  if($_REQUEST['receiver_id_district']==''){
+    unset($_REQUEST['receiver_id_district']);
+  }
+}
+if(!isset($_REQUEST['receiver_id_district']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'receiver_id_district missing !!!')
+    );
+    exit();
 }
 
 // check input array product 
@@ -38,6 +81,14 @@ if(isset($_REQUEST['id_product']))
     $id_product = explode(',', $_REQUEST['id_product']);
   }
 }
+if(!isset($_REQUEST['id_product']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'id_product missing !!!')
+    );
+    exit();
+}
+
 // check input array quantity 
 if(isset($_REQUEST['quantity']))
 {
@@ -48,6 +99,13 @@ if(isset($_REQUEST['quantity']))
     $quantity=explode(',', $_REQUEST['quantity']);
   }
 }
+if(!isset($_REQUEST['quantity']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'quantity missing !!!')
+    );
+    exit();
+}
 
 
 if( count($id_product) != count($quantity)){
@@ -55,35 +113,31 @@ if( count($id_product) != count($quantity)){
    exit();
 }
 
-
-if( isset($_REQUEST['id_customer']) && isset($_REQUEST['receiver_name']) && isset($_REQUEST['customer_address']) && isset($_REQUEST['customer_phone']) && isset($quantity) && isset($id_product) )
-{
   // insert into table_order
-  $sql = ' INSERT INTO table_order SET receiver_name = "'.$_REQUEST['receiver_name'].'", customer_address = "'.$_REQUEST['customer_address'].'", customer_phone = '.$_REQUEST['customer_phone'].', id_customer="'.$_REQUEST['id_customer'].'" ';
+  $date_created=date( 'Y-m-d H:i:s a', time() );
+  $sql = ' INSERT INTO table_order SET receiver_name = "'.$_REQUEST['receiver_name'].'", receiver_address = "'.$_REQUEST['receiver_address'].'", receiver_phone = "'.$_REQUEST['receiver_phone'].'", id_customer="'.$_REQUEST['id_customer'].'", receiver_id_district="'.$_REQUEST['receiver_id_district'].'", date_created="'.$date_created.'" ';
 
-  $result=mysqli_query($db_connection,$sql);
+  $result = mysqli_query($conn,$sql);
+
   // insert into table_order_detail
+  $id_order = mysqli_insert_id($conn); 
 
-  $id_order=mysqli_insert_id($db_connection); 
-
-  for( $i=0; $i<count($id_product); $i++ )
+  for( $i = 0; $i < count($id_product); $i++ )
   {
-    $sql_tmp='SELECT * FROM table_product WHERE id_product='.$id_product[$i].' ';
-    $result_tmp=mysqli_query($db_connection,$sql_tmp);
-    $unit_price_tmp=0;
-    while($row=mysqli_fetch_array($result_tmp) ){
-      $unit_price_tmp=$row['product_price'];
+    $sql_tmp = 'SELECT * FROM table_product WHERE id_product='.$id_product[$i].' ';
+    $result_tmp = mysqli_query($conn,$sql_tmp);
+    $unit_price_tmp = 0;
+    while( $row = mysqli_fetch_array($result_tmp) ){
+      $unit_price_tmp = $row['product_price'];
     }
-
-    $sql2=' INSERT INTO table_order_detail SET id_order = "'.$id_order.'", id_product = "'.$id_product[$i].'", quantity = '.$quantity[$i].', unit_price="'.$unit_price_tmp.'"  ';
-    $result2=mysqli_query($db_connection,$sql2);
-
+    $sql2 = ' INSERT INTO table_order_detail SET id_order = "'.$id_order.'", id_product = "'.$id_product[$i].'", quantity = "'.$quantity[$i].'", unit_price="'.$unit_price_tmp.'"  ';
+    $result2 = mysqli_query($conn,$sql2);
   }
 
   // get all order info just created
 
   $sql3='SELECT * FROM table_order WHERE id_order='.$id_order.' ';
-  $result3=mysqli_query($db_connection,$sql3);
+  $result3=mysqli_query($conn,$sql3);
   
   $product_arr['success'] = 'true';
   $product_arr['data'] = array();
@@ -95,10 +149,11 @@ if( isset($_REQUEST['id_customer']) && isset($_REQUEST['receiver_name']) && isse
       'id_order' => $row['id_order'],
       'id_customer' => $row['id_customer'],
       'receiver_name' => $row['receiver_name'],
-      'customer_address' => $row['customer_address'],
-      'customer_phone' => $row['customer_phone'],
-      'status' => $row['status'],      
-      'order_date' => $row['order_date']
+      'receiver_address' => $row['receiver_address'],
+      'receiver_phone' => $row['receiver_phone'],
+      'receiver_id_district' => $row['receiver_id_district'],
+      'delivery_status' => $row['delivery_status'],      
+      'date_created' => $row['date_created']
     );
 
   // get order detail
@@ -124,10 +179,5 @@ if( isset($_REQUEST['id_customer']) && isset($_REQUEST['receiver_name']) && isse
   // Turn to JSON & output
   echo json_encode($product_arr);
   exit();
-
-} else {
-	echo json_encode( array('success' => 'false','message' => 'missing parameter input') );
-	exit();
-}
 
 ?>

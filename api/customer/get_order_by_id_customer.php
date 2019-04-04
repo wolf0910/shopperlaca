@@ -1,32 +1,32 @@
 <?php
 
-if(isset($_REQUEST['id_user']))
+if(isset($_REQUEST['id_customer']))
 {
-  if($_REQUEST['id_user']==''){
-    unset($_REQUEST['id_user']);
+  if($_REQUEST['id_customer']==''){
+    unset($_REQUEST['id_customer']);
   }
 }
 
-if(isset($_REQUEST['status']))
+if(isset($_REQUEST['delivery_status']))
 {
-  if($_REQUEST['status']==''){
-    unset($_REQUEST['status']);
+  if($_REQUEST['delivery_status']==''){
+    unset($_REQUEST['delivery_status']);
   }
 }
 
 
-if(!isset($_REQUEST['id_user']))
+if(!isset($_REQUEST['id_customer']))
 {
   // No Categories
   echo json_encode(
-    array('success' => 'false','message' => 'id_user not found !')
+    array('success' => 'false','message' => 'id_customer not found !')
   );
   exit();
 }
 
   $product_arr = array();
   // query
-  $sql = "SELECT * FROM `table_order` WHERE id_user=".$_REQUEST['id_user']." ";
+  $sql = "SELECT * FROM `table_order` WHERE id_customer=".$_REQUEST['id_customer']." ";
   
   $result = $conn->query($sql);  
   // Get row count
@@ -42,12 +42,12 @@ while($row = $result->fetch_assoc())
 	$product_item['order_detail']=array();
     $product_item = array(
       'id_order' => $row['id_order'],
-      'id_user' => $row['id_user'],
-      'customer_name' => $row['customer_name'],
-      'customer_address' => $row['customer_address'],
-      'customer_phone' => $row['customer_phone'],
-      'status' => $row['status'],      
-      'order_date' => $row['order_date']
+      'id_customer' => $row['id_customer'],
+      'receiver_name' => $row['receiver_name'],
+      'receiver_address' => $row['receiver_address'],
+      'receiver_phone' => $row['receiver_phone'],
+      'delivery_status' => $row['delivery_status'],      
+      'date_created' => $row['date_created']
     );
 
   // get order detail
@@ -85,14 +85,13 @@ while($row = $result->fetch_assoc())
 
 
 
-// filter result if status is received
-  if( isset($_REQUEST['status'])){
+// filter result if delivery_status is received
+  if( isset($_REQUEST['delivery_status'])){
+    
+  // turn delivery_status into array
+  $delivery_status= explode(',', $_REQUEST['delivery_status']);
 
-    // turn status into array
-
-    $status= explode(',', $_REQUEST['status']);
-
-//    var_dump($status);
+//    var_dump($delivery_status);
 
 
     // create tmp_array
@@ -103,7 +102,7 @@ while($row = $result->fetch_assoc())
 
     foreach ($product_arr['data'] as $value)
     {     
-      if( in_array($value['status'], $status) )
+      if( in_array($value['delivery_status'], $delivery_status) )
       {
         array_push($product_arr2['data'],$value);
         $product_arr2['total']++;
@@ -112,7 +111,7 @@ while($row = $result->fetch_assoc())
     // assign new result
     $product_arr=$product_arr2;
   }
-// end filter with status
+// end filter with delivery_status
 
 //start paging result
 
@@ -165,7 +164,7 @@ if($product_arr['total']==0){
   } else {
         // No Categories
         echo json_encode(
-          array('success' => 'true','message' => 'user has no order ! ')
+          array('success' => 'true','message' => 'Customer has no order ! ')
         );
   }
 

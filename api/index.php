@@ -27,7 +27,7 @@
 	$detect = $_REQUEST['detect'];
 
 	switch ($detect) {
-
+	// Khoa's link
 		case 'get_category':
 			{	
 				include_once 'product/get_category.php';
@@ -76,12 +76,6 @@
 				break;
 			}
 
-		case 'get_order_by_id_customer':
-			{	
-				include_once 'customer/get_order_by_id_customer.php';
-				break;
-			}
-
 		case 'get_all_order':
 			{	
 				include_once 'customer/get_all_order.php';
@@ -100,9 +94,31 @@
 				break;
 			}
 
+		case 'get_city':
+			{	
+				include_once 'customer/get_city.php';
+				break;
+			}
+		case 'get_district':
+			{	
+				include_once 'customer/get_district.php';
+				break;
+			}
+		case 'get_district_byidcity':
+			{	
+				include_once 'customer/get_district_byidcity.php';
+				break;
+			}
+
 		case 'create_order_string':
 			{	
 				include_once 'customer/create_order_string.php';
+				break;
+			}
+
+		case 'get_order_by_id_customer':
+			{	
+				include_once 'customer/get_order_by_id_customer.php';
 				break;
 			}
 
@@ -117,6 +133,11 @@
 				include_once 'customer/update_customer_password_by_phone.php';
 				break;
 			}
+	// end Khoa's link
+
+
+
+
 
 		default: {
 			echo json_encode( array('success' => 'false','message' => 'detect not match! check đốc cu mần !') );
