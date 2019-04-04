@@ -33,115 +33,87 @@
 				include_once 'product/get_category.php';
 				break;
 			}
+
 		case 'get_producer':
 			{	
 				include_once 'product/get_producer.php';
 				break;
 			}
+
 		case 'get_product_by_id_category':
 			{	
 				include_once 'product/get_product_by_id_category.php';
 				break;
 			}
+
 		case 'get_all_product':
 			{	
 				include_once 'product/get_all_product.php';
 				break;
 			}
+
 		case 'get_product_detail_by_id_product':
 			{	
 				include_once 'product/get_product_detail_by_id_product.php';
 				break;
 			}
 		
-		case 'create_user':
+		case 'create_customer':
 			{	
-				include_once 'user/create_user.php';
+				include_once 'customer/create_customer.php';
 				break;
 			}
-		case 'login_check':
+
+		case 'update_customer':
 			{	
-				include_once 'user/login_check.php';
+				include_once 'customer/update_customer.php';
 				break;
 			}
-		case 'update_user':
+
+		case 'get_order_by_id_customer':
 			{	
-				include_once 'user/update_user.php';
+				include_once 'customer/get_order_by_id_customer.php';
 				break;
 			}
-		case 'create_order':
-			{	
-				include_once 'user/create_order.php';
-				break;
-			}
-		case 'get_order_by_id_user':
-			{	
-				include_once 'user/get_order_by_id_user.php';
-				break;
-			}
-		case 'get_slider':
-			{	
-				include_once 'product/get_slider.php';
-				break;
-			}
+
 		case 'get_all_order':
 			{	
-				include_once 'user/get_all_order.php';
+				include_once 'customer/get_all_order.php';
 				break;
 			}
+
 		case 'delete_order':
 			{	
-				include_once 'user/delete_order.php';
+				include_once 'admin/delete_order.php';
 				break;
 			}
-		case 'get_all_storage':
+
+		case 'get_customer':
 			{	
-				include_once 'user/get_all_storage.php';
+				include_once 'customer/get_customer.php';
 				break;
 			}
-		case 'update_storage':
-			{	
-				include_once 'user/update_storage.php';
-				break;
-			}
-		case 'get_users':
-			{	
-				include_once 'user/get_users.php';
-				break;
-			}
+
 		case 'create_order_string':
 			{	
-				include_once 'user/create_order_string.php';
+				include_once 'customer/create_order_string.php';
 				break;
 			}
-		case 'like_product':
+
+		case 'check_if_customer_phone_exist':
 			{	
-				include_once 'product/like_product.php';
+				include_once 'customer/check_if_customer_phone_exist.php';
 				break;
 			}
-		case 'unlike_product':
+
+		case 'update_customer_password_by_phone':
 			{	
-				include_once 'product/unlike_product.php';
-				break;
-			}
-		case 'get_user_favorite_product':
-			{	
-				include_once 'product/get_user_favorite_product.php';
-				break;
-			}
-		case 'check_if_phone_exist':
-			{	
-				include_once 'user/check_if_phone_exist.php';
-				break;
-			}
-		case 'update_user_password_by_phone':
-			{	
-				include_once 'user/update_user_password_by_phone.php';
+				include_once 'customer/update_customer_password_by_phone.php';
 				break;
 			}
 
 		default: {
-			echo json_encode( array('success' => 'false','message' => 'detect not match! check guide!') );
+			echo json_encode( array('success' => 'false','message' => 'detect not match! check đốc cu mần !') );
 			break;
 		}	
 	}

@@ -40,7 +40,8 @@ if ( $authorization=='Basic SXRyeXNvaGFyZGFuZGdvdHNvZmFyOkluVGhlRW5kSXREaWRudEV2
 }
 
 
-if ($auth!='1'){
+if ($auth!='1')
+{
 
 	echo json_encode(
           array('message' => 'Authorization not match ! Check your header !')
