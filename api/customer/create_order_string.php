@@ -128,14 +128,32 @@ if( count($id_product) != count($quantity)){
 
   for( $i = 0; $i < count($id_product); $i++ )
   {
+
     $sql_tmp = 'SELECT * FROM table_product WHERE id_product='.$id_product[$i].' ';
     $result_tmp = mysqli_query($conn,$sql_tmp);
     $unit_price_tmp = 0;
     while( $row = mysqli_fetch_array($result_tmp) ){
       $unit_price_tmp = $row['product_price'];
+      $id_category_tmp= $row['id_category'];
     }
     $sql2 = ' INSERT INTO table_order_detail SET id_order = "'.$id_order.'", id_product = "'.$id_product[$i].'", quantity = "'.$quantity[$i].'", unit_price="'.$unit_price_tmp.'"  ';
     $result2 = mysqli_query($conn,$sql2);
+
+// check if category of product in suggestion yet, if not add it
+    $sql_check_suggestion="SELECT * FROM table_suggestion WHERE id_customer = '".$_REQUEST['id_customer']."' AND id_category = '".$id_category_tmp."' ";
+    $result_check_suggestion = mysqli_query($conn,$sql_check_suggestion);
+
+  if ( mysqli_num_rows($result_check_suggestion)==0 ){
+    $sql_insert_suggestion = "
+    INSERT INTO table_suggestion 
+    SET id_customer = '".$_REQUEST['id_customer']."', id_category = '".$id_category_tmp."'
+    ";
+    $rs_insert_suggestion=mysqli_query($conn,$sql_insert_suggestion);
+  }
+
+// end check
+
+
   }
 
   // get all order info just created

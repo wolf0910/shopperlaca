@@ -28,7 +28,7 @@
 	$detect = $_REQUEST['detect'];
 
 	switch ($detect) {
-	// Khoa's link
+	// Khoa's links
 		case 'get_category':
 			{	
 				include_once 'product/get_category.php';
@@ -160,15 +160,16 @@
 				include_once 'customer/get_agent_by_id_product.php';
 				break;
 			}
-	// end Khoa's link
+		case 'get_suggestion_by_id_customer':
+			{	
+				include_once 'customer/get_suggestion_by_id_customer.php';
+				break;
+			}
+	// end Khoa's links
 
-	// Hung's link
+	// Hung's links
 
-	// end Hung's link
-
-
-
-
+	// end Hung's links
 
 		default: {
 			echo json_encode( array('success' => 'false','message' => 'detect not match! check đốc cu mần !') );
