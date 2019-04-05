@@ -1,5 +1,6 @@
 <?php 
-  // Headers
+
+// Headers
   header('Access-Control-Allow-Origin: *');
   header('Content-Type: application/json');
   header('Access-Control-Allow-Methods: POST');
@@ -104,6 +105,27 @@
 				include_once 'customer/get_district.php';
 				break;
 			}
+		case 'add_customer_search_history':
+			{	
+				include_once 'customer/add_customer_search_history.php';
+				break;
+			}
+		case 'get_customer_search_history':
+			{	
+				include_once 'customer/get_customer_search_history.php';
+				break;
+			}
+		case 'get_slider':
+			{	
+				include_once 'customer/get_slider.php';
+				break;
+			}
+		case 'get_customer_addition_address':
+			{	
+				include_once 'customer/get_customer_addition_address.php';
+				break;
+			}
+			
 		case 'get_district_byidcity':
 			{	
 				include_once 'customer/get_district_byidcity.php';
@@ -133,7 +155,16 @@
 				include_once 'customer/update_customer_password_by_phone.php';
 				break;
 			}
+		case 'get_agent_by_id_product':
+			{	
+				include_once 'customer/get_agent_by_id_product.php';
+				break;
+			}
 	// end Khoa's link
+
+	// Hung's link
+
+	// end Hung's link
 
 
 

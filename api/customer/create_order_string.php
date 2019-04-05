@@ -119,6 +119,10 @@ if( count($id_product) != count($quantity)){
 
   $result = mysqli_query($conn,$sql);
 
+  
+
+
+
   // insert into table_order_detail
   $id_order = mysqli_insert_id($conn); 
 
@@ -178,6 +182,22 @@ if( count($id_product) != count($quantity)){
   
   // Turn to JSON & output
   echo json_encode($product_arr);
-  exit();
+
+
+
+
+
+
+
+// check if address is in table_customer_addition_address. if it not in yet, add it
+  $sql_tmp1=' SELECT * FROM table_customer_addition_address WHERE id_customer="'.$_REQUEST['id_customer'].'" AND addition_address="'.$_REQUEST['receiver_address'].'" ';
+  $rs = mysqli_query($conn,$sql_tmp1);
+  if ( mysqli_num_rows($rs) == 0 ){
+     $sql_insert='INSERT INTO table_customer_addition_address SET id_customer = "'.$_REQUEST['id_customer'].'", addition_address="'.$_REQUEST['receiver_address'].'" ';
+     $rs_insert=mysqli_query($conn,$sql_insert);
+   } 
+// end check table_customer_addition_address
+
+exit();
 
 ?>
