@@ -1,0 +1,81 @@
+
+
+.day{
+	color: #000929;
+}
+
+.toclone-widget-right{
+	padding-right: 5px;
+}
+
+.j-forms {
+	border: none;
+	box-shadow: none ;
+}
+
+
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+	color:white;
+}
+
+.select2-results__options{
+	text-align: left;
+}
+
+.clone_select2{
+	padding: 12px 19px;
+
+}
+.button_add_shit{
+	padding: 12px 19px;
+	padding-right: 11px;
+}
+.mycustom_addon_input{
+	width: 50px;
+	font-size: 27px;
+}
+.input-group-addon{
+ 	background-color: #323848;
+}
+
+.avatar-upload > input
+{
+    display: none;
+}
+.avatar-upload{
+	margin-bottom: 1.25em;
+	padding-left: 15px;
+}
+.avatar-upload img
+{
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+}
+.button_container_center{
+	text-align: center;
+}
+
+.j-tabs-container input[type="radio"]:checked + .j-tabs-label span {
+    color: #343B48;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+.j-tabs-container input[type="radio"]:checked + .j-tabs-label i {
+    color: #343B48;
+    font-size: 20px;
+}
+.j-tabs-container .j-tabs-label, .j-tabs-container input[type="radio"] + .j-tabs-label {
+    border-top: 4px solid grey;
+}
+.j-tabs-container .j-tabs-label, .j-tabs-container input[type="radio"]:checked + .j-tabs-label {
+    border-top: 4px solid #343B48;
+}
+.j-forms .divider-text span {
+    color: #343B48;
+    font-size: 18px;
+    font-weight: 700;
+}
+
