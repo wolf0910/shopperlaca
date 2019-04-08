@@ -64,7 +64,7 @@ if(!isset($_REQUEST['id_customer']))
   } else {
         // No Categories
         echo json_encode(
-          array('success'   => 'false','message' => 'category not found ?')
+          array('success'   => 'true','message' => 'Customer has no suggestion yet !')
         );
   }
 

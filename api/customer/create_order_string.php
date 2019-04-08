@@ -88,6 +88,15 @@ if(!isset($_REQUEST['id_product']))
     );
     exit();
 }
+if(isset($_REQUEST['id_agent']))
+{
+  if($_REQUEST['id_agent']==''){
+    unset($_REQUEST['id_agent']);
+  }
+}
+
+
+
 
 // check input array quantity 
 if(isset($_REQUEST['quantity']))
@@ -108,14 +117,17 @@ if(!isset($_REQUEST['quantity']))
 }
 
 
-if( count($id_product) != count($quantity)){
+if( count($id_product) != count($quantity) ){
   echo json_encode( array('success' => 'false','message' => 'array quantity and array id_product not match !!') );
    exit();
 }
 
   // insert into table_order
-  $date_created=date( 'Y-m-d H:i:s a', time() );
+  $date_created = date( 'Y-m-d H:i:s a', time() );
   $sql = ' INSERT INTO table_order SET receiver_name = "'.$_REQUEST['receiver_name'].'", receiver_address = "'.$_REQUEST['receiver_address'].'", receiver_phone = "'.$_REQUEST['receiver_phone'].'", id_customer="'.$_REQUEST['id_customer'].'", receiver_id_district="'.$_REQUEST['receiver_id_district'].'", date_created="'.$date_created.'" ';
+  if(isset($_REQUEST['id_agent'])){
+    $sql = $sql.' , id_agent="'.$_REQUEST['id_agent'].'" ';
+  }
 
   $result = mysqli_query($conn,$sql);
 
@@ -174,7 +186,8 @@ if( count($id_product) != count($quantity)){
       'receiver_address' => $row['receiver_address'],
       'receiver_phone' => $row['receiver_phone'],
       'receiver_id_district' => $row['receiver_id_district'],
-      'delivery_status' => $row['delivery_status'],      
+      'delivery_status' => $row['delivery_status'], 
+      'id_agent' => $row['id_agent'],     
       'date_created' => $row['date_created']
     );
 

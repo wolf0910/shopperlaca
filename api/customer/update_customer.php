@@ -35,18 +35,18 @@ if(isset($_REQUEST['customer_password']))
     unset($_REQUEST['customer_password']);
   }
 }
-if(isset($_REQUEST['old_customer_password']))
+if(isset($_REQUEST['customer_old_password']))
 {
-  if($_REQUEST['old_customer_password']=='')
+  if($_REQUEST['customer_old_password']=='')
   {
-    unset($_REQUEST['old_customer_password']);
+    unset($_REQUEST['customer_old_password']);
   } 
   else 
   {
     $sql='SELECT * FROM table_customer WHERE id_customer='.$_REQUEST['id_customer'].' ';
     $result=mysqli_query($conn,$sql);
     while ($row=mysqli_fetch_array($result)) {
-      if($row['customer_password'] !=md5($_REQUEST['old_customer_password']) ){
+      if($row['customer_password'] !=md5($_REQUEST['customer_old_password']) ){
         echo json_encode(
         array('success' => 'false','message' => 'old customer_password not match !')
       );

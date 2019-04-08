@@ -104,7 +104,7 @@ if(isset($_REQUEST['product_name']))
 
     foreach ($product_arr['data'] as $value)
     {     
-      if(!(strpos(stripUnicode($value['product_name']),stripUnicode($_REQUEST['product_name']))===FALSE) )
+      if(!(strpos(strtoupper(stripUnicode($value['product_name'])),strtoupper(stripUnicode($_REQUEST['product_name'])))===FALSE) )
       {
         array_push($product_arr2['data'],$value);
         $product_arr2['total']++;
