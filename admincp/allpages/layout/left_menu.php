@@ -40,36 +40,36 @@
                             </ul>
                         </li>
 
-                        <li class="nav-dropdown">
+                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_customer' || $_REQUEST['page']=='import_export_customer' ) echo 'active open';} ?>">
                             <a href="#" title="Users">
                                 <i class="fa fa-lg fa-fw fa-user"></i> Khách hàng
                             </a>
                             <ul class="nav-sub">
-                                <li>
-                                    <a href="?page=crud_agent" title="Members">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_customer') echo 'active';} ?>">
+                                    <a href="?page=crud_customer" title="Members">
                                         <i class="fa fa-fw fa-caret-right"></i> Quản lý khách hàng
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="?page=" title="Profile">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='import_export_customer') echo 'active open';} ?>">
+                                    <a href="?page=import_export_customer" title="Profile">
                                         <i class="fa fa-fw fa-caret-right"></i> Import/Export khách hàng
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="nav-dropdown">
+                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_admin' || $_REQUEST['page']=='import_export_admin' ) echo 'active open';} ?> ">
                             <a href="#" title="Users">
                                 <i class="fa fa-lg fa-fw fa-user"></i> Admin
                             </a>
                             <ul class="nav-sub">
-                                <li>
-                                    <a href="?page=crud_agent" title="Members">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_admin') echo 'active';} ?>">
+                                    <a href="?page=crud_admin" title="Members">
                                         <i class="fa fa-fw fa-caret-right"></i> Quản lý Admin
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="?page=" title="Profile">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='import_export_admin') echo 'active';} ?>">
+                                    <a href="?page=import_export_admin" title="Profile">
                                         <i class="fa fa-fw fa-caret-right"></i> Import/Export Admin
                                     </a>
                                 </li>

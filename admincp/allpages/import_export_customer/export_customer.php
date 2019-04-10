@@ -14,7 +14,7 @@ $spreadsheet->getProperties()->setCreator('Haychongiare')
     ->setLastModifiedBy('Haychongiare')
     ->setTitle('Office 2007 XLSX Test Document')
     ->setSubject('Office 2007 XLSX Test Document')
-    ->setDescription('Agents data.')
+    ->setDescription('customers data.')
     ->setKeywords('office 2007 openxml php')
     ->setCategory('Test result file');
 
@@ -25,39 +25,37 @@ $spreadsheet->setActiveSheetIndex(0)
     ->setCellValue('C1', 'Số điện thoại')
     ->setCellValue('D1', 'Email')
     ->setCellValue('E1', 'Địa chỉ')
-    ->setCellValue('F1', 'Thành phố')
-    ->setCellValue('G1', 'Quận huyện')
-    ->setCellValue('H1', 'Latitude')
-    ->setCellValue('I1', 'Longitude');
+    ->setCellValue('F1', 'Tổng điểm thưởng')
+    ->setCellValue('G1', 'Trạng thái');
 
 // Miscellaneous glyphs, UTF-8
 
-$sql = "SELECT * FROM table_agent,table_city,table_district WHERE table_agent.id_district=table_district.id_district AND table_city.id_city= table_district.id_city ";
+$sql = "SELECT * FROM table_customer ";
 $result = mysqli_query($conn,$sql);
 $stt=2;
 while( $row = mysqli_fetch_array($result) ){
+
     $spreadsheet->setActiveSheetIndex(0)
     ->setCellValue('A'.$stt, ($stt-1) )
-    ->setCellValue('B'.$stt, $row['agent_name'])
-    ->setCellValue('C'.$stt, $row['agent_phone'])
-    ->setCellValue('D'.$stt, $row['agent_email'])
-    ->setCellValue('E'.$stt, $row['agent_address'])
-    ->setCellValue('F'.$stt, $row['city_name'])
-    ->setCellValue('G'.$stt, $row['district_name'])
-    ->setCellValue('H'.$stt, $row['map_latitude'])
-    ->setCellValue('I'.$stt, $row['map_longitude']);
+    ->setCellValue('B'.$stt, $row['customer_fullname'])
+    ->setCellValue('C'.$stt, $row['customer_phone'])
+    ->setCellValue('D'.$stt, $row['customer_email'])
+    ->setCellValue('E'.$stt, $row['customer_address'])
+    ->setCellValue('F'.$stt, $row['total_point'])
+    ->setCellValue('G'.$stt, $row['status']);
     $stt++;
+
 }
 
 // Rename worksheet
-$spreadsheet->getActiveSheet()->setTitle('Agents');
+$spreadsheet->getActiveSheet()->setTitle('Customers');
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
 $spreadsheet->setActiveSheetIndex(0);
 
 // Redirect output to a client’s web browser (Xlsx)
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="Agents.xlsx"');
+header('Content-Disposition: attachment;filename="Customers.xlsx"');
 header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
 header('Cache-Control: max-age=1');

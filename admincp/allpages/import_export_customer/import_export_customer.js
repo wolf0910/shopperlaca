@@ -7,7 +7,7 @@ $(document).ready(function(){
   	var formData = new FormData(form);
 
     request = $.ajax({
-    url: 'allpages/import_export_agent/import_agent.php',
+    url: 'allpages/import_export_customer/import_customer.php',
     data: formData,
     type: 'POST',
     contentType:  'application/json; charset=utf-8',

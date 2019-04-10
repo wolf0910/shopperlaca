@@ -262,7 +262,7 @@ if( is_uploaded_file($_FILES['user_image']['tmp_name']))
     $result= mysqli_query($conn,"SELECT * FROM table_agent WHERE id_agent = '".$id."' ");   
      
     $row = $result->fetch_assoc();
-    $link4delete=$row['agent_avatar'];
+    $link4delete=$row['avatar'];
     $link4delete="../../../".$link4delete;
     // delete file if that not the place-holder file
     if (file_exists($link4delete) && ( $link4delete!='../../../images/avatar/user-placeholder.png') )

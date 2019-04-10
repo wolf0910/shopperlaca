@@ -36,8 +36,23 @@
     { 
         if($_REQUEST['page']=='dashboard') 
         	echo '<script src="../admin_template/demo/js/dashboard.js"></script>';
+        
         if($_REQUEST['page']=='crud_agent') 
         	echo '<script src="allpages/crud_agent/crud_agent.js"></script>';
+        if($_REQUEST['page']=='import_export_agent') 
+        	echo '<script src="allpages/import_export_agent/import_export_agent.js"></script>';
+
+        if($_REQUEST['page']=='crud_customer') 
+        	echo '<script src="allpages/crud_customer/crud_customer.js"></script>';
+        if($_REQUEST['page']=='import_export_customer') 
+        	echo '<script src="allpages/import_export_customer/import_export_customer.js"></script>';
+
+        if($_REQUEST['page']=='crud_admin') 
+        	echo '<script src="allpages/crud_admin/crud_admin.js"></script>';
+        if($_REQUEST['page']=='import_export_admin') 
+        	echo '<script src="allpages/import_export_admin/import_export_admin.js"></script>';
+
+
         if($_REQUEST['page']=='crud_category') 
         	echo '<script src="allpages/crud_category/crud_category.js"></script>';
     } 
