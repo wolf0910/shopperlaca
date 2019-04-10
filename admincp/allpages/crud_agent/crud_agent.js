@@ -12,32 +12,34 @@ function checkAvailability() {
   });
 }
 
+async function get_district(){
+  id_city = $('#id_city').val();
+  await $.ajax({
+      url: 'allpages/crud_agent/get_district.php',
+      type: 'post',
+      data: {id_city:id_city},
+      dataType: 'json',
+      success:function(response){
+          var len = response.length;
+          $("#id_district").empty();
+          for( var i = 0; i<len; i++){
+              var id_district = response[i]['id_district'];
+              var district_name = response[i]['district_name'];
+              $("#id_district").append("<option value='"+id_district+"'>"+district_name+"</option>");
+          }
+          
+      }
+    });
+  await console.log('done rewrite district');
+  return;
+}
+
 $(document).ready(function(){
 
   // ajax add option to district
   $("#id_city").change(function(){
-                var id_city = $(this).val();
-
-                $.ajax({
-                    url: 'allpages/crud_agent/get_district.php',
-                    type: 'post',
-                    data: {id_city:id_city},
-                    dataType: 'json',
-                    success:function(response){
-
-                        var len = response.length;
-
-                        $("#id_district").empty();
-                        for( var i = 0; i<len; i++){
-                            var id_district = response[i]['id_district'];
-                            var district_name = response[i]['district_name'];
-
-                            $("#id_district").append("<option value='"+id_district+"'>"+district_name+"</option>");
-
-                        }
-                    }
-                });
-            });
+    get_district();
+  });
   // end ajax add option to district
   
   // test validation jquery   
@@ -48,47 +50,61 @@ $(document).ready(function(){
           agent_name: {
             required: true,
           },
-          email: {
+          agent_email: {
             required: true,
           },
-          phone: {
+          agent_phone: {
             required: true,
-          },         
-          role: {
+          }, 
+          agent_address: {
+            required: true,
+          },   
+          id_city: {
+            required: true,
+          },  
+          id_district: {
+            required: true,
+          },       
+          map_latitude: {
             required: true,
           },
-          status: {
+          map_longitude: {
             required: true,
           }, 
-       
-                    /* password, user_image required depend on it addform or update */
-           password: {
+          /* password, user_image required depend on it addform or update */
+          password: {
 
           }, 
-
-       
-                  
+         
         },
         messages: {        
           agent_name: {
             required: "Vui lòng nhập họ tên !",
           },
-          email: {
+          agent_email: {
             required: "Vui lòng nhập Email !",
           },   
-          phone: {
+          agent_phone: {
             required: "Vui lòng nhập số điện thoại !",
           },        
           
-          role: {
-            required: "Vui lòng chọn loại tài khoản",
+          agent_address: {
+            required: "Vui lòng nhập địa chỉ",
           },
-          
-          status: {
-            required: "Vui lòng chọn trạng thái !",
+          id_city: {
+            required: "Vui lòng chọn thành phố !",
+          },
+          id_district: {
+            required: "Vui lòng chọn quận huyện !",
+          },
+          map_latitude: {
+            required: "Vui lòng nhập latitude !",
+          },
+          map_longitude: {
+            required: "Vui lòng chọn longitude !",
           },
         
-          password: {
+          agent_password: {
             required: "Vui lòng nhập mật khẩu!",
           },
                   
@@ -118,11 +134,13 @@ $(document).ready(function(){
   // On page load: datatable
   var table_companies = $('#table_companies').dataTable({
     "ajax": "allpages/crud_agent/data.php?job=get_companies",
+    'dom': 'Rlfrtip',
     "columns": [
       { "data": "img_4display"},
       { "data": "agent_name"},
       { "data": "agent_phone"},
       { "data": "district_name"},
+      { "data": "agent_address"},
       { "data": "status"},      
       { "data": "functions",      "sClass": "functions" }
     ],    
@@ -235,7 +253,7 @@ $(document).ready(function(){
     $('#form_company .field_container label.error').hide();
     $('#form_company .field_container').removeClass('valid').removeClass('error');       
    
-    $("#password").prop('required',true);
+    $("#agent_password").prop('required',true);
 
     $('#form_company #agent_name').val('');
     $('#form_company #agent_email').val('');
@@ -325,7 +343,8 @@ $(document).ready(function(){
         $('#form_company .field_container label.error').hide();
         $('#form_company .field_container').removeClass('valid').removeClass('error');
       
-        $('#form_company #password').prop('required',false);
+        $('#form_company #agent_password').prop('required',false);
+        $('#status_div').show();
 
         $('#form_company #agent_name').val(output.data[0].agent_name);
         $('#form_company #agent_email').val(output.data[0].agent_email);
@@ -336,11 +355,40 @@ $(document).ready(function(){
         $('#form_company #sex').val(output.data[0].sex);
         $('#form_company #map_latitude').val(output.data[0].map_latitude);
         $('#form_company #map_longitude').val(output.data[0].map_longitude);
-        $('#form_company #id_city').val(output.data[0].id_city);
+        
         $('#form_company #agent_avatar').val(output.data[0].agent_avatar);
-        $("#id_city").trigger("change");
-        $('#status_div').show();
-        $('#form_company #id_district').val(output.data[0].id_district);              
+      
+        $('#form_company #id_city').val(output.data[0].id_city);
+        
+// dumb way to update id_district
+        // var id_city = $('#id_city').val();
+        // $.ajax({
+        //     url: 'allpages/crud_agent/get_district.php',
+        //     type: 'post',
+        //     data: {id_city:id_city},
+        //     dataType: 'json',
+        //     success:function(response){
+        //         var len = response.length;
+        //         $("#id_district").empty();
+        //         for( var i = 0; i<len; i++){
+        //             var id_district = response[i]['id_district'];
+        //             var district_name = response[i]['district_name'];
+        //             $("#id_district").append("<option value='"+id_district+"'>"+district_name+"</option>");
+        //         }
+        //         $('#form_company #id_district').val(output.data[0].id_district);
+        //     }
+        //   });
+// end dumb way to update id_district
+// async/await style
+        async function update_id_district(){
+          await get_district();
+          console.log(' change id_district plz');
+          $('#form_company #id_district').val(output.data[0].id_district);
+        }
+         update_id_district();
+// async/await style
+
+                
         $('#form_company #id_agent').val(output.data[0].id_agent);
         $('#user_uploaded_image').html('<img src="../'+output.data[0].agent_avatar+'" class="img-thumbnail" width="100" height="100" />');
         
@@ -390,8 +438,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            var email = $('#email').val();
-            show_message("Cập nhật tài khoản '" + email + "' thành công.", 'success');
+            var agent_phone = $('#agent_phone').val();
+            show_message("Cập nhật tài khoản '" + agent_phone + "' thành công.", 'success');
           }, true);
         } else {
           hide_loading_message();

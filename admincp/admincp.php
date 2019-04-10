@@ -37,6 +37,10 @@
             { include('allpages/dashboard/dashboard.php'); }
         if($_REQUEST['page']=='crud_agent')
             { include('allpages/crud_agent/crud_agent.php'); }
+        if($_REQUEST['page']=='import_export_agent')
+            { include('allpages/import_export_agent/import_export_agent.php'); }
+        if($_REQUEST['page']=='crud_category')
+            { include('allpages/crud_category/crud_category.php'); }
 
 
     } else {

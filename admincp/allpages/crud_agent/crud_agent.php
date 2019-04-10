@@ -1,19 +1,19 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Dashboard</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Quản lý đại lý</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
     <div class="panel panel-default">
         <div class="panel-heading">
 
-            <h4 class="panel-title">Basic Table</h4>
+            <h4 class="panel-title">Quản lý đại lý</h4>
 
             <div class="panel-options">
-                <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
                 <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
-                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+               <!--  <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
             </div>
         </div>
         <div class="panel-body">
@@ -26,13 +26,14 @@
               <table class="table table-striped table-hover table-bordered nowrap  datatable dataTable" id="table_companies">
                 <thead>
                   <tr>
-                    <th>agent_avatar</th>
+                    <th width="10%">Avatar</th>
                     <th>Họ tên</th>
-                    <th>Số điện thoại</th>
-                    <th>Quận/Huyện</th>
-                    <th>Tình trạng</th>     
+                    <th >Số điện thoại</th>
+                    <th >Quận/Huyện</th>
+                    <th width="30%">Địa chỉ</th>
+                    <th >Tình trạng</th>     
                     
-                    <th>Chức năng</th>
+                    <th width="10%">Chức năng</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,20 +54,20 @@
           <div class="input_container">
             <label for="agent_name">Họ tên: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="agent_name" id="agent_name" value="" required>
+              <input type="text" class="text" autocomplete="off" name="agent_name" id="agent_name" value="" required>
             </div>
           </div>
           <div class="input_container">
             <label for="agent_email">Email: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="agent_email" id="agent_email"    required >
+              <input type="text" class="text" autocomplete="off" name="agent_email" id="agent_email"    required >
               
             </div>
           </div>
           <div class="input_container">
-            <label for="agent_phone">SĐT: </label>
+            <label for="agent_phone">SĐT: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="agent_phone" id="agent_phone" value="" onkeyup="checkAvailability()" >
+              <input type="text" class="text" autocomplete="off" name="agent_phone" id="agent_phone" value="" onkeyup="checkAvailability()" >
               <div id="user-availability-status" ></div>
               <p><img src="LoaderIcon.gif" id="loaderIcon" style="display:none" /></p>
             </div>
@@ -75,7 +76,7 @@
           <div class="input_container">
             <label for="agent_password">Mật khẩu: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" autocomplete="off" name="agent_password" id="agent_password" value="" >
+              <input type="password" class="text" autocomplete="off" name="agent_password" id="agent_password" value="" >
             </div>
           </div>
           
@@ -91,30 +92,30 @@
           </div>
         </div>           
         <div class="input_container">
-            <label for="agent_address">Địa chỉ:</label>
+            <label for="agent_address">Địa chỉ: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="agent_address" id="agent_address" value="" >
+              <input type="text" class="text" autocomplete="off" name="agent_address" id="agent_address" value="" >
             </div>
         </div>
 
         <div class="input_container">
-            <label for="map_latitude">Latitude:</label>
+            <label for="map_latitude">Latitude: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="map_latitude" id="map_latitude" value="" >
+              <input type="text" class="text" autocomplete="off" name="map_latitude" id="map_latitude" value="" >
             </div>
         </div>
 
         <div class="input_container">
-            <label for="map_longitude">Longitude:</label>
+            <label for="map_longitude">Longitude: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="map_longitude" id="map_longitude" value="" >
+              <input type="text" class="text" autocomplete="off" name="map_longitude" id="map_longitude" value="" >
             </div>
         </div>
          
           
 
         <div class="input_container">
-          <label for="id_city">Thành phố: </label>
+          <label for="id_city">Thành phố: <span class="required">*</span></label>
           <div class="field_container">
           <select name="id_city" id="id_city" form="form_company" class="selectpicker form-control" >
           <option value="">Chọn thành phố</option> 
@@ -131,7 +132,7 @@
         </div> 
 
         <div class="input_container">
-          <label for="id_district">Quận huyện: </label>
+          <label for="id_district">Quận huyện: <span class="required">*</span></label>
           <div class="field_container">
           <select name="id_district" id="id_district" form="form_company" class="selectpicker form-control" >
 

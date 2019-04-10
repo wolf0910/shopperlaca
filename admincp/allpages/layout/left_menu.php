@@ -76,7 +76,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-dropdown">
+                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_category' || $_REQUEST['page']=='crud_product') echo 'active open';} ?> ">
                             <a href="#" title="Users">
                                 <i class="fas fa-boxes"></i> Sản phẩm
                             </a>
@@ -86,13 +86,13 @@
                                         <i class="fa fa-fw fa-caret-right"></i> Quản lý Sản phẩm
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="?page=" title="Profile">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_category') echo 'active';} ?>">
+                                    <a href="?page=crud_category" title="Profile">
                                         <i class="fa fa-fw fa-caret-right"></i> Danh mục
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="?page=" title="Profile">
+                                    <a href="?page=crud_producer" title="Profile">
                                         <i class="fa fa-fw fa-caret-right"></i> Nhà sản xuất
                                     </a>
                                 </li>

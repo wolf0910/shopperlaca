@@ -38,5 +38,7 @@
         	echo '<script src="../admin_template/demo/js/dashboard.js"></script>';
         if($_REQUEST['page']=='crud_agent') 
         	echo '<script src="allpages/crud_agent/crud_agent.js"></script>';
+        if($_REQUEST['page']=='crud_category') 
+        	echo '<script src="allpages/crud_category/crud_category.js"></script>';
     } 
 ?>
