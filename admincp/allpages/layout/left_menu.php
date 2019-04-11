@@ -76,12 +76,12 @@
                             </ul>
                         </li>
 
-                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_category' || $_REQUEST['page']=='crud_product') echo 'active open';} ?> ">
+                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_category' || $_REQUEST['page']=='crud_product' || $_REQUEST['page']=='crud_producer') echo 'active open';} ?> ">
                             <a href="#" title="Users">
                                 <i class="fas fa-boxes"></i> Sản phẩm
                             </a>
                             <ul class="nav-sub">
-                                <li>
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_product') echo 'active';} ?>">
                                     <a href="?page=crud_product" title="Members">
                                         <i class="fa fa-fw fa-caret-right"></i> Quản lý Sản phẩm
                                     </a>
@@ -91,7 +91,7 @@
                                         <i class="fa fa-fw fa-caret-right"></i> Danh mục
                                     </a>
                                 </li>
-                                <li>
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_producer') echo 'active';} ?>">
                                     <a href="?page=crud_producer" title="Profile">
                                         <i class="fa fa-fw fa-caret-right"></i> Nhà sản xuất
                                     </a>

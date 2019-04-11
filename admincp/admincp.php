@@ -35,20 +35,33 @@
 
         if($_REQUEST['page']=='dashboards')
             { include('allpages/dashboard/dashboard.php'); }
+
         if($_REQUEST['page']=='crud_agent')
             { include('allpages/crud_agent/crud_agent.php'); }
+
         if($_REQUEST['page']=='import_export_agent')
             { include('allpages/import_export_agent/import_export_agent.php'); }
+
         if($_REQUEST['page']=='crud_customer')
             { include('allpages/crud_customer/crud_customer.php'); }
+
         if($_REQUEST['page']=='import_export_customer')
             { include('allpages/import_export_customer/import_export_customer.php'); }
+
         if($_REQUEST['page']=='crud_admin')
             { include('allpages/crud_admin/crud_admin.php'); }
+
         if($_REQUEST['page']=='import_export_admin')
             { include('allpages/import_export_admin/import_export_admin.php'); }
+
         if($_REQUEST['page']=='crud_category')
             { include('allpages/crud_category/crud_category.php'); }
+
+        if($_REQUEST['page']=='crud_producer')
+            { include('allpages/crud_producer/crud_producer.php'); }
+        
+        if($_REQUEST['page']=='crud_product')
+            { include('allpages/crud_product/crud_product.php'); }
 
 
     } else {

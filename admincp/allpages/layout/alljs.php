@@ -27,9 +27,15 @@
 <script src="../admin_template/dist/assets/plugins/jquery-datatables/js/dataTables.tableTools.js"></script>
 <script src="../admin_template/dist/assets/plugins/jquery-datatables/js/dataTables.bootstrap.js"></script>
 
+<script src="../admin_template/dist/assets/plugins/jquery-select2/select2.min.js"></script>
 <!-- my custom js -->
-<script src="js/jquery_validate/jquery.validate.js"></script>
-<script src="js/jquery_validate/additional-methods.js"></script>
+
+<!-- ckeditor plugin -->
+<script src="lib/ckeditor/ckeditor.js"></script>
+<script src="lib/ckfinder/ckfinder.js"></script>
+<!-- jquery validate -->
+<script src="lib/jquery_validate/jquery.validate.js"></script>
+<script src="lib/jquery_validate/additional-methods.js"></script>
 
 <?php 
 	if (isset($_REQUEST['page']))
@@ -52,8 +58,13 @@
         if($_REQUEST['page']=='import_export_admin') 
         	echo '<script src="allpages/import_export_admin/import_export_admin.js"></script>';
 
-
         if($_REQUEST['page']=='crud_category') 
         	echo '<script src="allpages/crud_category/crud_category.js"></script>';
+
+        if($_REQUEST['page']=='crud_producer') 
+        	echo '<script src="allpages/crud_producer/crud_producer.js"></script>';
+
+        if($_REQUEST['page']=='crud_product') 
+        	echo '<script src="allpages/crud_product/crud_product.js"></script>';
     } 
 ?>
