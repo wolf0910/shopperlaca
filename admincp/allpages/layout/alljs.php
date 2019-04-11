@@ -22,7 +22,6 @@
 <script src="../admin_template/dist/assets/plugins/raphael/raphael-min.js"></script>
 <script src="../admin_template/dist/assets/plugins/morris/morris.min.js"></script>
 
-
 <script src="../admin_template/dist/assets/plugins/jquery-datatables/js/jquery.dataTables.js"></script>
 <script src="../admin_template/dist/assets/plugins/jquery-datatables/js/dataTables.tableTools.js"></script>
 <script src="../admin_template/dist/assets/plugins/jquery-datatables/js/dataTables.bootstrap.js"></script>
@@ -33,9 +32,18 @@
 <!-- ckeditor plugin -->
 <script src="lib/ckeditor/ckeditor.js"></script>
 <script src="lib/ckfinder/ckfinder.js"></script>
+
 <!-- jquery validate -->
 <script src="lib/jquery_validate/jquery.validate.js"></script>
 <script src="lib/jquery_validate/additional-methods.js"></script>
+
+<!-- cloneya -->
+<script src="lib/jquery-cloneya/jquery-cloneya.min.js"></script>
+
+<!-- Numberic stepper -->
+<script src="lib/stepper/jquery.stepper.js"></script>
+
+
 
 <?php 
 	if (isset($_REQUEST['page']))
@@ -66,5 +74,8 @@
 
         if($_REQUEST['page']=='crud_product') 
         	echo '<script src="allpages/crud_product/crud_product.js"></script>';
+
+        if($_REQUEST['page']=='crud_order') 
+        	echo '<script src="allpages/crud_order/crud_order.js"></script>';
     } 
 ?>

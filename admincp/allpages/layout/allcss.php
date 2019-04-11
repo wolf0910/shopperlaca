@@ -11,16 +11,17 @@
         <link rel="stylesheet" href="../admin_template/dist/css/plugins/morris.min.css">
         <link rel="stylesheet" href="../admin_template/dist/css/plugins/jquery-select2.min.css">
 
-
         <link rel="stylesheet" href="../admin_template/dist/css/plugins/jquery-dataTables.min.css">
         <!-- my custom -->
         <link rel="stylesheet" href="lib/fontawesome-free-5.8.1-web/css/all.css" crossorigin="anonymous">
 
-
-
+        <!-- Numberic stepper -->
+        <link rel="stylesheet" href="lib/stepper/jquery.stepper.min.css">
+        
         <link rel="stylesheet" href="css/css_crud_form.css">
-        
-        
+
+        <link rel="stylesheet" href="css/my_custom.css">
+
         <!--[if lt IE 9]>
         <script src="../admin_template/dist/assets/libs/html5shiv/html5shiv.min.js"></script>
         <script src="../admin_template/dist/assets/libs/respond/respond.min.js"></script>

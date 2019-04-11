@@ -59,9 +59,12 @@
 
         if($_REQUEST['page']=='crud_producer')
             { include('allpages/crud_producer/crud_producer.php'); }
-        
+
         if($_REQUEST['page']=='crud_product')
             { include('allpages/crud_product/crud_product.php'); }
+
+        if($_REQUEST['page']=='crud_order')
+            { include('allpages/crud_order/crud_order.php'); }
 
 
     } else {

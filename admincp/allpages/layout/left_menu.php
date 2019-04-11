@@ -22,6 +22,12 @@
                             </a>
                         </li>
 
+                        <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_order') echo 'active';} ?>">
+                            <a href="?page=crud_order" title="Disabled">
+                                <i class="fa fa-lg fa-fw fa-th"></i> Đơn đặt hàng
+                            </a>
+                        </li>
+
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_agent' || $_REQUEST['page']=='import_export_agent') echo 'active open';} ?>">
                             <a href="#" title="Users">
                                 <i class="fa fa-lg fa-fw fa-user"></i> Đại lý bán lẻ
@@ -100,24 +106,19 @@
                             </ul>
                         </li>
 
-                        <li class="nav-dropdown">
-                            <a href="../admin_template/#" title="Users">
+                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='customer_statistic' || $_REQUEST['page']=='agent_statistic' ) echo 'active open';} ?>">
+                            <a href="#" title="Users">
                                 <i class="fas fa-chart-bar"></i> Thống kê
                                 <!-- <span class="label label-danger pull-right">New</span> -->
                             </a>
                             <ul class="nav-sub">
-                                <li>
-                                    <a href="../admin_template/email-inbox.html" title="Inbox">
-                                        <i class="fa fa-fw fa-caret-right"></i> Thống kê 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../admin_template/email-message.html" title="Message">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='customer_statistic') echo 'active';} ?>">
+                                    <a href="?page=customer_statistic" title="Message">
                                         <i class="fa fa-fw fa-caret-right"></i> Thống kê khách hàng
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="../admin_template/email-compose.html" title="Compose">
+                                <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='agent_statistic') echo 'active';} ?>">
+                                    <a href="?page=agent_statistic" title="Compose">
                                         <i class="fa fa-fw fa-caret-right"></i> Thống kê đại lý
                                     </a>
                                 </li>
