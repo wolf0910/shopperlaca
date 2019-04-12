@@ -1,20 +1,48 @@
-function checkAvailability() {
-  $("#loaderIcon").show();
-  jQuery.ajax({
-  url: "allpages/crud_order/check_availability.php",
-  data:'email='+$("#email").val()+'&id_order='+$("#id_order").val(),
-  type: "POST",
-  success:function(data){
-    $("#user-availability-status").html(data);
-    $("#loaderIcon").hide();
-  },
-  error:function (){}
-  });
+async function get_district(){
+  id_city = $('#id_city').val();
+  await $.ajax({
+      url: 'allpages/crud_order/get_district.php',
+      type: 'post',
+      data: {id_city:id_city},
+      dataType: 'json',
+      success:function(response){
+          var len = response.length;
+          //destroy select2          
+          $("#id_district").select2('destroy'); 
+          $("#id_district").empty();
+
+          for( var i = 0; i<len; i++){
+              var id_district = response[i]['id_district'];
+              var district_name = response[i]['district_name'];
+              $("#id_district").append("<option value='"+id_district+"'>"+district_name+"</option>");
+          }
+          //init select2     
+           $('#id_district').select2();
+      }
+    });
+  await console.log('done rewrite district');
+  return;
+}
+
+async function get_customer_info(){
+  id_customer = $('#id_customer').val();
+  await $.ajax({
+      url: 'allpages/crud_order/get_customer_info.php',
+      type: 'post',
+      data: {id_customer:id_customer},
+      dataType: 'json',
+      success:function(response){
+        $("#receiver_name").val(response[0]['customer_fullname']);
+        $("#receiver_address").val(response[0]['customer_address']);
+        $("#receiver_phone").val(response[0]['customer_phone']);
+      }
+    });
+  return;
 }
 
 function add_validate_dynamic(){
 
-  var product_quality = $('input[name^="product[quantity"]').each(function() {
+  var quantity_arr = $('input[name^="quantity"]').each(function() {
     $(this).rules("add", {
         required: true,
         min: 1,
@@ -23,13 +51,17 @@ function add_validate_dynamic(){
             min: "Số lượng nhỏ nhất là 1!"
         }
     });
-  });
+   
+    
 
-  var product_quality = $('select[name^="product[name"]').each(function() {
+  });
+  
+
+  var id_product_arr = $('select[name^="id_product["]').each(function() {
       $(this).rules("add", {
           required: true,
           messages: {
-              required: "Vui lòng Chọn sản phẩm !"
+              required: "Vui lòng chọn sản phẩm !"
           }
       });
   });
@@ -37,16 +69,40 @@ function add_validate_dynamic(){
 
 $(document).ready(function(){
 
-  // init numberic stepper
- 
+
+  // ajax add option to district on id_city change value
+  $("#id_city").change(function(){
+    get_district();
+  });
+  // end ajax add option to district
+
+  // ajax add info customer when customer is selected
+  $("#id_customer").change(function(){
+    var id_customer = $('#id_customer').val();
+    if( id_customer != '' ){
+      get_customer_info();
+    }
+  });
+  // end ajax add info customer when customer is selected
+
+  // init numberic stepper 
   $(':input[type="number"]').stepper({ limit: [1,] });
 
-  $('#animate-clone').cloneya()
+  $('#div_products_input').cloneya({serializeIndex: true})
   .on('before_clone.cloneya', function (event, toclone) {
       // do something
+       $('select.form-select2').select2('destroy');   
+      // console.log('destroy select2');
+
+       // reset form validate, remove unwanted attribute and tag
+        // $("#form_company").validate().resetForm();
+        // $(":input").removeAttr("aria-describedby");
+        // $(":input").removeAttr("aria-invalid");
+        // $("em").remove();  
   })
   .on('after_clone.cloneya', function (event, toclone, newclone) {
-      // do something   
+      // do something
+
   })
   .on('before_append.cloneya', function (event, toclone, newclone) {
       $(newclone).css('display', 'none');
@@ -57,6 +113,13 @@ $(document).ready(function(){
   .on('after_append.cloneya', function (event, toclone, newclone) {
       $(newclone).slideToggle();
       console.log('finished cloning ' + toclone.attr('id') + ' to ' + newclone.attr('id'));
+      // init Select2    
+      $('select.form-select2').select2();
+      console.log('init select 2');
+     // console.log( $(newclone));
+      add_validate_dynamic();
+      console.log('try to init validate for new element');
+
   })
   .off('remove.cloneya')
   .on('remove.cloneya', function (event, clone) {
@@ -71,57 +134,69 @@ $(document).ready(function(){
       console.log('deleted');
   });
 
-
-  
   // init Select2
   $('select.form-select2').select2(); 
 
   // test validation jquery
   $( "#form_company" ).validate( {
-    
+    ignore: [],
     rules: {         
       id_customer: {
             required: true,
-          },
-          id_user: {
-            required: true,
-          },
+      },
+      receiver_name: {
+        required: true,
+      },
+      receiver_address: {
+        required: true,
+      },
+      receiver_phone: {
+        required: true,
+      },
+      id_district: {
+        required: true,
+      },
+      id_city: {
+        required: true,
+      },
+
         },
     messages: {        
-          id_customer: {
-            required: "Vui lòng chọn khách hàng !",
-          }, 
-          id_user: {
-            required: "Vui lòng chọn nhân viên !",
-          },       
-        },
+      id_customer: {
+        required: "Vui lòng chọn khách hàng !",
+      }, 
+      receiver_name: {
+        required: "Vui lòng nhập tên người nhận !",
+      }, 
+      receiver_phone: {
+        required: "Vui lòng nhập số điện thoại người nhận !",
+      }, 
+      receiver_address: {
+        required: "Vui lòng nhập địa chỉ người nhận !",
+      }, 
+      id_city: {
+        required: "Vui lòng chọn thành phố !",
+      }, 
+      id_district: {
+        required: "Vui lòng chọn quận huyện !",
+      }, 
+    },
           
-        errorElement: "em",
-        errorPlacement: function ( error, element ) {
-        // Add the `help-block` class to the error element
-        error.addClass( "help-block" );
+    errorElement: "em",
+    errorPlacement: function ( error, element ) {
+      // Add the `help-block` class to the error element
+      error.addClass( "help-block" );
+      error.insertAfter( element );
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+    }
+  } );
 
-        if ( element.prop( "name" ) == "id_customer" ) 
-          {
-            error.insertAfter( element.parent().parent() );
-          } 
-          else if ( element.prop( "name" ) == "id_user" ) 
-          {
-            error.insertAfter( element.parent().parent() );
-          }  else
-          {
-            error.insertAfter( element.parent() );
-          }
-        },
-        highlight: function ( element, errorClass, validClass ) {
-          $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
-        }
-      } );
 
-    add_validate_dynamic();
     //end test
 
   // On page load: datatable
@@ -282,19 +357,70 @@ $(document).ready(function(){
     $('#form_company #phone').val('');
     $('#form_company #address').val('');
     $('#form_company #password').val('');
-    $('#form_company #email').val('');
-    $('#form_company #gender').val('');
-    $('#form_company #birthday').val('');
-    $('#form_company #avatar').val('');
-      
-    $('#form_company #id_order').val('');
+    $('#form_company #email').val('');      
+    $('#form_company #id_order').val('');    
     $('#id_customer').val('').trigger('change');
-    $('#id_user').val('').trigger('change');
+    $('#id_agent').val('').trigger('change');
 
-  // remove all select2
+    $('#delivery_status_div').hide();
+    $('#delivery_status').val('Chờ giao hàng').trigger('change');
+
+  // remove all product and rewrite it
     $('#div_products_input').children().remove();
-
   // add 1 select2
+
+    var request = $.ajax({
+      url:          'allpages/crud_product/data.php?job=get_companies',
+      cache:        false,
+      dataType:     'json',
+      contentType:  'application/json; charset=utf-8',
+      type:         'get'
+    });
+
+    request.done(function(output){
+    if (output.result == 'success'){
+
+    var products=output.data[0].product_array;
+    var product_list=output.data;
+    var product_option='';
+    for (var i=0;i<product_list.length;i++)
+    {
+     product_option=product_option+'<option value="'+product_list[i].id_product+'">'+product_list[i].product_name+'</option>' 
+    }      
+    $("#div_products_input").append('<div class="row toclone" id="row0" >\
+        <div class="col-sm-6">\
+          <div class="form-group">\
+            <select class="form-control form-select2"  name="id_product[0]" >\
+              <option value="">Chọn sản phẩm</option>\
+               '+product_option+'\
+            </select>\
+          </div>\
+        </div>\
+        <div class="col-sm-3">\
+          <div class="form-group">\
+              <input type="number" class="form-control"  name="quantity[0]" placeholder="số lượng">\
+          </div>\
+        </div>        \
+      <div class="btn btn-success clone"><i class="fas fa-plus"></i></div>\
+      <div class="btn btn-danger delete"><i class="fa fa-times"></i></div>\
+    </div>');
+   
+   add_validate_dynamic();
+
+      
+    //init select2 for new select         
+      $('select.form-select2').select2(); 
+    //init number stepper     
+        $(':input[type="number"]').stepper({
+          limit: [1, ]
+        });
+    
+
+      }
+  });
+
+
+
 
     show_lightbox();
   });
@@ -373,9 +499,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.ajax.reload(function(){
             hide_loading_message();
-            var customer_name = $('#id_customer').find(":selected").data().data.text;
-          //  console.log(customer_name);
-            show_message(" Thêm đơn đặt hàng cho khách hành '" + customer_name + "' thành công!", 'success');
+            var receiver_name = $('#receiver_name').val();
+            show_message(" Thêm đơn đặt hàng cho khách hành '" + receiver_name + "' thành công!", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -414,89 +539,75 @@ $(document).ready(function(){
         $('#form_company .field_container label.error').hide();
         $('#form_company .field_container').removeClass('valid').removeClass('error');
       
-        $("#id_user").val(output.data[0].created_by_user).trigger('change');
-
-        $("#status").val(output.data[0].status).trigger('change');
-        // handle id_customer_personal & id_customer_company
-        if( output.data[0].id_customer_personal != "0")
-          {
-            id_customer='CN'+output.data[0].id_customer_personal;
-          }
-
-        if(output.data[0].id_customer_company!="0")
-          {
-            id_customer='DN'+output.data[0].id_customer_company;
-          }
-
-        $("#id_customer").val(id_customer).trigger('change');
+        $("#id_customer").val(output.data[0].id_customer).trigger('change');
+        $("#delivery_status").val(output.data[0].delivery_status).trigger('change');
+       
 
         //handle detail quatation bill
 
         var products=output.data[0].product_array;
-
         var product_list=output.data[0].product_list;
         //console.log(product_list);
 
         var product_option='';
         for (var i=0;i<product_list.id_product.length;i++)
         {
-         product_option=product_option+'<option value="'+product_list.id_product[i]+'">'+product_list.product_code[i]+' - '+product_list.product_name[i]+'</option>' 
+         product_option=product_option+'<option value="'+product_list.id_product[i]+'"> - '+product_list.product_name[i]+'</option>' 
         }
         
-        // remove 1st select null
+        // remove all product and rewrite it
         $('#div_products_input').children().remove();
 
         for (var i=0;i<products.id_product.length;i++)
         {
 
           // for each item , add select2 to form
-        $("#div_products_input").append('<div class="j-row toclone-widget-right toclone cloneya">\
-          <div class="span6 unit" style="width: 40%;">\
-          <div class="input"><select id="select'+i+'" class="my_testing_select22 col-sm-12 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="product[name]['+i+']">\
-                        <option value="">Chọn sản phẩm</option>\
-            '+product_option+'\
-                       </select>\
-                       <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-labelledby="select2-productname-e9-container"><span class="select2-selection__rendered" id="select2-productname-e9-container"><span class="select2-selection__placeholder">Chọn sản phẩm</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>\
-                       </div>\
-                  </div>\
-                      <div class="span6 unit" style="width: 40%;">\
-                          <div class="input">\
-                              <input id="quantity'+i+'" type="number" name="product[quantity]['+i+']" placeholder="Số lượng" >\
-                          </div>\
-                      </div>\
-              <button type="button" class="btn btn-primary clone-btn-right clone clone_select2">\
-              <i class="icofont icofont-plus"></i>\
-              </button>\
-              <button type="button" class="btn btn-default clone-btn-right delete">\
-              <i class="icofont icofont-minus"></i>\
-              </button>\
+         $("#div_products_input").append('<div class="row toclone" >\
+              <div class="col-sm-6">\
+                <div class="form-group">\
+                  <select class="form-control form-select2" id="id_product'+i+'"  name="id_product['+i+']" >\
+                    <option value="">Chọn sản phẩm</option>\
+                     '+product_option+'\
+                  </select>\
+                </div>\
+              </div>\
+              <div class="col-sm-3">\
+                <div class="form-group">\
+                    <input type="number" class="form-control" id="quantity'+i+'" name="product[quantity]['+i+']" placeholder="số lượng">\
+                </div>\
+              </div>        \
+            <div class="btn btn-success clone"><i class="fas fa-plus"></i></div>\
+            <div class="btn btn-danger delete"><i class="fa fa-times"></i></div>\
           </div>');
 
-        //debug cloneya span unwanted
-        $('#select'+i).next().remove();
+        // debug cloneya span unwanted
+        // $('#select'+i).next().remove();
         // end debug
 
-        //init select2 for new select
-        $('#select'+i).select2({
-          dropdownParent: $('.lightbox_container')
-        });
+        //init select2 for new select         
+        $('select.form-select2').select2(); 
+
         // set value of new select2+quantity
-        $('#select'+i).val(products.id_product[i]).trigger('change');
+        $('#id_product'+i).val(products.id_product[i]).trigger('change');
         $('#quantity'+i).val(products.quantity[i]);
-          // end handle add select2 to form
+        // end handle add select2 to form
     
 
       }
 
+// init numberic stepper 
+$(':input[type="number"]').stepper({ limit: [1,] });
 
-      // reinit number stepper
-      $(':input[type="number"]').stepper({
-          limit: [1, ]
-        });
-      add_validate_dynamic();
+     
+     // add_validate_dynamic();
 
         // end handle detail quatation bill
-        $('#form_company #id_order').val(output.data[0].id_order);
+        $('#id_order').val(output.data[0].id_order);
+        $('#id_agent').val(output.data[0].id_agent).trigger('change');
+        $('#id_city').val(output.data[0].id_city).trigger('change');
+        $('#id_district').val(output.data[0].id_district).trigger('change');
+        $('#delivery_status').val(output.data[0].delivery_status).trigger('change');
+        $('#delivery_status_div').show();
 
 
         // reset validation form

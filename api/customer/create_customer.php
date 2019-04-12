@@ -59,6 +59,59 @@ if(!isset($_REQUEST['customer_address']))
   exit();
 }
 
+
+$query_image='';
+if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avatar']['tmp_name'])  )
+{
+  // check file size
+  if ( $_FILES['customer_avatar']['size'] >= 1048576 ) 
+  {
+    echo json_encode(
+      array('success' => 'false','message' => 'only accept file size < 1MB!')
+    );
+    exit();
+  }
+
+  // check file type
+  $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+  $detectedType = exif_imagetype($_FILES['customer_avatar']['tmp_name']);
+  $error = !in_array($detectedType, $allowedTypes);
+
+  if($error){   
+    echo json_encode(
+          array('success' => 'false','message' => 'only accept PNG, JPEG, GIF !!!')
+        );
+    exit();
+  }
+
+//start handle upload and save
+
+// xu ly file hinh dai dien
+    // do this, upload file
+    $target_dir = 'images/avatar/';    
+    $target_dir_4_upload = '../images/avatar/';
+    $final_name=basename($_FILES["customer_avatar"]["name"]);
+    //check if file exists
+    $i=0;
+    while (file_exists($target_dir_4_upload.$final_name)) {
+      $i++;
+    // doi ten file
+      $final_name=$i.basename($_FILES["customer_avatar"]["name"]);
+    }
+
+    //upload file toi folder 
+    $target_file_upload = $target_dir_4_upload . $final_name;
+    $target_file = $target_dir . $final_name;    
+    move_uploaded_file($_FILES["customer_avatar"]["tmp_name"], $target_file_upload);
+    
+  // get link tu file upload for query database
+  $query_image .= " , customer_avatar = '".$target_file."' ";  
+// end xu ly file hinh dai dien   
+
+
+} else { $query_image .= " , customer_avatar = 'images/avatar/user-placeholder.png' ";}    
+
+
   // Get raw posted data
   $customer_fullname = $_REQUEST['customer_fullname'];
   $customer_password = md5($_REQUEST['customer_password']);
@@ -85,6 +138,7 @@ if(!isset($_REQUEST['customer_address']))
     INSERT INTO table_customer 
     SET customer_fullname = '".$customer_fullname."', customer_password = '".$customer_password."', customer_phone = '".$customer_phone."', customer_address = '".$customer_address."'
     ";
+  $sql .= $query_image;
 
   if( isset($_REQUEST['fcm_token']) ){    
     $sql.=','. $_REQUEST['fcm_token'];
@@ -111,6 +165,7 @@ if(!isset($_REQUEST['customer_address']))
             'customer_password' => $row['customer_password'],   
             'customer_phone' => $row['customer_phone'],
             'customer_address' => $row['customer_address'],
+            'customer_avatar' => $row['customer_avatar'],
             'message' => 'user created'            
           );
 

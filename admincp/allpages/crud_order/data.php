@@ -68,8 +68,6 @@ if ($job != ''){
           $agent_name = "Chờ đại lý nhận";
         }
 
-        
-
         // get products list
         $query3="SELECT * FROM table_product ";
      
@@ -109,7 +107,7 @@ if ($job != ''){
       $message = 'id missing';
     } else {
 
-      $query = "SELECT * FROM table_order WHERE id_order= '".mysqli_real_escape_string($conn, $id)."' ";
+      $query = "SELECT * FROM table_order, table_district WHERE table_order.receiver_id_district = table_district.id_district AND id_order= '".mysqli_real_escape_string($conn, $id)."' ";
       $query = mysqli_query($conn, $query);
       
       if (!$query){
@@ -119,48 +117,45 @@ if ($job != ''){
         $result  = 'success';
         $message = 'query success';
         while ( $company = mysqli_fetch_array($query) ){
+
         // get quatation detail
         $query2=" SELECT * FROM `table_order_detail` WHERE id_order='".$company['id_order']."' ";
        
-          $query2 = mysqli_query($conn, $query2);
+        $query2 = mysqli_query($conn, $query2);
 
-          while ($row2 = mysqli_fetch_array($query2))
-          {
-            $product['id_product'][]=$row2['id_product'];
-            $product['quantity'][]=$row2['quantity'];
-            $product['current_price'][]=$row2['current_price'];
-          }
+        while ($row2 = mysqli_fetch_array($query2))
+        {
+          $product['id_product'][]=$row2['id_product'];
+          $product['quantity'][]=$row2['quantity'];
+          $product['unit_price'][]=$row2['unit_price'];
+        }
         //end get quatation detail
+
         // get products list
-          $query3="SELECT * FROM table_products ";
+          $query3="SELECT * FROM table_product";
        
           $query3 = mysqli_query($conn, $query3);
 
           while ($row3 = mysqli_fetch_array($query3))
           {
             $product_list['id_product'][]=$row3['id_product'];
-            $product_list['product_code'][]=$row3['product_code'];
             $product_list['product_name'][]=$row3['product_name'];
           }
         //end get products list
 
-        if($company['status']=='0'){ $status_txt='Chờ sản xuất';}
-        if($company['status']=='1'){ $status_txt='Chờ xuất hàng';}
-        if($company['status']=='2'){ $status_txt='Đang sản xuất';}
-        if($company['status']=='3'){ $status_txt='Chờ giao hàng';}
-        if($company['status']=='4'){ $status_txt='Đã giao hàng';}
+     
 
 
         $mysql_data[] = array(
           "id_order"  => $company['id_order'],          
           "date_created" => $company['date_created'],
-          "status" => $company['status'],
-          "status_txt" => $status_txt,
+          "delivery_status" => $company['delivery_status'],
           "product_array" => $product,
           "product_list" => $product_list,
-          "id_customer_personal" => $company['id_customer_personal'],
-          "id_customer_company" => $company['id_customer_company'],
-          "created_by_user"  => $company['created_by_user']
+          "id_city" => $company['id_city'],
+          "id_district" => $company['id_district'],
+          "id_customer" => $company['id_customer'],
+          "id_agent"  => $company['id_agent']
           );
         }
 
@@ -170,73 +165,72 @@ if ($job != ''){
   
   } elseif ($job == 'add_company'){
     // Add company
-              $query = "INSERT INTO table_order SET ";
+      $query = "INSERT INTO table_order SET ";
 
-              if (isset($_REQUEST['id_customer']))
-                { 
-                  $id_customer_tmp=substr($_REQUEST['id_customer'],2);
-                  if(substr($_REQUEST['id_customer'],0,2)=='DN'){                   
-                    $query .= "id_customer_company  = '" . mysqli_real_escape_string($conn, $id_customer_tmp)         . "', ";
-                  } else {
-                     $query .= "id_customer_personal  = '" . mysqli_real_escape_string($conn, $id_customer_tmp)         . "', ";
-                  }
+      if (isset($_REQUEST['id_customer']))
+        { 
+          $query .= "id_customer = '".mysqli_real_escape_string($conn, $_REQUEST['id_customer']). "', ";
+        }
+      if (isset($_REQUEST['receiver_name']))
+        { 
+          $query .= "receiver_name = '".mysqli_real_escape_string($conn, $_REQUEST['receiver_name']). "', ";
+        }
+      if (isset($_REQUEST['receiver_phone']))
+        { 
+          $query .= "receiver_phone = '".mysqli_real_escape_string($conn, $_REQUEST['receiver_phone']). "', ";
+        }
+      if (isset($_REQUEST['receiver_address']))
+        { 
+          $query .= "receiver_address = '".mysqli_real_escape_string($conn, $_REQUEST['receiver_address']). "', ";
+        }
+      if (isset($_REQUEST['id_district']))
+        { 
+          $query .= "receiver_id_district = '".mysqli_real_escape_string($conn, $_REQUEST['id_district']). "', ";
+        }
+      if (isset($_REQUEST['id_agent']))
+        { 
+          $query .= "id_agent = '".mysqli_real_escape_string($conn, $_REQUEST['id_agent']). "', ";
+        }
+      
+     
+      $current_day = date("Y-m-d h:i:s");
+      $query .= "date_created = '".$current_day."' ";
 
-                }
-           
-             $current_day=date("Y-m-d");
-             $query .= "date_created = '".$current_day."', ";
+      $query = mysqli_query($conn, $query);
 
-
-              
-          if (isset($_REQUEST['id_customer'])) { $query .= "created_by_user = '" . mysqli_real_escape_string($conn, $_REQUEST['id_customer'])         . "' "; }
-              
-              $query = mysqli_query($conn, $query);
-
-          // catch inserted id
-              $last_id = mysqli_insert_id($conn);
-
-          if (isset($_REQUEST['product'])) {
-
-            $count_array= count($_REQUEST['product']['name']);           
-            $total_order=0;
-            for($i=0;$i<$count_array;$i++){
-
-              // get current price of product
-              $query = "SELECT * FROM table_products WHERE id_product= ".$_REQUEST['product']['name'][$i]." ";      
-
-              $query = mysqli_query($conn, $query);
-
-              while ($row = mysqli_fetch_array($query))
-                {
-                    $row_price=$row['price'];
-                }
-
-            $query = "INSERT INTO table_order_detail SET ";              
-            $query .= "id_product = '".$_REQUEST['product']['name'][$i]."', "; 
-            $query .= "quantity = '".$_REQUEST['product']['quantity'][$i]."', ";
-            $query .= "current_price = '".$row_price."', ";
-            $query .= "id_order = '".$last_id."' ";
-            $query = mysqli_query($conn, $query);
-            $total_order+=$row_price;
-
+      // catch inserted id
+      $last_id = mysqli_insert_id($conn);
+      if (isset($_REQUEST['id_product']))
+      {
+        $count_array= count($_REQUEST['id_product']);
+        for($i=0;$i<$count_array;$i++)
+        {
+          // get current price of product
+          $query = "SELECT * FROM table_product WHERE id_product= ".$_REQUEST['id_product'][$i]." "; 
+          $query = mysqli_query($conn, $query);
+          while ($row = mysqli_fetch_array($query))
+          {
+            $row_price = $row['product_price'];
           }
-          $query = "UPDATE table_order SET total= '".$total_order."' WHERE id_order= '".$last_id."' ";
-           $query = mysqli_query($conn, $query);
+          $query = "INSERT INTO table_order_detail SET ";              
+          $query .= "id_product = '".$_REQUEST['id_product'][$i]."', "; 
+          $query .= "quantity = '".$_REQUEST['quantity'][$i]."', ";
+          $query .= "unit_price = '".$row_price."', ";
+          $query .= "id_order = '".$last_id."' ";
+          $query = mysqli_query($conn, $query);
+        }
+      }
 
-          }
+      if ($query){
+        $result  = 'success';
+        $message = 'query success';
+       
+      } else {
+         $result  = 'error';
+        $message = 'query error';
+      }
 
-              if ($query){
-                $result  = 'success';
-                $message = 'query success';
-               
-              } else {
-                 $result  = 'error';
-                $message = 'query error';
-              }
-           
-        
-  
-  } elseif ($job == 'edit_company'){
+} elseif ($job == 'edit_company'){
     
     // Edit company
     if ($id == ''){
@@ -248,20 +242,24 @@ if ($job != ''){
 
       $query = "UPDATE table_order SET ";
 
-      if (isset($_REQUEST['id_customer']))         { $query .= "created_by_user         = '" . mysqli_real_escape_string($conn, $_REQUEST['id_customer'])         . "', "; }
-      if (isset($_REQUEST['status']))         { $query .= "status         = '" . mysqli_real_escape_string($conn, $_REQUEST['status'])         . "', "; }
-      if (isset($_REQUEST['id_customer']))
-        { 
-          $id_customer_tmp=substr($_REQUEST['id_customer'],2);
-          if(substr($_REQUEST['id_customer'],0,2)=='DN'){                   
-            $query .= "id_customer_company  = '" . mysqli_real_escape_string($conn, $id_customer_tmp)         . "', ";
-          } else {
-             $query .= "id_customer_personal  = '" . mysqli_real_escape_string($conn, $id_customer_tmp)         . "', ";
-          }
-        }
-      $current_day=date("Y-m-d");
-      $query .= "date_created = '".$current_day."' ";
+      if (isset($_REQUEST['id_customer']))         { $query .= "id_customer = '" .mysqli_real_escape_string($conn, $_REQUEST['id_customer']). "', "; }
+      if (isset($_REQUEST['delivery_status']))         { $query .= "delivery_status = '" . mysqli_real_escape_string($conn, $_REQUEST['delivery_status'])         . "', "; }
 
+      if (isset($_REQUEST['receiver_name']))
+      { 
+        $query .= "receiver_name = '" . mysqli_real_escape_string($conn, $_REQUEST['receiver_name'])         . "', "; 
+      }
+
+      if (isset($_REQUEST['receiver_phone']))
+      { 
+        $query .= "receiver_phone = '" . mysqli_real_escape_string($conn, $_REQUEST['receiver_phone'])         . "', ";
+      }
+
+      if (isset($_REQUEST['receiver_address']))
+      { 
+        $query .= "receiver_address = '" . mysqli_real_escape_string($conn, $_REQUEST['receiver_address'])         . "', "; 
+      }
+     
       $query .= "WHERE id_order = '" . mysqli_real_escape_string($conn, $_REQUEST['id_order']) . "'";
       $query  = mysqli_query($conn, $query);
 
@@ -274,29 +272,29 @@ if ($job != ''){
     
 
     //add new detail
-      if (isset($_REQUEST['product'])) {
+      if (isset($_REQUEST['id_product'])) {
 
-        $count_array= count($_REQUEST['product']['name']);           
+        $count_array= count($_REQUEST['id_product']);           
           
-          for($i=0;$i<$count_array;$i++)
-          {
+        for($i=0;$i<$count_array;$i++)
+        {
           // get current price of product
-          $query = "SELECT * FROM table_products WHERE id_product= ".$_REQUEST['product']['name'][$i]." ";      
+          $query = "SELECT * FROM table_products WHERE id_product= ".$_REQUEST['id_product'][$i]." ";      
 
           $query = mysqli_query($conn, $query);
 
           while ($row = mysqli_fetch_array($query))
             {
-                $row_price=$row['price'];
+                $row_price=$row['product_price'];
             }
 
-            $query = "INSERT INTO table_order_detail SET ";              
-            $query .= "id_product = '".$_REQUEST['product']['name'][$i]."', "; 
-            $query .= "quantity = '".$_REQUEST['product']['quantity'][$i]."', ";
-            $query .= "current_price = '".$row_price."', ";
-            $query .= "id_order = '".$_REQUEST['id_order']."' ";
-            $query = mysqli_query($conn, $query);
-            }
+          $query = "INSERT INTO table_order_detail SET ";              
+          $query .= "id_product = '".$_REQUEST['id_product'][$i]."', "; 
+          $query .= "quantity = '".$_REQUEST['quantity'][$i]."', ";
+          $query .= "unit_price = '".$row_price."', ";
+          $query .= "id_order = '".$_REQUEST['id_order']."' ";
+          $query = mysqli_query($conn, $query);
+        }
 
           }
     //end add new detail

@@ -90,6 +90,90 @@ if (isset($_REQUEST['customer_fullname']))
         $check=0;
       }
   }
+
+//handle change avatar
+
+$query_image='';
+if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avatar']['tmp_name'])  )
+{
+  // check file size
+  if ( $_FILES['customer_avatar']['size'] >= 1048576 ) 
+  {
+    echo json_encode(
+      array('success' => 'false','message' => 'only accept file size < 1MB!')
+    );
+    exit();
+  }
+
+  // check file type
+  $allowedTypes = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
+  $detectedType = exif_imagetype($_FILES['customer_avatar']['tmp_name']);
+  $error = !in_array($detectedType, $allowedTypes);
+
+  if($error){   
+    echo json_encode(
+          array('success' => 'false','message' => 'only accept PNG, JPEG, GIF !!!')
+        );
+    exit();
+  }
+
+
+
+$query = "UPDATE table_customer SET ";
+//start handle upload and save
+// xu ly file hinh dai dien
+    // do this, upload file
+    $target_dir = 'images/avatar/';    
+    $target_dir_4_upload = '../images/avatar/';
+    $final_name=basename($_FILES["customer_avatar"]["name"]);
+    //check if file exists
+    $i=0;
+    while (file_exists($target_dir_4_upload.$final_name)) {
+      $i++;
+      // doi ten file
+      $final_name=$i.basename($_FILES["customer_avatar"]["name"]);
+    }
+        
+    //upload file toi folder icon
+    $target_file_upload = $target_dir_4_upload . $final_name;
+    $target_file = $target_dir . $final_name;
+    
+    move_uploaded_file($_FILES["customer_avatar"]["tmp_name"], $target_file_upload);
+
+    $sql_tmp = "SELECT * FROM table_customer WHERE id_customer= '".$_REQUEST['id_customer']."' ";
+
+    $result_tmp = mysqli_query($conn,$sql_tmp);
+    while ( $row_tmp = mysqli_fetch_array($result_tmp) ){
+      $customer_avatar=$row_tmp['customer_avatar'];
+    }
+
+    // unlink old file avatar if exist and it not the place holder file
+    if (file_exists('../'.$customer_avatar) && ($customer_avatar!='images/avatar/user-placeholder.png') )
+    { 
+      unlink('../'.$_REQUEST['customer_avatar']);
+    }
+    // end handle unlink old file avatar if exist and it not the place holder file
+
+    
+  // get link tu file upload for query database
+  $query .= " customer_avatar = '".$target_file."' ";  
+  // end xu ly file hinh dai dien  
+    $query .= "WHERE id_customer = '" .mysqli_real_escape_string($conn, $_REQUEST['id_customer'])."'"; 
+    // Create post
+    if($conn->query($query)) 
+    {
+      
+    } else 
+    {
+      $check=0;
+    }
+
+
+
+}  
+// end handle change avatar
+
+
   
   
   if (isset($_REQUEST['customer_password']) )         
@@ -119,7 +203,8 @@ if (isset($_REQUEST['customer_fullname']))
       'id_customer' => $row['id_customer'],
       'customer_fullname' => $row['customer_fullname'],
       'customer_address' => $row['customer_address'],
-      'customer_password' => $row['customer_password'],            
+      'customer_password' => $row['customer_password'],  
+      'customer_avatar' => $row['customer_avatar'],            
       'customer_phone' => $row['customer_phone']             
     );   
   }
@@ -127,7 +212,7 @@ if (isset($_REQUEST['customer_fullname']))
   $user_arr['data']=$user_item;
   // end get all user new info
 
-  if( $check==0)
+  if( $check == 0 )
   {
     echo json_encode(
         array('success' => 'false','message' => 'update error !!!')

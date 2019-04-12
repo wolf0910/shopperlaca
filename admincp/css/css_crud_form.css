@@ -476,7 +476,6 @@ table.table thead .sorting_asc, table.table thead .sorting_asc:before, table.tab
 .lightbox_content .input_container .field_container input {
   
   width: 100%;
-  height: 45px;
   background-color: #f9f9f9;
   line-height: 30px;
   color: #666;

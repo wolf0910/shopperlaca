@@ -1,4 +1,4 @@
-<script src="../admin_template/dist/assets/libs/jquery/jquery.min.js"></script>
+<script src="lib/jquery.min.js"></script>
 <script src="../admin_template/dist/assets/bs3/js/bootstrap.min.js"></script>
 <script src="../admin_template/dist/assets/plugins/jquery-navgoco/jquery.navgoco.js"></script>
 <script src="../admin_template/dist/js/main.js"></script>

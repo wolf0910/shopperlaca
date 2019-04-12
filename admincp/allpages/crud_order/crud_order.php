@@ -65,7 +65,7 @@
                 $query = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($query))
                 {
-                  echo '<option value="'.$row['id_customer'].'">'.$row['customer_fullname'].'</option>';
+                  echo '<option value="'.$row['id_customer'].'">'.$row['customer_fullname'].' - '.$row['customer_phone'].'</option>';
                 }
               ?> 
               </select>
@@ -75,10 +75,10 @@
 
           <div class="input_container">
 
-            <label for="id_customer">Thành phố: <span class="required">*</span></label>
+            <label for="id_city">Thành phố: <span class="required">*</span></label>
             <div class="field_container">
 
-              <select class="form-control form-select2" id="id_customer"  name="id_customer" >
+              <select class="form-control form-select2" id="id_city"  name="id_city" >
                 <option value="">Chọn thành phố</option>
               <?php 
                 $query = "SELECT * FROM `table_city` ";
@@ -94,18 +94,11 @@
           </div>
 
           <div class="input_container">
-            <label for="id_customer">Quận huyện: <span class="required">*</span></label>
+            <label for="id_district">Quận huyện: <span class="required">*</span></label>
             <div class="field_container">
-              <select class="form-control form-select2" id="id_customer"  name="id_customer" >
+              <select class="form-control form-select2" id="id_district"  name="id_district" >
                 <option value="">Chọn quận huyện</option>
-                <?php 
-                  $query = "SELECT * FROM `table_city` ";
-                  $query = mysqli_query($conn, $query);
-                  while ($row = mysqli_fetch_array($query))
-                  {
-                    echo '<option value="'.$row['id_city'].'">'.$row['city_name'].'</option>';
-                  }
-                ?> 
+                
               </select>
             </div>
           </div>
@@ -140,13 +133,11 @@
 
 
       <!--animated clone demo start-->
-        <div id="animate-clone" class="demo-wrap">
-          <div class="row toclone" id="anim-clone">
+        <div id="div_products_input" class="demo-wrap">
 
-                       
-            
+          <div class="row toclone" >            
               <div class="col-sm-6">
-                <div class="form-group ">
+                <div class="form-group">
                   <select class="form-control form-select2" id="id_product"  name="id_product[]" >
                     <option value="">Chọn sản phẩm</option>
                     <?php 
@@ -166,27 +157,16 @@
                     <input type="number" class="form-control" id="quantity" name="quantity[]" placeholder="số lượng">
                 </div>
               </div>
-
               
             <div class="btn btn-success clone"><i class="fas fa-plus"></i></div>
             <div class="btn btn-danger delete"><i class="fa fa-times"></i></div>
           </div>
+
         </div>
     <!--animated clone demo end-->
 
-      
-
             </div>
           </div>
-
-
-
-
-
-
-
-
-
 
           <div class="input_container">
 
@@ -200,7 +180,7 @@
                 $query = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($query))
                 {
-                  echo '<option value="'.$row['id_agent'].'">'.$row['agent_name'].'</option>';
+                  echo '<option value="'.$row['id_agent'].'">'.$row['agent_name'].' - '.$row['agent_phone'].'</option>';
                 }
               ?> 
               </select>
@@ -209,13 +189,14 @@
           </div>
     
 
-          <div class="input_container">
-            <label for="id_category" >Trạng thái: <span class="required">*</span></label>
+          <div class="input_container" id="delivery_status_div">
+            <label for="delivery_status" >Trạng thái: <span class="required">*</span></label>
             <div class="field_container">
              
-              <select class="form-control form-select2" id="id_category"  name="id_category" >
-                <option value="">Chọn trạng thái</option>
-                
+              <select class="form-control form-select2" id="delivery_status"  name="delivery_status" >
+                <option value="Chờ giao hàng">Chờ giao hàng</option>
+                <option value="Đang giao hàng">Đang giao hàng</option>
+                <option value="Đã giao hàng">Đã giao hàng</option>               
               </select>
 
             </div>
