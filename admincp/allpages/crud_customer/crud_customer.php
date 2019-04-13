@@ -1,14 +1,14 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý đại lý</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Quản lý khách hàng</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
     <div class="panel panel-default">
         <div class="panel-heading">
 
-            <h4 class="panel-title">Quản lý đại lý</h4>
+            <h4 class="panel-title">Quản lý khách hàng</h4>
 
             <div class="panel-options">
                 <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

@@ -143,9 +143,6 @@ if ($job != ''){
           }
         //end get products list
 
-     
-
-
         $mysql_data[] = array(
           "id_order"  => $company['id_order'],          
           "date_created" => $company['date_created'],
@@ -263,7 +260,7 @@ if ($job != ''){
       $query .= "WHERE id_order = '" . mysqli_real_escape_string($conn, $_REQUEST['id_order']) . "'";
       $query  = mysqli_query($conn, $query);
 
-    // delete old detail of quatation bill
+    // delete old detail of order bill
     
       $query = "DELETE FROM table_order_detail WHERE id_order = '".mysqli_real_escape_string($conn, $_REQUEST['id_order'])."'";
       $query = mysqli_query($conn, $query);
@@ -279,7 +276,7 @@ if ($job != ''){
         for($i=0;$i<$count_array;$i++)
         {
           // get current price of product
-          $query = "SELECT * FROM table_products WHERE id_product= ".$_REQUEST['id_product'][$i]." ";      
+          $query = "SELECT * FROM table_product WHERE id_product= ".$_REQUEST['id_product'][$i]." ";      
 
           $query = mysqli_query($conn, $query);
 

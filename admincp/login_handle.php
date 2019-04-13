@@ -27,6 +27,10 @@ echo ' <meta charset="utf-8">
 
     // gan thong tin nguoi dung vao session
     $_SESSION['id_administrator']=$row['id_administrator'];
+    $_SESSION['administrator_name']=$row['administrator_name'];
+    $_SESSION['administrator_phone']=$row['administrator_phone'];
+    $_SESSION['administrator_email']=$row['administrator_email'];
+    $_SESSION['administrator_avatar']=$row['administrator_avatar'];
 
   	echo "<script>
     alert('Đăng nhập thành công !!!');

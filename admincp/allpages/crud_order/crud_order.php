@@ -1,19 +1,14 @@
 <div class="page-content">
-  <div class="page-subheading page-subheading-md">
-      
-    <ol class="breadcrumb">
-        <li class="active"><a href="#">Quản lý đơn đặt hàng</a></li>
-    </ol>
-</div>
+ 
 <div class="container-fluid-md">
     <div class="panel panel-default">
         <div class="panel-heading">
 
-            <h4 class="panel-title">Quản lý đơn đặt hàng</h4>
+            <!-- <h4 class="panel-title">Quản lý đơn đặt hàng</h4> -->
 
             <div class="panel-options">
                 <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
-                <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                <!-- <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a> -->
                <!--  <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
             </div>
         </div>
@@ -194,6 +189,7 @@
             <div class="field_container">
              
               <select class="form-control form-select2" id="delivery_status"  name="delivery_status" >
+                <option value="Chờ tiếp nhận">Chờ tiếp nhận</option>
                 <option value="Chờ giao hàng">Chờ giao hàng</option>
                 <option value="Đang giao hàng">Đang giao hàng</option>
                 <option value="Đã giao hàng">Đã giao hàng</option>               

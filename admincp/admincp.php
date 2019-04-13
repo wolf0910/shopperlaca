@@ -66,6 +66,15 @@
         if($_REQUEST['page']=='crud_order')
             { include('allpages/crud_order/crud_order.php'); }
 
+        if($_REQUEST['page']=='agents_statistic')
+            { include('allpages/agents_statistic/agents_statistic.php'); }
+
+        if($_REQUEST['page']=='agent_statistic')
+            { include('allpages/agent_statistic/agent_statistic.php'); }
+
+        if($_REQUEST['page']=='customers_statistic')
+            { include('allpages/customers_statistic/customers_statistic.php'); }
+
 
     } else {
         include('allpages/dashboard/dashboard.php');

@@ -552,7 +552,7 @@ $(document).ready(function(){
         var product_option='';
         for (var i=0;i<product_list.id_product.length;i++)
         {
-         product_option=product_option+'<option value="'+product_list.id_product[i]+'"> - '+product_list.product_name[i]+'</option>' 
+         product_option=product_option+'<option value="'+product_list.id_product[i]+'">'+product_list.product_name[i]+'</option>' 
         }
         
         // remove all product and rewrite it
@@ -573,7 +573,7 @@ $(document).ready(function(){
               </div>\
               <div class="col-sm-3">\
                 <div class="form-group">\
-                    <input type="number" class="form-control" id="quantity'+i+'" name="product[quantity]['+i+']" placeholder="số lượng">\
+                    <input type="number" class="form-control" id="quantity'+i+'" name="quantity['+i+']" placeholder="số lượng">\
                 </div>\
               </div>        \
             <div class="btn btn-success clone"><i class="fas fa-plus"></i></div>\

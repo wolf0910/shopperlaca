@@ -125,10 +125,13 @@ if( count($id_product) != count($quantity) ){
   // insert into table_order
   $date_created = date( 'Y-m-d H:i:s a', time() );
   $sql = ' INSERT INTO table_order SET receiver_name = "'.$_REQUEST['receiver_name'].'", receiver_address = "'.$_REQUEST['receiver_address'].'", receiver_phone = "'.$_REQUEST['receiver_phone'].'", id_customer="'.$_REQUEST['id_customer'].'", receiver_id_district="'.$_REQUEST['receiver_id_district'].'", date_created="'.$date_created.'" ';
+
+  $delivery_status = 'Chờ tiếp nhận';
   if(isset($_REQUEST['id_agent'])){
     $sql = $sql.' , id_agent="'.$_REQUEST['id_agent'].'" ';
+    $delivery_status = 'Chờ giao hàng';
   }
-
+  $sql = $sql.' , delivery_status="'.$delivery_status.'" ';
   $result = mysqli_query($conn,$sql);
 
   

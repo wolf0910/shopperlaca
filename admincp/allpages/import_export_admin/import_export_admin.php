@@ -1,13 +1,12 @@
 <div class="page-content">
-  <div class="page-subheading page-subheading-md">
-  <ol class="breadcrumb">
-    <li><a href="#">Quản Trị Viên bán lẻ</a></li>
-    <li class="active"><a href="javascript:;">Import/Export Quản Trị Viên</a></li>
-  </ol>
-</div>
-<div class="page-heading page-heading-md">
-    <h2>Import/Export Quản Trị Viên</h2>
-</div>
+    <!-- <div class="page-subheading page-subheading-md">
+      <ol class="breadcrumb">
+        <li><a href="#">Quản Trị Viên bán lẻ</a></li>
+        <li class="active"><a href="javascript:;">Import/Export Quản Trị Viên</a></li>
+      </ol>
+    </div> -->
+
+
 
 <div class="container-fluid-md">
     <div class="panel panel-default">
@@ -15,9 +14,9 @@
              <a href="allpages/import_export_admin/Administrators_example.xlsx" class="btn btn-lg btn-flat btn-primary" download><i class="fas fa-download"></i> Mẫu file excel import</a>
 
             <div class="panel-options">
-                <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+               <!--  <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
                 <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
-                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
             </div>
         </div>
         <div class="panel-body no-padding-top">
@@ -29,7 +28,7 @@
         <label for="exampleInputFile">Chọn file</label>
         <input type="file" name="file" required="true" class="form-control" id="exampleInputFile">
     </div>
-    <button type="button" id="button_import" class="btn btn-lg btn-flat btn-primary">Import</button>
+    <button type="button" id="button_import" class="btn btn-lg btn-flat btn-primary"> <i class="fas fa-upload"></i> Import</button>
 </form>
                    
                 </div>

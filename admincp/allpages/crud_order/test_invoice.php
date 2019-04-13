@@ -1,46 +1,19 @@
 <?php 
 // Database details
-include ('../../config/Database_mysqli.php');
+include ('../../../config/db_config.php');
 
-$query = "SELECT * FROM `table_orders` WHERE id_order=".$_REQUEST['id_bill']." ";
+$query = "SELECT * FROM `table_order`,table_customer WHERE table_order.id_customer = table_customer.id_customer  AND id_order=".$_REQUEST['id_bill']." ";
 // get quatation common bill info
-$query = mysqli_query($db_connection, $query);
+$query = mysqli_query($conn, $query);
 while ($company = mysqli_fetch_array($query)){
   $id_order=$company['id_order'];
   $date_created=$company['date_created'];
-  $created_by_user=$company['created_by_user'];
-  $id_customer_personal=$company['id_customer_personal'];
-  $id_customer_company=$company['id_customer_company'];
-  $total=$company['total'];
+  $id_customer=$company['id_customer'];
+  $customer_fullname=$company['customer_fullname'];
+  $customer_phone=$company['customer_phone'];
+  $customer_address=$company['customer_address'];
+
 }
-
-// get customer info from id_customer
-  if($id_customer_personal!=0){
-    $query = "SELECT * FROM `table_customer_personal` WHERE id_customer_personal=".$id_customer_personal." ";
-    // get quatation common bill info
-    $query = mysqli_query($db_connection, $query);
-    while ($company = mysqli_fetch_array($query)){
-      $customer_name=$company['customer_name'];
-      $address=$company['address'];
-      $email=$company['email'];
-      $phone=$company['phone'];
-    }
-  }
-
-  if($id_customer_company!=0){
-    $query = "SELECT * FROM `table_customer_company` WHERE id_customer_company=".$id_customer_company." ";
-    // get quatation common bill info
-    $query = mysqli_query($db_connection, $query);
-    while ($company = mysqli_fetch_array($query)){
-      $company_name=$company['company_name'];
-      $address=$company['address'];
-      $email=$company['email'];
-      $phone=$company['phone'];
-      $representative=$company['representative'];
-    }
-  }
-
-
 
 ?>
 
@@ -50,7 +23,7 @@ while ($company = mysqli_fetch_array($query)){
   <meta charset="UTF-8">  
   <title>Đơn đặt hàng</title>  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../../assets/invoices/invoice.css">
+  <link rel="stylesheet" type="text/css" href="../../css/invoice.css">
   <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
@@ -76,15 +49,12 @@ while ($company = mysqli_fetch_array($query)){
     <div class="col-5">
       <h5 class="almost-gray mb-3">Khách hàng:</h5>
       <?php   
-        if($id_customer_personal!=0){
-          echo '<p class="gray-ish "><i class="fas fa-user-tie"></i> '.$customer_name.'</p>';
-        } else {
-          echo '<p class="gray-ish text_customer"><i class="fas fa-building"></i> '.$company_name.'</p>';
-          echo '<p class="gray-ish "><i class="fas fa-user-tie"></i> '.$representative.'</p>';
-        }
+        
+          echo '<p class="gray-ish "><i class="fas fa-user-tie"></i> '.$customer_fullname.'</p>';
+
       ?>  
-      <p class="gray-ish"><i class="fas fa-phone"></i> <?php echo $phone;?></p>    
-      <p class="gray-ish"><i class="fas fa-map-marked-alt"></i> <?php echo $address;?></p>
+      <p class="gray-ish"><i class="fas fa-phone"></i> <?php echo $customer_phone;?></p>    
+      <p class="gray-ish"><i class="fas fa-map-marked-alt"></i> <?php echo $customer_address;?></p>
 
       
     </div>
@@ -119,17 +89,17 @@ while ($company = mysqli_fetch_array($query)){
             <tbody>
             <?php 
             // get bill detail
-              $query = "SELECT * FROM `table_order_detail`,table_products WHERE id_order=".$_REQUEST['id_bill']." AND table_products.id_product=table_order_detail.id_product ";
+              $query = "SELECT * FROM `table_order_detail`,table_product WHERE id_order=".$_REQUEST['id_bill']." AND table_product.id_product=table_order_detail.id_product ";
               // get quatation common bill info
               $count_row=1;
               $total_bill=0;
-              $query = mysqli_query($db_connection, $query);
+              $query = mysqli_query($conn, $query);
 
               while ($company = mysqli_fetch_array($query)){
                 $id_product=$company['id_product'];
                 $product_name=$company['product_name'];
                 $quantity=$company['quantity'];
-                $current_price=$company['current_price'];
+                $current_price=$company['unit_price'];
                 $line_total=$current_price*$quantity;
                 $total_bill=$total_bill+$line_total;
                 $row_dif='';
@@ -201,7 +171,7 @@ while ($company = mysqli_fetch_array($query)){
   <!-- <p class="text-center pb-3"><em> Taxes will be calculated in &euro; regarding transport and other taxable services.</em></p> -->
 </div>
 
-<script type="text/javascript" src="../../bower_components/jquery/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../lib/jquery.min.js"></script>
 <script>
     var total_bill_final_display = '<?php echo $total_bill_final_display; ?>'; //outputting string foo in context of JS
                                  //must wrap in quotes so that it is still string foo when JS does execute

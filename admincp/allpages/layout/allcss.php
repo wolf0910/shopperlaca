@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="lib/fontawesome-free-5.8.1-web/css/all.css" crossorigin="anonymous">
 
         <!-- Numberic stepper -->
+        
+        <link rel="stylesheet" href="lib/daterangepicker/daterangepicker.css">
         <link rel="stylesheet" href="lib/stepper/jquery.stepper.min.css">
         
         <link rel="stylesheet" href="css/css_crud_form.css">

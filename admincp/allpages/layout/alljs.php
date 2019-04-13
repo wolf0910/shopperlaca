@@ -33,6 +33,10 @@
 <script src="lib/ckeditor/ckeditor.js"></script>
 <script src="lib/ckfinder/ckfinder.js"></script>
 
+<!-- daterange picker plugin -->
+<script src="lib/daterangepicker/moment.min.js"></script>
+<script src="lib/daterangepicker/daterangepicker.min.js"></script>
+
 <!-- jquery validate -->
 <script src="lib/jquery_validate/jquery.validate.js"></script>
 <script src="lib/jquery_validate/additional-methods.js"></script>
@@ -77,5 +81,14 @@
 
         if($_REQUEST['page']=='crud_order') 
         	echo '<script src="allpages/crud_order/crud_order.js"></script>';
+
+        if($_REQUEST['page']=='agents_statistic') 
+            echo '<script src="allpages/agents_statistic/agents_statistic.js"></script>';
+
+        if($_REQUEST['page']=='agent_statistic') 
+            echo '<script src="allpages/agents_statistic/agent_statistic.js"></script>';
+
+        if($_REQUEST['page']=='customers_statistic') 
+            echo '<script src="allpages/customers_statistic/customers_statistic.js"></script>';
     } 
 ?>

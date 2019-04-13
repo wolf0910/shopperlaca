@@ -6,24 +6,24 @@
             </a>
             <a class="navbar-brand hidden-xxs" href="../admin_template/index.html">
                 <span class="sc-visible">
-                    V
+                    A
                 </span>
                 <span class="sc-hidden">
-                    <span class="bold">Veneto</span>
-                    ADMIN
+                    <span class="bold">Admin</span>
+                    Trang quản trị
                 </span>
             </a>
         </div>
         <ul class="nav navbar-nav navbar-nav-expanded pull-right margin-md-right">
-            <li class="hidden-xs">
+            <!-- <li class="hidden-xs">
                 <form class="navbar-form">
                     <div class="navbar-search">
                         <input type="text" placeholder="Search &hellip;" class="form-control">
                         <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                 </form>
-            </li>
-            <li class="dropdown">
+            </li> -->
+            <!-- <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <i class="glyphicon glyphicon-envelope"></i>
                     <span class="badge badge-up badge-dark badge-small">3</span>
@@ -78,8 +78,8 @@
                         <a href="#"><i class="fa fa-share"></i> See all messages</a>
                     </li>
                 </ul>
-            </li>
-            <li class="dropdown">
+            </li> -->
+            <!-- <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <i class="glyphicon glyphicon-globe"></i>
                     <span class="badge badge-up badge-danger badge-small">3</span>
@@ -134,21 +134,21 @@
                         <a href="#"><i class="fa fa-share"></i> See all notifications</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="#">
-                    <img class="img-circle" src="../admin_template/demo/images/profile.jpg">
-                    <span class="hidden-xs">Marlon Brice</span>
+                    <img class="img-circle" src="../<?php echo $_SESSION['administrator_avatar']; ?>">
+                    <span class="hidden-xs"><?php echo $_SESSION['administrator_name']; ?></span>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu pull-right-xs">
-                    <li class="arrow"></li>
+                   <!--  <li class="arrow"></li>
                     <li><a href="../admin_template/pages-profile.html">Profile</a></li>
                     <li><a href="#"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
                     <li><a href="#">Messages</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Settings</a></li> -->
                     <li class="divider"></li>
-                    <li><a href="../admin_template/pages-sign-in.html">Log Out</a></li>
+                    <li><a href="logout.php"> <i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
                 </ul>
             </li>
         </ul>
