@@ -1,13 +1,13 @@
 <div class="page-content">
-  <div class="page-subheading page-subheading-md">
-  <ol class="breadcrumb">
-    <li><a href="#">Khách Hàng bán lẻ</a></li>
-    <li class="active"><a href="javascript:;">Import/Export Khách Hàng</a></li>
-  </ol>
-</div>
-<div class="page-heading page-heading-md">
+    <!-- <div class="page-subheading page-subheading-md">
+      <ol class="breadcrumb">
+        <li><a href="#">Khách Hàng bán lẻ</a></li>
+        <li class="active"><a href="javascript:;">Import/Export Khách Hàng</a></li>
+      </ol>
+    </div> -->
+<!-- <div class="page-heading page-heading-md">
     <h2>Import/Export Khách Hàng</h2>
-</div>
+</div> -->
 
 <div class="container-fluid-md">
     <div class="panel panel-default">
@@ -15,9 +15,9 @@
             <a href="allpages/import_export_customer/Customers_example.xlsx" class="btn btn-lg btn-flat btn-primary" download><i class="fas fa-download"></i> Mẫu file excel import </a>
 
             <div class="panel-options">
-                <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+               <!--  <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
                 <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
-                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a>
+                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
             </div>
         </div>
         <div class="panel-body no-padding-top">
