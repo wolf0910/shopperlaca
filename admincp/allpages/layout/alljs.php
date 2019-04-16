@@ -27,6 +27,12 @@
 <script src="../admin_template/dist/assets/plugins/jquery-datatables/js/dataTables.bootstrap.js"></script>
 
 <script src="../admin_template/dist/assets/plugins/jquery-select2/select2.min.js"></script>
+
+<script src="../admin_template/dist/assets/plugins/raphael/raphael-min.js"></script>
+<script src="../admin_template/dist/assets/plugins/morris/morris.min.js"></script>
+
+
+
 <!-- my custom js -->
 
 <!-- ckeditor plugin -->
@@ -46,8 +52,6 @@
 
 <!-- Numberic stepper -->
 <script src="lib/stepper/jquery.stepper.js"></script>
-
-
 
 <?php 
 	if (isset($_REQUEST['page']))
@@ -86,7 +90,10 @@
             echo '<script src="allpages/agents_statistic/agents_statistic.js"></script>';
 
         if($_REQUEST['page']=='agent_statistic') 
-            echo '<script src="allpages/agents_statistic/agent_statistic.js"></script>';
+        echo '
+            <script src="allpages/agent_statistic/agent_statistic.js"></script>;
+        ';
+
 
         if($_REQUEST['page']=='customers_statistic') 
             echo '<script src="allpages/customers_statistic/customers_statistic.js"></script>';

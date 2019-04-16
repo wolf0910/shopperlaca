@@ -9,7 +9,7 @@ include_once ('../../../config/reuse_function.php');
     $new_start_day = date('Y-m-d', strtotime($start_day));
     $new_end_day= date('Y-m-d', strtotime($end_day));
 
-$sql = " SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS customer_total_income,table_order.id_customer,SUM(table_order_detail.quantity) as customer_total_quantity ,table_customer.customer_fullname,table_customer.customer_phone FROM table_order,table_order_detail,table_customer WHERE table_customer.id_customer=table_order.id_customer AND table_order.id_customer != '' AND table_order_detail.id_order=table_order.id_order AND  table_order.`date_created` > '".$new_start_day."' AND table_order.`date_created` < '".$new_end_day."' GROUP BY table_order.id_customer ";
+$sql = " SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS customer_total_income,table_order.id_customer,SUM(table_order_detail.quantity) as customer_total_quantity ,table_customer.customer_fullname,table_customer.customer_phone FROM table_order,table_order_detail,table_customer WHERE table_order.delivery_status='Đã giao hàng' AND table_customer.id_customer=table_order.id_customer AND table_order.id_customer != '' AND table_order_detail.id_order=table_order.id_order AND  table_order.`date_created` > '".$new_start_day."' AND table_order.`date_created` < '".$new_end_day."' GROUP BY table_order.id_customer ";
 
 $result = mysqli_query($conn,$sql);
 $total_income = 0;

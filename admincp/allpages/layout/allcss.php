@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="../admin_template/dist/css/plugins/jquery-select2.min.css">
 
         <link rel="stylesheet" href="../admin_template/dist/css/plugins/jquery-dataTables.min.css">
+
+         <link rel="stylesheet" href="../admin_template/dist/css/plugins/morris.min.css">
+
         <!-- my custom -->
         <link rel="stylesheet" href="lib/fontawesome-free-5.8.1-web/css/all.css" crossorigin="anonymous">
 

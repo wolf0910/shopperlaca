@@ -9,7 +9,7 @@ include_once ('../../../config/reuse_function.php');
     $new_start_day = date('Y-m-d', strtotime($start_day));
     $new_end_day= date('Y-m-d', strtotime($end_day));
 
-$sql = " SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS agent_total_income,table_order.id_agent,SUM(table_order_detail.quantity) as agent_total_quantity ,table_agent.agent_name,table_agent.agent_phone FROM table_order,table_order_detail,table_agent WHERE table_agent.id_agent=table_order.id_agent AND table_order.id_agent != '' AND table_order_detail.id_order=table_order.id_order AND  table_order.`date_created` > '".$new_start_day."' AND table_order.`date_created` < '".$new_end_day."' GROUP BY table_order.id_agent ";
+$sql = " SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS agent_total_income,table_order.id_agent,SUM(table_order_detail.quantity) as agent_total_quantity ,table_agent.agent_name,table_agent.agent_phone FROM table_order,table_order_detail,table_agent WHERE table_order.delivery_status='Đã giao hàng' AND table_agent.id_agent=table_order.id_agent AND table_order.id_agent != '' AND table_order_detail.id_order=table_order.id_order AND  table_order.`date_created` > '".$new_start_day."' AND table_order.`date_created` < '".$new_end_day."' GROUP BY table_order.id_agent ";
 
 
 
