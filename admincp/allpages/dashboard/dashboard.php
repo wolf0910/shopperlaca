@@ -1,405 +1,227 @@
+<?php 
+    $current_date=date('Y-m-d');
+    $total_income = 0;
+    $total_sell = 0;
+    $agent_count=0;
+    $total_order=0;
+    $total_product=0;
+    $total_customer=0;
+
+    // count income and quantity of sell
+   
+    $sql = " SELECT SUM(unit_price*quantity) as total_income, sum(quantity) as total_sell FROM table_order_detail,table_order WHERE table_order.id_order = table_order_detail.id_order AND delivery_status='Đã giao hàng' AND MONTH(date_created) = MONTH('".$current_date."') ";
+    $result=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($result)){
+        $total_income = $row['total_income'];
+        $total_sell = $row['total_sell'];
+    }
+
+    $total_income = vnd_format($total_income);
+
+    // end income and quantity of sell
+
+    // count total agent
+    $sql = " SELECT COUNT(id_agent) as total_agent FROM table_agent ";
+    $result=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($result)){
+        $agent_count = $row['total_agent'];
+    }
+
+    // end count total agent
+
+    // count total agent
+    $sql = " SELECT COUNT(id_agent) as total_agent FROM table_agent ";
+    $result=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($result)){
+        $agent_count = $row['total_agent'];
+    }
+
+    // end count total order
+
+    // count total agent
+    $sql = " SELECT COUNT(id_order) as total_order FROM table_order ";
+    $result=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($result)){
+        $total_order = $row['total_order'];
+    }
+
+    // end count total order
+
+    // count total product
+    $sql = " SELECT COUNT(id_product) as total_product FROM table_product ";
+    $result=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($result)){
+        $total_product = $row['total_product'];
+    }
+    // end count total product
+
+    // count total customer
+    $sql = " SELECT COUNT(id_customer) as total_customer FROM table_customer ";
+    $result=mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_array($result)){
+        $total_customer = $row['total_customer'];
+    }
+    // end count total customer
+
+
+?>
+
 <div class="page-content">
     <div class="page-subheading page-subheading-md">
         <ol class="breadcrumb">
             <li class="active"><a href="../admin_template/javascript:;">Dashboard</a></li>
         </ol>
+         
     </div>
 <div class="container-fluid-md">
     <div class="row">
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-sm-6 col-lg63">
             <div class="panel panel-metric panel-metric-sm">
                 <div class="panel-body panel-body-primary">
                     <div class="metric-content metric-icon">
                         <div class="value">
-                            $2,154
+                            <?php  echo $total_income; ?>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-trophy"></i>
+                        <div class="icon" style="font-size: 36px;">
+                            <i class="fas fa-money-bill-wave"></i>
                         </div>
                         <header>
-                            <h3 class="thin">Today's Earnings</h3>
+                            <h3 class="thin">Thu nhập trong tháng</h3>
                         </header>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+  
+        <div class="col-sm-6 col-lg-6">
             <div class="panel panel-metric panel-metric-sm">
                 <div class="panel-body panel-body-success">
                     <div class="metric-content metric-icon">
                         <div class="value">
-                            3,958
+                             <?php  echo $total_sell; ?>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
+                        <div class="icon" style="font-size: 36px;">
+                            <i class="fas fa-boxes"></i>
                         </div>
                         <header>
-                            <h3 class="thin">Total Visitors</h3>
+                            <h3 class="thin">Số lượng hàng đã bán</h3>
                         </header>
                     </div>
                 </div>
             </div>
         </div>
+
+    <a href="?page=crud_agent">
         <div class="col-sm-6 col-lg-3">
             <div class="panel panel-metric panel-metric-sm">
                 <div class="panel-body panel-body-inverse">
                     <div class="metric-content metric-icon">
                         <div class="value">
-                            23.1%
+                             <?php  echo $agent_count; ?>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-chain-broken"></i>
+                        <div class="icon" style="font-size: 36px;">
+                            <i class="fas fa-store"></i>
                         </div>
                         <header>
-                            <h3 class="thin">Bounce Rate</h3>
+                            <h3 class="thin">Đại lý</h3>
                         </header>
                     </div>
                 </div>
             </div>
         </div>
+    </a>
+    <a href="?page=crud_customer">
         <div class="col-sm-6 col-lg-3">
             <div class="panel panel-metric panel-metric-sm">
-                <div class="panel-body panel-body-danger">
+                <div class="panel-body panel-body-inverse">
                     <div class="metric-content metric-icon">
                         <div class="value">
-                            3:17
+                             <?php  echo $total_customer; ?>
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-tags"></i>
+                        <div class="icon" style="font-size: 36px;">
+                            <i class="fas fa-users"></i>
                         </div>
                         <header>
-                            <h3 class="thin">Avg. Time on Site</h3>
+                            <h3 class="thin">Khách hàng</h3>
                         </header>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-7">
-            <div class="panel" style="overflow: hidden">
-                <div class="row no-margin" data-sync-height>
-                    <div class="col-sm-7 col-md-8 no-padding">
-                        <div id="map" style="height:270px;width:100%;"></div>
-                    </div>
-                    <div class="col-sm-5 col-md-4 no-padding">
-                        <div class="panel-body bg-gray-dark" style="height: inherit;">
-                            <h4 class="thin text-white no-margin-top">Monthly Sales</h4>
-                            <table class="table table-condensed text-light">
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">USA</a>
-                                    </td>
-                                    <td>
-                                        550
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">China</a>
-                                    </td>
-                                    <td>
-                                        420
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">UK</a>
-                                    </td>
-                                    <td>
-                                        400
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">India</a>
-                                    </td>
-                                    <td>
-                                        290
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">Australia</a>
-                                    </td>
-                                    <td>
-                                        200
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">France</a>
-                                    </td>
-                                    <td>
-                                        149
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="../admin_template/javascript:;" class="text-light">Canada</a>
-                                    </td>
-                                    <td>
-                                        100
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-body panel-body-success padding-sm-vertical">
-                    <div id="sales-orders" class="morris-hover-dark" style="height: 243px"></div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-4">
-                            <div class="mini-chart">
-                                <div id="mini-chart-1" class="chart text-center" style="width: 44px;"></div>
-                                <div class="chart-details" style="width: 79px;">
-                                    <div class="chart-name">Avg Income</div>
-                                    <div class="chart-value">$2,655,980</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 text-center">
-                            <div class="mini-chart text-left">
-                                <div id="mini-chart-2" class="chart" style="width: 44px;"></div>
-                                <div class="chart-details" style="width: 79px;">
-                                    <div class="chart-name">Avg Outcome</div>
-                                    <div class="chart-value">$1,431,250</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 text-right">
-                            <div class="mini-chart text-left">
-                                <div id="mini-chart-3" class="chart" style="width: 44px;"></div>
-                                <div class="chart-details" style="width: 79px;">
-                                    <div class="chart-name">Total Sales</div>
-                                    <div class="chart-value">$261,885</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5">
+    </a>
+    <a href="?page=crud_product">
+        <div class="col-sm-6 col-lg-3">
             <div class="panel panel-metric panel-metric-sm">
-                <div class="panel-body panel-body-warning">
+                <div class="panel-body panel-body-inverse">
                     <div class="metric-content metric-icon">
                         <div class="value">
-                            4,200
+                             <?php  echo $total_product; ?>
                         </div>
-                        <div class="trend">
-                            <p class="text-success">
-                                <i class="fa fa-chevron-up"></i> 5.1%
-                            </p>
-                            <strong>Previous 30 Days</strong>
+                        <div class="icon" style="font-size: 36px;">
+                            <i class="fas fa-boxes"></i>
                         </div>
-                        <div id="metric-sales" class="chart"></div>
                         <header>
-                            <h3 class="thin">Total Sales</h3>
+                            <h3 class="thin">Sản phẩm</h3>
                         </header>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-metric panel-metric-sm">
-                <div class="panel-body panel-body-info">
-                    <div class="metric-content metric-icon">
-                        <div class="value">
-                            1,430
-                        </div>
-                        <div class="trend">
-                            <p class="text-danger">
-                                <i class="fa fa-chevron-down"></i> 2.3%
-                            </p>
-                            <strong>Previous 30 Days</strong>
-                        </div>
-                        <div id="metric-orders" class="chart"></div>
-                        <header>
-                            <h3 class="thin">Total Orders</h3>
-                        </header>
-                    </div>
-                </div>
-            </div>
-            <div class="panel" style="overflow: hidden;">
-                <div class="panel-body">
-                    <h4 class="thin no-margin-top">Last Orders</h4>
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <a href="../admin_template/javascript:;" class="text-success semi-bold">#2310</a>
-                            </td>
-                            <td>Android App</td>
-                            <td class="text-success semi-bold">
-                                $8,025.75
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../admin_template/javascript:;" class="text-success semi-bold">#2308</a>
-                            </td>
-                            <td>Web Design</td>
-                            <td class="text-success semi-bold">
-                                $4,301.00
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../admin_template/javascript:;" class="text-success semi-bold">#2246</a>
-                            </td>
-                            <td>iOS App</td>
-                            <td class="text-success semi-bold">
-                                $9,203.40
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="../admin_template/javascript:;" class="text-success semi-bold">#1940</a>
-                            </td>
-                            <td>Redesign App</td>
-                            <td class="text-success semi-bold">
-                                $8,990.50
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="server-load" class="chart"></div>
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="row">
-        <div class="col-sm-6 col-lg-4">
-            <div class="panel panel-metric">
-                <div class="panel-body">
-                    <div class="metric-content">
+    <a href="?page=crud_order">
+        <div class="col-sm-6 col-lg-3">
+            <div class="panel panel-metric panel-metric-sm">
+                <div class="panel-body panel-body-inverse">
+                    <div class="metric-content metric-icon">
                         <div class="value">
-                            $2,154
+                             <?php  echo $total_order; ?>
                         </div>
-                        <div class="trend">
-                            <p class="text-success">
-                                <i class="fa fa-chevron-up"></i> 40.2%
-                            </p>
-                            <strong>Previous 30 Days</strong>
+                        <div class="icon" style="font-size: 36px;">
+                            <i class="fas fa-file-invoice"></i>
                         </div>
-                        <div id="metric-1" class="chart"></div>
                         <header>
-                            <h3 class="thin">Monthly Earnings</h3>
+                            <h3 class="thin">Đơn đặt hàng</h3>
                         </header>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="panel panel-metric">
-                <div class="panel-body">
-                    <div class="metric-content">
-                        <div class="value">
-                            $314
-                        </div>
-                        <div class="trend">
-                            <p class="text-success">
-                                <i class="fa fa-chevron-up"></i> 10.9%
-                            </p>
-                            <strong>Previous 30 Days</strong>
-                        </div>
-                        <div id="metric-2" class="chart"></div>
-                        <header>
-                            <h3 class="thin">Lifetime Value</h3>
-                        </header>
-                    </div>
+    </a>
+        
+</div> 
+<div class="row">   
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Doanh thu theo danh mục</h4>
+
+                <div class="panel-options">
+                    
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="panel panel-metric">
-                <div class="panel-body">
-                    <div class="metric-content">
-                        <div class="value">
-                            305
-                        </div>
-                        <div class="trend">
-                            <p class="text-success">
-                                <i class="fa fa-chevron-up"></i> 15.6%
-                            </p>
-                            <strong>Previous 30 Days</strong>
-                        </div>
-                        <div id="metric-3" class="chart"></div>
-                        <header>
-                            <h3 class="thin">New Customers</h3>
-                        </header>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="panel panel-metric">
-                <div class="panel-body">
-                    <div class="metric-content">
-                        <div class="value">
-                            14%
-                        </div>
-                        <div class="trend">
-                            <p class="text-danger">
-                                <i class="fa fa-chevron-up"></i> 15.6%
-                            </p>
-                            <strong>Previous 30 Days</strong>
-                        </div>
-                        <div id="metric-4" class="chart"></div>
-                        <header>
-                            <h3 class="thin">Bounce Rate</h3>
-                        </header>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="panel panel-metric">
-                <div class="panel-body">
-                    <div class="metric-content">
-                        <div class="value">
-                            43,213
-                        </div>
-                        <div class="trend">
-                            <p class="text-success">
-                                <i class="fa fa-chevron-up"></i> 10.3%
-                            </p>
-                            <strong>Previous 30 Days</strong>
-                        </div>
-                        <div id="metric-5" class="chart"></div>
-                        <header>
-                            <h3 class="thin">Page Views</h3>
-                        </header>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="panel panel-metric">
-                <div class="panel-body">
-                    <div class="metric-content">
-                        <div class="value">
-                            30%
-                        </div>
-                        <div class="trend">
-                            <p class="text-danger">
-                                <i class="fa fa-chevron-down"></i> 2.3%
-                            </p>
-                            <strong>Previous 30 Days</strong>
-                        </div>
-                        <div id="metric-6" class="chart"></div>
-                        <header>
-                            <h3 class="thin">Unique Visitors</h3>
-                        </header>
-                    </div>
-                </div>
+            <div class="panel-body">
+                <div id="morris-color-donut" style="height: 300px"></div>
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Sản phẩm đã bán theo danh mục</h4>
+
+                <div class="panel-options">
+                    
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="morris-color-donut2" style="height: 300px"></div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+
 </div>
 
 </div>

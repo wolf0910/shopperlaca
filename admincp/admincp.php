@@ -2,6 +2,7 @@
     session_start();
     // Database details
     include_once ('../config/db_config.php');
+    include_once ('../config/reuse_function.php');
 ?>
 <!doctype html>
 <!--[if IE 8]>         <html class="ie8"> <![endif]-->
@@ -33,7 +34,7 @@
    
     if(isset($_REQUEST['page'])){
 
-        if($_REQUEST['page']=='dashboards')
+        if($_REQUEST['page']=='dashboard')
             { include('allpages/dashboard/dashboard.php'); }
 
         if($_REQUEST['page']=='crud_agent')

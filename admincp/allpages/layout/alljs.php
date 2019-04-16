@@ -55,10 +55,7 @@
 
 <?php 
 	if (isset($_REQUEST['page']))
-    { 
-        if($_REQUEST['page']=='dashboard') 
-        	echo '<script src="../admin_template/demo/js/dashboard.js"></script>';
-        
+    {  
         if($_REQUEST['page']=='crud_agent') 
         	echo '<script src="allpages/crud_agent/crud_agent.js"></script>';
         if($_REQUEST['page']=='import_export_agent') 
@@ -97,5 +94,10 @@
 
         if($_REQUEST['page']=='customers_statistic') 
             echo '<script src="allpages/customers_statistic/customers_statistic.js"></script>';
+
+        if($_REQUEST['page']=='dashboard') 
+            echo '<script src="allpages/dashboard/dashboard.js"></script>';
+
+
     } 
 ?>
