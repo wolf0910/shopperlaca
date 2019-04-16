@@ -1,14 +1,10 @@
 Colors = {};
 Colors.names = {
-    aqua: "#00ffff",
-    azure: "#f0ffff",
-    beige: "#f5f5dc",
     black: "#000000",
     blue: "#0000ff",
     brown: "#a52a2a",
     cyan: "#00ffff",
     darkblue: "#00008b",
-    darkcyan: "#008b8b",
     darkgrey: "#a9a9a9",
     darkgreen: "#006400",
     darkkhaki: "#bdb76b",
@@ -32,9 +28,8 @@ Colors.names = {
     orange: "#ffa500",
     pink: "#ffc0cb",
     purple: "#800080",
-    red: "#ff0000",
     silver: "#c0c0c0",   
-    yellow: "#ffff00"
+    yellow: "#666600"
 };
 
 Colors.random = function() {

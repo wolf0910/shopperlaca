@@ -137,7 +137,7 @@
           </div>
 
           <div class="input_container">
-            <label for="agent_point">Điểm thưởng sản phẩm: <span class="required">*</span></label>
+            <label for="agent_point">Điểm thưởng đại lý: <span class="required">*</span></label>
             <div class="field_container">
               <input type="text" class="text" name="agent_point" id="agent_point" value="" required>
             </div>
