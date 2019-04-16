@@ -14,6 +14,7 @@ $sql = " SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) A
 $result = mysqli_query($conn,$sql);
 $total_income = 0;
 $total_quantity = 0;
+$customer_array= array();
 while ($row = mysqli_fetch_array($result)) {
 
 	$customer_array[] = array(

@@ -39,7 +39,7 @@
                 <div class="panel panel-metric panel-metric-sm">
                     <div class="panel-body panel-body-success">
                         <div class="metric-content metric-icon">
-                            <div class="value font-size-36" id="agents_total_quantity">
+                            <div class="value font-size-36" id="customers_total_quantity">
                                 
                             </div>
                             <div class="icon font-size-36">
@@ -56,7 +56,7 @@
                 <div class="panel panel-metric panel-metric-sm">
                     <div class="panel-body panel-body-inverse">
                         <div class="metric-content metric-icon">
-                            <div class="value font-size-36" id="agents_total_income">
+                            <div class="value font-size-36" id="customers_total_income">
                                 
                             </div>
                             <div class="icon font-size-36">

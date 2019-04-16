@@ -121,12 +121,15 @@ $('#create_statistic').click( function(e){
       $('#agents_total_quantity').html(output.total_quantity);
       $('#agents_total_income').html(output.total_income);
 
+      //destroy and empty data table just in case
+     
 
       // write table
       var dataSet = output.data;
 
       var table_companies = $('#table_companies').dataTable({
         "data": dataSet,
+        "destroy": true,
         "columns": [
             { "data": "agent_name" },
             { "data": "agent_phone" },

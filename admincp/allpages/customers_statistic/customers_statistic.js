@@ -97,8 +97,6 @@ $(document).ready(function(){
     }
   });
   var form_company = $('#form_company');
-
-
  
 // Add company submit form
 $('#create_statistic').click( function(e){
@@ -120,13 +118,13 @@ $('#create_statistic').click( function(e){
       $('#statistic_result_pannel').show();
       $('#customers_total_quantity').html(output.total_quantity);
       $('#customers_total_income').html(output.total_income);
-
-
+      
       // write table
       var dataSet = output.data;
 
       var table_companies = $('#table_companies').dataTable({
         "data": dataSet,
+        "destroy": true,
         "columns": [
             { "data": "customer_fullname" },
             { "data": "customer_phone" },
