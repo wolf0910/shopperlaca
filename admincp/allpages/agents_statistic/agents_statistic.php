@@ -6,9 +6,9 @@
 </div> -->
 
 <div class="container-fluid-md">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-           <!--  <h4 class="panel-title">thống kê danh sách đại lý</h4> -->
+    <div class="panel ">
+        <div class="panel-heading panel-primary-black">
+            <h4 class="panel-title"><i class="fas fa-align-left"></i> Thống kê danh sách đại lý</h4>
             <div class="panel-options">
                 <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
                 <!-- <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a> -->
@@ -31,10 +31,18 @@
         </div>
     </div>
 
-    <div class="panel panel-default" id="statistic_result_pannel" style="display: none" >
-        <div class="panel-heading">
-            Kết quả thống kê:
-        <div class="row" >
+    <div class="panel " id="statistic_result_pannel" style="display: none" >
+        <div class="panel-heading panel-primary-black">
+            <div class="panel-title"> <i class="fas fa-align-left"></i> Kết quả thống kê  </div>      
+            
+            <div class="panel-options">
+                <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
+            </div>
+        </div>
+        <div class="panel-body no-padding-top">
+            <div class="row" style="padding-top: 20px;" >
             <div class="col-sm-6 col-lg-6">
                 <div class="panel panel-metric panel-metric-sm">
                     <div class="panel-body panel-body-success">
@@ -71,14 +79,6 @@
             </div>
 
         </div>
-            
-            <div class="panel-options">
-                <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
-                <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
-                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
-            </div>
-        </div>
-        <div class="panel-body no-padding-top">
             <div class="row">
                 <div class="col-md-12 " id="import_result_content">
                     <div class="table-responsive">

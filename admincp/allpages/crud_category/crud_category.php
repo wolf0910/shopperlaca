@@ -5,10 +5,10 @@
     </ol>
   </div> -->
 <div class="container-fluid-md">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel ">
+        <div class="panel-heading panel-primary-black">
 
-          <!--   <h4 class="panel-title">Quản lý danh mục</h4> -->
+            <h4 class="panel-title"><i class="fas fa-th-list"></i> QL danh mục</h4>
 
             <div class="panel-options">
                 <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

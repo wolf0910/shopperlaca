@@ -1,15 +1,15 @@
 <div class="page-content">
  
 <div class="container-fluid-md">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel ">
+        <div class="panel-heading panel-primary-black">
 
-            <!-- <h4 class="panel-title">Quản lý đơn đặt hàng</h4> -->
+            <h4 class="panel-title"><i class="fas fa-file-invoice"></i> QL đơn đặt hàng</h4>
 
             <div class="panel-options">
-                <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
-                <!-- <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a> -->
-               <!--  <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
+              <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
+              <!-- <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a> -->
+              <!--  <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
             </div>
         </div>
         <div class="panel-body">

@@ -59,6 +59,25 @@ if(!isset($_REQUEST['customer_address']))
   exit();
 }
 
+if(isset($_REQUEST['id_district']))
+{
+  if($_REQUEST['id_district']==''){
+    unset($_REQUEST['id_district']);
+  }
+}
+
+if(!isset($_REQUEST['id_district']))
+{
+   echo json_encode(
+      array('success'   => 'false','message' => 'id_district missing !!!')
+    );
+    exit();
+}
+
+
+
+
+
 
 $query_image='';
 if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avatar']['tmp_name'])  )
@@ -117,6 +136,7 @@ if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avat
   $customer_password = md5($_REQUEST['customer_password']);
   $customer_phone = $_REQUEST['customer_phone'];
   $customer_address = $_REQUEST['customer_address'];
+  $id_district = $_REQUEST['id_district'];
  
   // start check customer_phone
   $sql = "
@@ -136,7 +156,7 @@ if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avat
 
   $sql = "
     INSERT INTO table_customer 
-    SET customer_fullname = '".$customer_fullname."', customer_password = '".$customer_password."', customer_phone = '".$customer_phone."', customer_address = '".$customer_address."'
+    SET customer_fullname = '".$customer_fullname."', customer_password = '".$customer_password."', customer_phone = '".$customer_phone."', customer_address = '".$customer_address."', id_district = '".$id_district."'
     ";
   $sql .= $query_image;
 
@@ -166,6 +186,7 @@ if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avat
             'customer_phone' => $row['customer_phone'],
             'customer_address' => $row['customer_address'],
             'customer_avatar' => $row['customer_avatar'],
+            'id_district' => $row['id_district'],
             'message' => 'user created'            
           );
 

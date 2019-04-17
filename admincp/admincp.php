@@ -3,6 +3,16 @@
     // Database details
     include_once ('../config/db_config.php');
     include_once ('../config/reuse_function.php');
+    if( !isset($_SESSION['id_administrator']))
+    {
+        echo "
+        <script>    
+          window.location='admincp.php';
+        </script>
+
+        ";
+    } 
+      
 ?>
 <!doctype html>
 <!--[if IE 8]>         <html class="ie8"> <![endif]-->
@@ -20,6 +30,7 @@
 ?>
 </head>
 <body class="">
+
 <?php 
     include('allpages/layout/top_nav.php');
 ?>

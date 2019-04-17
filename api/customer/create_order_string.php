@@ -227,7 +227,7 @@ if( count($id_product) != count($quantity) ){
   $sql_tmp1=' SELECT * FROM table_customer_addition_address WHERE id_customer="'.$_REQUEST['id_customer'].'" AND addition_address="'.$_REQUEST['receiver_address'].'" ';
   $rs = mysqli_query($conn,$sql_tmp1);
   if ( mysqli_num_rows($rs) == 0 ){
-     $sql_insert='INSERT INTO table_customer_addition_address SET id_customer = "'.$_REQUEST['id_customer'].'", addition_address="'.$_REQUEST['receiver_address'].'" ';
+     $sql_insert='INSERT INTO table_customer_addition_address SET id_customer = "'.$_REQUEST['id_customer'].'", addition_address="'.$_REQUEST['receiver_address'].'", id_district="'.$_REQUEST['receiver_id_district'].'" ';
      $rs_insert=mysqli_query($conn,$sql_insert);
    } 
 // end check table_customer_addition_address

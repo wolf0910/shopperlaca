@@ -29,6 +29,8 @@ if(isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mim
     // print("<pre>".print_r($sheetData,true)."</pre>");
 
     for( $i=1; $i < count($sheetData) ; $i++ ){
+        
+    if ($sheetData[$i][2]=='') continue;
     //check if phone exist
         $sql = "SELECT * FROM table_agent WHERE agent_phone = '".$sheetData[$i][2]."' ";
         $result = mysqli_query($conn,$sql);

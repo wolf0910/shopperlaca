@@ -99,5 +99,15 @@
             echo '<script src="allpages/dashboard/dashboard.js"></script>';
 
 
-    } 
+    } else {
+        echo '<script src="allpages/dashboard/dashboard.js"></script>';
+    }
+
+
+
+
+
+
+
+
 ?>

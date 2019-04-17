@@ -13,3 +13,35 @@
 .font-size-36 {
 	font-size: 36px;
 }
+.page-wrapper{
+	min-height: calc(100vh - 50px);
+	height: 100%;
+}
+
+.panel-primary-black{
+	background-color: #23272d;
+	color: white;
+}
+.panel-title {
+	font-size: 18px;
+}
+.chart_title{
+	padding: 10px;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #23272d;
+}
+.btn-primary{
+	background-color: #272B30 !important;
+}
+
+.btn-flat.btn-primary {
+    position: relative;
+    -webkit-box-shadow: 0 5px #7e8792;
+    box-shadow: 0 5px #a2a9b1;
+}
+.btn-flat.btn-primary:hover {
+    -webkit-box-shadow: 0 3.5px #7e8792;
+    box-shadow: 0 3.5px #a2a9b1;
+    top: 1.5px;
+}

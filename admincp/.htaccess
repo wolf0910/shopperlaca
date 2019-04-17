@@ -1,0 +1,7 @@
+# Disable directory browsing
+Options All -Indexes
+
+RewriteEngine on
+RewriteRule ^([a-zA-Z0-9_-]+)$ admincp.php?page=$1
+
+ErrorDocument 404 /haychongiare/admin_template/pages-404.html

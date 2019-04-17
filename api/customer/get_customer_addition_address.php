@@ -34,6 +34,7 @@ if(!isset($_REQUEST['id_customer']))
           $category_item = array(
             'id_customer_addition_address' => $row['id_customer_addition_address'],
             'id_customer' => $row['id_customer'],
+            'id_district' => $row['id_district'],
             'addition_address' => $row['addition_address']
           );
 

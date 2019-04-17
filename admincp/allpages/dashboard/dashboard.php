@@ -57,8 +57,8 @@
 
     // count total customer
     $sql = " SELECT COUNT(id_customer) as total_customer FROM table_customer ";
-    $result=mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_array($result)){
+    $result = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_array($result)){
         $total_customer = $row['total_customer'];
     }
     // end count total customer
@@ -67,12 +67,14 @@
 ?>
 
 <div class="page-content">
+<!-- 
     <div class="page-subheading page-subheading-md">
         <ol class="breadcrumb">
             <li class="active"><a href="../admin_template/javascript:;">Dashboard</a></li>
         </ol>
          
-    </div>
+    </div> 
+-->
 <div class="container-fluid-md">
     <div class="row">
         <div class="col-sm-6 col-lg63">
@@ -192,9 +194,9 @@
 </div> 
 <div class="row">   
     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">Doanh thu theo danh mục</h4>
+        <div class="panel ">
+            <div class="panel-heading panel-primary-black">
+                <h4 class="panel-title"><i class="fas fa-chart-pie"></i> Doanh thu theo danh mục</h4>
 
                 <div class="panel-options">
                     
@@ -206,9 +208,9 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">Sản phẩm đã bán theo danh mục</h4>
+        <div class="panel ">
+            <div class="panel-heading panel-primary-black">
+                <h4 class="panel-title"> <i class="fas fa-chart-pie"></i> Sản phẩm đã bán theo danh mục</h4>
 
                 <div class="panel-options">
                     

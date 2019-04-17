@@ -16,7 +16,7 @@
                 <nav>
                     <h5 class="sidebar-header">Menu</h5>
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='dashboards') echo 'active';} ?>">
+                        <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='dashboard') echo 'active';} ?>">
                             <a href="?page=dashboard" title="Disabled">
                                 <i class="fa fa-lg fa-fw fa-th"></i> Bảng điều khiển
                             </a>
@@ -114,17 +114,17 @@
                             <ul class="nav-sub">
                                 <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='customers_statistic') echo 'active';} ?>">
                                     <a href="?page=customers_statistic" title="Message">
-                                        <i class="fa fa-fw fa-caret-right"></i> Thống kê danh sách khách hàng
+                                        <i class="fas fa-align-left"></i> Thống kê danh sách khách hàng
                                     </a>
                                 </li>
                                 <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='agents_statistic') echo 'active';} ?>">
                                     <a href="?page=agents_statistic" title="Compose">
-                                        <i class="fa fa-fw fa-caret-right"></i> Thống kê danh sách đại lý
+                                        <i class="fas fa-align-left"></i> Thống kê danh sách đại lý
                                     </a>
                                 </li>
                                 <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='agent_statistic') echo 'active';} ?>">
                                     <a href="?page=agent_statistic" title="Compose">
-                                        <i class="fa fa-fw fa-caret-right"></i> Thống kê chi tiết đại lý
+                                        <i class="fas fa-chart-bar"></i> Thống kê chi tiết đại lý
                                     </a>
                                 </li>
                             </ul>

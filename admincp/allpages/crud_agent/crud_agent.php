@@ -5,10 +5,10 @@
     </ol>
 </div> -->
 <div class="container-fluid-md">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel ">
+        <div class="panel-heading panel-primary-black">
 
-            <!-- <h4 class="panel-title">Quản lý đại lý</h4> -->
+            <h4 class="panel-title"><i class="fas fa-store"></i> Quản lý đại lý</h4>
 
             <div class="panel-options">
                 <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
@@ -26,8 +26,8 @@
               <table class="table table-striped table-hover table-bordered nowrap  datatable dataTable" id="table_companies">
                 <thead>
                   <tr>
-                    <th width="10%">Avatar</th>
-                    <th>Họ tên</th>
+                    <th width="10%" >Avatar</th>
+                    <th >Họ tên</th>
                     <th >Số điện thoại</th>
                     <th >Quận/Huyện</th>
                     <th width="30%">Địa chỉ</th>

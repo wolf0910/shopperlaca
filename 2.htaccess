@@ -1,0 +1,6 @@
+# Disable directory browsing
+Options All -Indexes
+
+Options +FollowSymLinks
+
+ErrorDocument 404 /haychongiare/admin_template/pages-404.html

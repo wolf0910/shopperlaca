@@ -9,9 +9,31 @@
 
 
 <div class="container-fluid-md">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-             <a href="allpages/import_export_admin/Administrators_example.xlsx" class="btn btn-lg btn-flat btn-primary" download><i class="fas fa-download"></i> Mẫu file excel import</a>
+    
+    <div class="panel ">
+        <div class="panel-heading panel-primary-black">
+            <h4 class="panel-title"><i class="fas fa-cloud-download-alt"></i> Export admin</h4>
+    
+            <div class="panel-options">
+                <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
+                <a href="#" data-rel="reload"><i class="fa fa-fw fa-refresh"></i></a>
+                <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
+            </div>
+        </div>
+        <div class="panel-body no-padding-top">
+            <div class="row">
+                <div class="col-md-6 col-button-colors" style="padding: 15px;">                   
+                    <a href="allpages/import_export_admin/export_admin.php" class="btn btn-lg btn-flat btn-primary"> <i class="fas fa-cloud-download-alt"></i> Export </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="panel ">
+        <div class="panel-heading panel-primary-black">
+             <h4 class="panel-title">  <i class="fas fa-cloud-upload-alt"></i> Import/Export Admin </h4>
 
             <div class="panel-options">
                <!--  <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a>
@@ -28,14 +50,13 @@
         <label for="exampleInputFile">Chọn file</label>
         <input type="file" name="file" required="true" class="form-control" id="exampleInputFile">
     </div>
-    <button type="button" id="button_import" class="btn btn-lg btn-flat btn-primary"> <i class="fas fa-upload"></i> Import</button>
+    <button type="button" id="button_import" class="btn btn-lg btn-flat btn-primary"> <i class="fas fa-cloud-upload-alt"></i> Import</button>
 </form>
                    
                 </div>
 
-                <div class="col-md-6 col-button-colors">
-                    <h4 class="margin-md-top">Export Quản Trị Viên</h4>
-                    <a href="allpages/import_export_admin/export_admin.php" class="btn btn-lg btn-flat btn-primary"><i class="fas fa-download"></i> Export </a>
+                <div class="col-md-6 col-button-colors" style="padding: 15px;">
+                    <a href="allpages/import_export_admin/Administrators_example.xlsx" class="btn btn-lg btn-flat btn-primary" download> <i class="fas fa-file-excel"></i> Mẫu file excel import</a>
                 </div>
 
             </div>

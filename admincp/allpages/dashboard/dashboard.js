@@ -101,7 +101,9 @@ request.done(function(output){
         resize: true
     });
 
+
   // end write the chart
+  $("div svg text").attr("style", "font-family: Roboto").attr("font-weight", "700");
 
 
 
