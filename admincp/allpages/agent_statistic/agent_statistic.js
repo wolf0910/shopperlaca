@@ -128,6 +128,7 @@ $('#create_statistic').click( function(e){
 
       // write the chart
       $('#morris-bar').empty();
+      $('#morris-bar2').empty();
 
       var chart_data_income = [];  
       var chart_data_quantity = [];          
