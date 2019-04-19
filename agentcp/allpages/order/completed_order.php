@@ -6,14 +6,14 @@
 	if($result == true){
         ?>
         <script>
-            alert("Hoàn Tất Đơn Hàng Thành Công");
+            alert("Completed order True");
             window.location="?page=completed";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("Hoàn Tất Đơn Hàng Thất Bại");
+            alert("Completed orderr False");
             window.location="?page=delivery";
         </script>
         <?php

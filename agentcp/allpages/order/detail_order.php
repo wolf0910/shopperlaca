@@ -7,14 +7,14 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Đơn Hàng</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Order</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Quản lý Đơn Hàng Mới</h4>
+          <h4 class="panel-title">Manage Order New</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
@@ -40,8 +40,8 @@
                     <th scope="row"><?php echo $key['id_order_detail']?></th>
                     <td><?php echo $key['product_name']?></td>
                     <td><?php echo $key['quantity']?></td>
-                    <td><?php echo $key['unit_price']?></td>
-                    <td><?php echo ($key['unit_price'] * $key['quantity'])  ?></td>
+                    <td><?php echo number_format($key['unit_price'])?></td>
+                    <td><?php echo number_format(($key['unit_price'] * $key['quantity']))  ?></td>
                     <td><a><img src="../<?php echo $key['photo_link']?>" alt="" height="150px"/></a></td>
                   </tr>
                 <?php } ?>

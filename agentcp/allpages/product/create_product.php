@@ -12,21 +12,21 @@
       $name = $_POST['txt_name'];
       if ($_FILES['avatar']['error'] > 0)
       {
-          $err =  'File Upload Bị Lỗi';
+          $err =  'File Upload Error';
       }else if(empty($name)){
-         $err ="Vui Lòng Nhập Tên Sản Phẩm !!!";
+         $err ="Please Enter The Name products !!!";
       }else if(empty($mota)){
-        $err ="Vui Lòng Nhập Mô Tả !!!";
+        $err ="Please Enter The describe !!!";
       }else if(empty($Category)){
-        $err ="Vui Lòng Nhập Danh Mục !!!";
+        $err ="Please Enter The Category !!!";
       }else if(empty($price)){
-        $err ="Vui Lòng Nhập Gía !!!";
+        $err ="Please Enter The Price !!!";
       }else if(empty($lazada)){
-        $err =" Vui Lòng Nhập Gía lazada";
+        $err ="Please Enter the price lazada";
       }else if(empty($tiki)){
-        $err ="Vui Lòng Nhập Gía tiki";
+        $err ="Please Enter the price tiki";
       }else if(empty($soppee)){
-        $err =" Vui Lòng Nhập Gía Soppee";
+        $err ="Please Enter the price Soppee";
       }else{
         move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/products/'.$_FILES['avatar']['name']);
         $hinh = 'images/products/'.$_FILES['avatar']['name'];
@@ -41,15 +41,15 @@
             $sql="INSERT INTO `table_product_detail`( `id_product`, `photo_link`) VALUES ('".$rows['id_product']."','".$hinh."')";
             $result2 = mysqli_query($conn,$sql);
             if($result2 == true){
-              $err = "Thêm Sản Phẩm Thành Công";
+              $err = "Create Product True";
             }else{
-              $err="Insert Hình Không Thành Công";
+              $err="Insert Image false";
             }
            }else{
-            $err="Thêm Sản Phẩm Thất Bại";
+            $err="Create Product False";
            }
         }else{
-          $err ="Thêm Sản Phẩm Thất Bại";
+          $err ="Create Product False";
         }
       }
   }
@@ -59,14 +59,14 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Sản Phẩm</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Product</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Thêm Sản Phẩm</h4>
+          <h4 class="panel-title">Create Product</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

@@ -7,14 +7,14 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Đơn Hàng Theo Khách Hàng</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Order By Customer/a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Quản lý Đơn Theo Khách Hàng</h4>
+          <h4 class="panel-title">Manage Order By Customer</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

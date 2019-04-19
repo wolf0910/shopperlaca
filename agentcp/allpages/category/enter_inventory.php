@@ -7,10 +7,10 @@ $agetns = $_SESSION['id_agent'];
       $tonkho = $_POST['txt_tonkho'];
       $tonkhoantoan = $_POST['txt_antoan'];
       if(empty($tonkho)){
-        $err = "Vui Lòng Tồn Kho";
+        $err = "Please enter inventory";
       }else if(empty($tonkhoantoan))
       {
-          $err = "Vui Lòng Tồn Kho An Toàn";
+          $err = "Please enter sale inventory";
       }else{
         $sql="SELECT * FROM `table_storage` WHERE `id_product` = '".$id."'";
         $result = mysqli_query($conn,$sql);
@@ -19,17 +19,17 @@ $agetns = $_SESSION['id_agent'];
             $sql = "UPDATE `table_storage` SET `quantity`='".$tonkho."',`safe_quantity`='".$tonkhoantoan."' WHERE `id_product` = '".$id."'"; 
              $result1 = mysqli_query($conn,$sql);   
             if($result1 == true){
-              $err = "Update Tồn Kho Thành Công";
+              $err = "Update inventory True";
             }else{
-              $err="Update Tồn Kho Thất Bại";
+              $err="Update inventory False";
             }
         }else{
             $sql = "INSERT INTO `table_storage`(`id_agent`, `id_product`, `quantity`, `safe_quantity`) VALUES ('".$agetns."','".$id."','".$tonkho."','".$tonkhoantoan."')"; 
             $result1 = mysqli_query($conn,$sql);   
             if($result1 == true){
-              $err = "Thêm Tồn Kho Thành Công";
+              $err = "Create inventory true";
             }else{
-              $err="Thêm Tồn Kho Thất Bại";
+              $err="Create inventory False";
             }
         }
         
@@ -42,14 +42,14 @@ $agetns = $_SESSION['id_agent'];
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Danh Mục</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Inventory</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Update Tồn Kho</h4>
+          <h4 class="panel-title">Update Inventory</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

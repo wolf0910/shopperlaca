@@ -7,14 +7,14 @@
 	if($result == true){
         ?>
         <script>
-            alert("Nhận Đơn Hàng Thành Công");
+            alert("Receiving orders successfully");
             window.location="?page=delivery";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("Nhận Đơn Hàng Thất Bại");
+            alert("Receive unsuccessful orders");
             window.location="?page=order_new";
         </script>
         <?php

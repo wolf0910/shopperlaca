@@ -12,14 +12,14 @@ if($delete != "")
     if($result == true and $result1 == true and $result2 == true){
         ?>
         <script>
-            alert("Xóa Thành Công");
+            alert("delete Product True");
             window.location="?page=list_product";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("Xóa Không Thành Công");
+            alert("delete Product False");
             window.location="?page=list_product";
         </script>
         <?php

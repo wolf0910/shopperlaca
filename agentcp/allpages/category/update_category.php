@@ -11,9 +11,9 @@ $id=$_GET['edit'];
           $sql = "UPDATE `table_category` SET `category_name`='".$name."' WHERE `id_category` = '".$id."'"; 
           $result = mysqli_query($conn,$sql);   
           if($result == true){
-            $err = "Update Category Thành Công";
+            $err = "Update Category True";
           }else{
-            $err="Update Category Thất Bại";
+            $err="Update Category False";
           }
       }else{
         move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/categories/'.$_FILES['avatar']['name']);
@@ -21,9 +21,9 @@ $id=$_GET['edit'];
         $sql = "UPDATE `table_category` SET `category_name`='".$name."',`category_img`='".$hinh."' WHERE `id_category` = '".$id."'"; 
         $result = mysqli_query($conn,$sql);   
         if($result == true){
-          $err = "Update Category Thành Công";
+          $err = "Update Category True";
         }else{
-          $err="Update Category Thất Bại";
+          $err="Update Category False";
         }
       }
   }

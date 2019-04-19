@@ -14,13 +14,13 @@
       $email = $_POST['txt_email'];
       $address = $_POST['txtaddress'];
       if(empty($name)){
-         $err ="Vui Lòng Nhập Tên !!!";
+         $err ="Please Enter The Name !!!";
       }else if(empty($phone)){
-        $err ="Vui Lòng Nhập Số Điện Thoại !!!";
+        $err ="Please Enter The Number Phone !!!";
       }else if(empty($email)){
-        $err ="Vui Lòng Nhập Email";
+        $err ="Please Enter The Email";
       }else if(empty($address)){
-        $err =" Vui Lòng Nhập Địa Chỉ";
+        $err ="Please Enter The address";
       }else{
         if(md5($pass) == $rows['agent_password'])
         {
@@ -28,21 +28,21 @@
            $results = mysqli_query($conn,$sql);
             mysqli_close($conn);
             if($results == true){
-              $err = "Update Thành Công !!!";
+              $err = "Update True !!!";
             }else{
-              $err = "Update Thất Bại !!!";
+              $err = "Update False !!!";
             }
         }else if(empty($pass)){
           $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_address`='".$address."' WHERE `id_agent` = '".$edit."'";
            $results = mysqli_query($conn,$sql);
             mysqli_close($conn);
             if($results == true){
-              $err = "Update Thành Công !!!";
+              $err = "Update True !!!";
             }else{
-              $err = "Update Thất Bại !!!";
+              $err = "Update False !!!";
             }
         }else{
-          $err = "Mật khẩu Cũ Không Chính Xác !!!";
+          $err = "password incorrect !!!";
         }
       }
   }else{
@@ -55,7 +55,7 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Tài Khoản</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage  Users</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">

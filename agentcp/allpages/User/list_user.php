@@ -1,19 +1,20 @@
 <?php
-  $sql = "SELECT * FROM `table_agent` WHERE 1=1";
+  $id = $_SESSION['id_agent'];
+  $sql = "SELECT * FROM `table_agent` WHERE `id_agent` = '".$id."'";
   $result = mysqli_query($conn,$sql);
   mysqli_close($conn);
 ?>
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Tài Khoản</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Users Management</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Quản lý Tài Khoản</h4>
+          <h4 class="panel-title">Users Management</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

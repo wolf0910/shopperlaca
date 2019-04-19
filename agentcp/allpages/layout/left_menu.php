@@ -15,42 +15,24 @@
                             </a>
                         </li>
 
-                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_users' || $_REQUEST['page']=='create_user') echo 'active open';} ?>">
-                            <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-user"></i>Cài đặt tùy chỉnh 
-                            </a>
-                            <ul class="nav-sub">
-                                <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_users') echo 'active open';} ?>'>
-                                    <a href="?page=list_users" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Danh Sách Tài Khoản
-                                    </a>
-                                </li>
-                                <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='create_user') echo 'active open';} ?>'>
-                                    <a href="?page=create_user" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Thêm Tài Khoản
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='order_new' || $_REQUEST['page']=='delivery' || $_REQUEST['page']=='completed') echo 'active open';} ?>">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-user"></i>Quản lý đơn hàng 
+                                <i class=""></i>Manage Order
                             </a>
                             <ul class="nav-sub">
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='order_new') echo 'active open';} ?>'>
                                     <a href="?page=order_new" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Đơn Hàng Mới
+                                        <i class="fa fa-fw fa-caret-right"></i>Order New
                                     </a>
                                 </li>
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='delivery') echo 'active open';} ?>'>
                                     <a href="?page=delivery" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Đơn Hàng Đang Giao
+                                        <i class="fa fa-fw fa-caret-right"></i>Order delivery
                                     </a>
                                 </li>
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='completed') echo 'active open';} ?>'>
                                     <a href="?page=completed" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Đơn Hàng Hoàn Tất
+                                        <i class="fa fa-fw fa-caret-right"></i>Order Completed
                                     </a>
                                 </li>
                             </ul>
@@ -58,17 +40,17 @@
 
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_product' || $_REQUEST['page']=='create_product') echo 'active open';} ?>">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-user"></i>Quản lý sản phẩm  
+                                <i class=""></i>Manage Product  
                             </a>
                             <ul class="nav-sub">
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_product') echo 'active open';} ?>'>
                                     <a href="?page=list_product" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Danh Sách Sản Phẩm
+                                        <i class="fa fa-fw fa-caret-right"></i>List Product
                                     </a>
                                 </li>
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='create_product') echo 'active open';} ?>'>
                                     <a href="?page=create_product" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Thêm Sản Phẩm
+                                        <i class="fa fa-fw fa-caret-right"></i>Create Product
                                     </a>
                                 </li>
                             </ul>
@@ -76,17 +58,17 @@
 
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_category' || $_REQUEST['page']=='create_category') echo 'active open';} ?>">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-user"></i>Quản lý Danh Mục  
+                                <i class=""></i>Manage Category 
                             </a>
                             <ul class="nav-sub">
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_category') echo 'active open';} ?>'>
                                     <a href="?page=list_category" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Danh Sách Danh Mục
+                                        <i class="fa fa-fw fa-caret-right"></i>List Category
                                     </a>
                                 </li>
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='create_category') echo 'active open';} ?>'>
                                     <a href="?page=create_category" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Thêm Danh Mục
+                                        <i class="fa fa-fw fa-caret-right"></i>Create Category
                                     </a>
                                 </li>
                             </ul>
@@ -94,24 +76,42 @@
 
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_TonKho') echo 'active open';} ?>">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-user"></i>Quản lý Tồn Kho  
+                                <i class=""></i>Manage Inventory  
                             </a>
                             <ul class="nav-sub">
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_TonKho') echo 'active open';} ?>'>
                                     <a href="?page=list_TonKho" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Danh Sách Tồn Kho
+                                        <i class="fa fa-fw fa-caret-right"></i>List Inventory
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_customsr') echo 'active open';} ?>">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-user"></i>Quản lý khách hàng  
+                                <i class=""></i>Manage Customer
                             </a>
                             <ul class="nav-sub">
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_customsr') echo 'active open';} ?>'>
                                     <a href="?page=list_customsr" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Danh Sách Khách Hàng
+                                        <i class="fa fa-fw fa-caret-right"></i>List Customer
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_users' || $_REQUEST['page']=='create_user') echo 'active open';} ?>">
+                            <a href="#" title="Users">
+                                <i class=""></i>Setting 
+                            </a>
+                            <ul class="nav-sub">
+                                <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='list_users') echo 'active open';} ?>'>
+                                    <a href="?page=list_users" title="Members">
+                                        <i class="fa fa-fw fa-caret-right"></i>List User
+                                    </a>
+                                </li>
+                                <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='create_user') echo 'active open';} ?>'>
+                                    <a href="?page=create_user" title="Members">
+                                        <i class="fa fa-fw fa-caret-right"></i>Create User
                                     </a>
                                 </li>
                             </ul>
@@ -119,22 +119,22 @@
 
                         <li class="nav-dropdown <?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='purchase_history' || $_REQUEST['page']=='inventory_day' || $_REQUEST['page']=='inventory_month' || $_REQUEST['page']=='inventory_year') echo 'active open';} ?>">
                             <a href="#" title="Users">
-                                <i class="fas fa-chart-bar"></i></i>Thống kê  
+                                <i class=""></i></i>Statistics  
                             </a>
                             <ul class="nav-sub">
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='inventory_day') echo 'active open';} ?>'>
                                     <a href="?page=inventory_day" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Tồn Kho Theo Ngày
+                                        <i class="fa fa-fw fa-caret-right"></i>inventory by day 
                                     </a>
                                 </li>
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='inventory_month') echo 'active open';} ?>'>
                                     <a href="?page=inventory_month" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Tồn Kho Theo Tháng
+                                        <i class="fa fa-fw fa-caret-right"></i>inventory by month
                                     </a>
                                 </li>
                                 <li class='<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='inventory_year') echo 'active open';} ?>'>
                                     <a href="?page=inventory_year" title="Members">
-                                        <i class="fa fa-fw fa-caret-right"></i>Tồn Kho Theo Năm
+                                        <i class="fa fa-fw fa-caret-right"></i>inventory by Year
                                     </a>
                                 </li>
                             </ul>

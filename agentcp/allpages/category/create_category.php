@@ -5,18 +5,18 @@
       $name = $_POST['txt_name'];
       if ($_FILES['avatar']['error'] > 0)
       {
-          $err =  'File Upload Bị Lỗi';
+          $err =  'File Upload Error';
       }else if(empty($name)){
-         $err ="Vui Lòng Nhập Tên Danh Mục !!!";
+         $err ="Please enter the category !!!";
       }else{
         move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/categories/'.$_FILES['avatar']['name']);
         $hinh = 'images/categories/'.$_FILES['avatar']['name'];
         $sql = "INSERT INTO `table_category`(`category_name`, `category_img`) VALUES ('".$name."','".$hinh."')"; 
         $result = mysqli_query($conn,$sql);   
         if($result == true){
-          $err = "Thêm Category Thành Công";
+          $err = "Create Category True";
         }else{
-          $err="Thêm Category Thất Bại";
+          $err="Create Category Fails";
         }
       }
   }
@@ -24,14 +24,14 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Danh Mục</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Category Management</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Thêm Danh Mục</h4>
+          <h4 class="panel-title">Category Create</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

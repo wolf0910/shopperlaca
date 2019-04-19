@@ -9,17 +9,17 @@
       $email = $_POST['txt_email'];
       $address = $_POST['txtaddress'];
       if(empty($name)){
-         $err ="Vui Lòng Nhập Tên !!!";
+         $err ="Please Enter The Name !!!";
       }else if(empty($pass)){
-        $err ="Vui Lòng Nhập mật khẩu !!!";
+        $err ="Please Enter The Password !!!";
       }else if(empty($pass_new)){
-        $err ="Vui Lòng Nhập mật khẩu !!!";
+        $err ="Please Enter The password Retype !!!";
       }else if(empty($phone)){
-        $err ="Vui Lòng Nhập Số Điện Thoại !!!";
+        $err ="Please Enter The Phone Number !!!";
       }else if(empty($email)){
-        $err ="Vui Lòng Nhập Email";
+        $err ="Please Enter The Email";
       }else if(empty($address)){
-        $err =" Vui Lòng Nhập Địa Chỉ";
+        $err ="Please Enter The Address";
       }else{
         if($pass == $pass_new){
           $pass_news = md5($pass_new);
@@ -29,20 +29,20 @@
           if($result == true){
             ?>
               <script>
-                alert("Thêm Thành Công");
+                alert("Create True");
                 window.location="?page=list_user";
               </script>
             <?php
           }else{
             ?>
               <script>
-                alert("Thêm Không Thành Công");
+                alert("Create False");
                 window.location="?page=list_user";
               </script>
             <?php
           }
         }else{
-          $err ="2 mật khẩu Không Khớp ! Vui Lòng Nhập Lại";
+          $err ="password incorrect";
         }
       }
   }
@@ -50,7 +50,7 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Tài Khoản</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage User</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">

@@ -8,14 +8,14 @@ INNER JOIN table_category C ON A.`id_category` = C.id_category WHERE 1=1 ORDER B
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Sản Phẩm</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Product</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Dạm Sách Sản Phẩm</h4>
+          <h4 class="panel-title">List Product</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
@@ -47,10 +47,10 @@ INNER JOIN table_category C ON A.`id_category` = C.id_category WHERE 1=1 ORDER B
                     <td><a><img src="../<?php echo $key['photo_link']?>" alt="" height="150px"/></a></td>
                     <td><?php echo $key['product_name']?></td>
                     <td><?php echo $key['category_name']?></td>
-                    <td><?php echo $key['product_price']?></td>
-                    <td><?php echo $key['product_price_4compare1']?></td>
-                    <td><?php echo $key['product_price_4compare2']?></td>
-                    <td><?php echo $key['product_price_4compare3']?></td>
+                    <td><?php echo number_format($key['product_price'])?></td>
+                    <td><?php echo number_format($key['product_price_4compare1']) ?></td>
+                    <td><?php echo number_format($key['product_price_4compare2'])?></td>
+                    <td><?php echo number_format($key['product_price_4compare3'])?></td>
                     <td style="text-align: center"><a href="?page=update_product&edit=<?php echo $key['id_product'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
                     <td style="text-align: center"><a onclick="return ConfirmDelete(<?php echo $key['id_product']?>)" class="btn btn-primary"><i class="fa fa-times" aria-hidden="true"></i></a></td> 
                     <td style="text-align: center"><a href="?page=enter_inventory&edit=<?php echo $key['id_product'] ?>" class="btn btn-primary">Nhập Tồn Kho</a></td>
