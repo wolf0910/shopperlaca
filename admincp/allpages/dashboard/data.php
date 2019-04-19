@@ -2,7 +2,7 @@
 // Database details
 include_once ('../../../config/db_config.php');
 include_once ('../../../config/reuse_function.php');
-
+//sql for 2 pie chart
 $sql = " SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS agent_total_income,SUM(table_order_detail.quantity) as agent_total_quantity ,table_category.id_category,table_category.category_name FROM table_order,table_order_detail,table_category,table_product WHERE table_category.id_category = table_product.id_category AND table_product.id_product=table_order_detail.id_product AND table_order.delivery_status='Đã giao hàng' AND table_order.id_agent != '' AND table_order_detail.id_order=table_order.id_order AND table_product.id_category=table_category.id_category  GROUP BY table_category.category_name ";
 
 $result = mysqli_query($conn,$sql);

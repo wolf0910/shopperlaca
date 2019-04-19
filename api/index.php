@@ -173,7 +173,61 @@
 	// end Khoa's links
 
 	// Hung's links
-
+			case 'login_agents':
+			{	
+				include_once 'agents/login.php';
+				break;
+			}
+		case 'update_agents':
+			{	
+				include_once 'agents/update_agents.php';
+				break;
+			}
+		case 'order_pending':
+			{	
+				include_once 'agents/order_pending.php';
+				break;
+			}
+		case 'order_transport':
+			{	
+				include_once 'agents/order_transport.php';
+				break;
+			}
+		case 'order_delivered':
+			{	
+				include_once 'agents/order_delivered.php';
+				break;
+			}
+		case 'order_detail':
+			{	
+				include_once 'agents/order_detail.php';
+				break;
+			}
+		case 'product_category':
+			{	
+				include_once 'agents/product_category.php';
+				break;
+			}	
+		case 'product_by_category':
+			{	
+				include_once 'agents/product_by_category.php';
+				break;
+			}
+		case 'stocking_manager':
+			{	
+				include_once 'agents/stocking_manager.php';
+				break;
+			}
+		case 'list_user':
+			{	
+				include_once 'agents/list_user.php';
+				break;
+			}
+		case 'get_suggestion_by_id_customer':
+			{	
+				include_once 'customer/get_suggestion_by_id_customer.php';
+				break;
+			}
 	// end Hung's links
 
 		default: {
