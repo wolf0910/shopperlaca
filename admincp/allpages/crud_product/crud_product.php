@@ -23,13 +23,14 @@
           </button>
         </div>
           <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered nowrap  datatable dataTable" id="table_companies">
+            <table class="table table-striped table-hover table-bordered datatable dataTable" id="table_companies">
               <thead>
                 <tr>
                   <th width="10%">ID</th>
                   <th>Avatar</th>
                   <th>Tên sản phẩm</th>
                   <th>Danh mục</th>
+                  <th>Giá</th>
                   <th width="10%">Chức năng</th>
                 </tr>
               </thead>

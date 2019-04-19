@@ -23,7 +23,7 @@
           </button>
         </div>
             <div class="table-responsive">
-              <table class="table table-striped table-hover table-bordered nowrap  datatable dataTable" id="table_companies">
+              <table class="table table-striped table-hover table-bordered datatable dataTable" id="table_companies">
                 <thead>
                   <tr>
                     <th width="10%" >Avatar</th>

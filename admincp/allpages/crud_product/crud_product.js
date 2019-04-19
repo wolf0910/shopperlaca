@@ -190,6 +190,7 @@ $(document).ready(function(){
       { "data": "link_avatar"},
       { "data": "product_name"},
       { "data": "category_name"},
+      { "data": "product_price"},
       { "data": "functions",      "sClass": "functions" }
     ],    
     "aoColumnDefs": [

@@ -72,6 +72,7 @@ if ($job != ''){
           "product_name" => $company['product_name'],
           "category_name" => $company['category_name'],
           "id_category"    => $company['id_category'],
+          "product_price"    => vnd_format($company['product_price']),
           "link_avatar"    => $link_avatar,    
           "functions"     => $functions
         );
