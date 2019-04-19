@@ -26,7 +26,7 @@ if(!isset($_REQUEST['id_customer']))
 
   $product_arr = array();
   // query
-  $sql = "SELECT * FROM `table_order` WHERE id_customer=".$_REQUEST['id_customer']." ";
+  $sql = "SELECT * FROM `table_order` WHERE id_customer = ".$_REQUEST['id_customer']." ORDER BY id_order DESC ";
   
   $result = $conn->query($sql);  
   // Get row count

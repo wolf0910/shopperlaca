@@ -1,6 +1,18 @@
 # Disable directory browsing
 Options All -Indexes
 
+# Disable access to all file types except the following
+Order deny,allow
+<Files ~ ".(xml|css|js|jpe?g|png|gif|pdf|docx|xls|xlsx)$">
+Allow from all
+</Files>
+
+# Use UTF-8 encoding for anything served text/plain or text/html
+AddDefaultCharset utf-8
+
+# Force UTF-8 for a number of file formats
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+
 RewriteEngine on
 RewriteRule ^([a-zA-Z0-9_-]+)$ admincp.php?page=$1
 

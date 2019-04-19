@@ -53,7 +53,7 @@ if(!isset($_REQUEST['customer_password']))
   }
        
   $sql = "
-    SELECT * FROM table_customer WHERE customer_phone= '".$customer_phone."'
+    SELECT * FROM table_customer,table_district WHERE table_customer.id_district = table_district.id_district AND customer_phone= '".$customer_phone."'
    ";
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
@@ -64,6 +64,8 @@ if(!isset($_REQUEST['customer_password']))
       'customer_phone' => $row['customer_phone'],
       'customer_address' => $row['customer_address'],
       'customer_password' => $row['customer_password'],
+      'id_district' => $row['id_district'],
+      'id_city' => $row['id_city'],
       'status' => $row['status'],
     );
 

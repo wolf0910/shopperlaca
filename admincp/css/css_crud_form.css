@@ -852,3 +852,7 @@ table.dataTable{
 input {
   font-size: 16px;
 }
+
+.lightbox_content .input_container .field_container input{
+  padding-right: 5px;
+}

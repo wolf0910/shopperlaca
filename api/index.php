@@ -165,6 +165,11 @@
 				include_once 'customer/get_suggestion_by_id_customer.php';
 				break;
 			}
+		case 'create_customer_addition_address':
+			{	
+				include_once 'customer/create_customer_addition_address.php';
+				break;
+			}
 	// end Khoa's links
 
 	// Hung's links

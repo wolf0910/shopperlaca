@@ -22,7 +22,7 @@
  <!-- Meta, title, CSS, favicons, etc. -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Veneto Admin &middot; Dashboard </title>
+<title>Admin &middot; Control Pannel </title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
 <?php 

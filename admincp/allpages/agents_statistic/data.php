@@ -21,7 +21,7 @@ $agent_array= array();
 
     while( $row_tmp = mysqli_fetch_array($rs) ){
 
-    	$sql2 = "SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS agent_total_income, SUM(table_order_detail.quantity) as agent_total_quantity FROM table_order_detail,table_order WHERE table_order.id_order=table_order_detail.id_order AND table_order.id_agent='".$row_tmp['id_agent']."' ";
+    	$sql2 = "SELECT SUM(table_order_detail.unit_price*table_order_detail.quantity) AS agent_total_income, SUM(table_order_detail.quantity) as agent_total_quantity FROM table_order_detail,table_order WHERE table_order.id_order=table_order_detail.id_order AND table_order.id_agent='".$row_tmp['id_agent']."' AND table_order.delivery_status='Đã giao hàng' AND table_order.`date_created` > '".$new_start_day."' AND table_order.`date_created` < '".$new_end_day."' ";
 
     	$result = mysqli_query($conn,$sql2);
     	while($row=mysqli_fetch_array($result)){
