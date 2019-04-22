@@ -35,10 +35,10 @@ $( "#form_import" ).validate( {
 $('#button_import').click(function(){
 
 if ( $('#form_import').valid() == true){
-  	var form = $('#form_import')[0];
-  	var formData = new FormData(form);
+  var form = $('#form_import')[0];
+  var formData = new FormData(form);
 
-    request = $.ajax({
+  request = $.ajax({
     url: 'allpages/import_export_customer/import_customer.php',
     data: formData,
     type: 'POST',
@@ -48,8 +48,6 @@ if ( $('#form_import').valid() == true){
     // ... Other options like success and etc
 	});
 
-
-
 	request.done(function(output){
 		console.log(output);
 		$("#import_result_content").html(output);
@@ -57,7 +55,6 @@ if ( $('#form_import').valid() == true){
 	});
 	request.fail(function(jqXHR, textStatus){
 		alert('fail 2!');
-
 	});
 }
   });

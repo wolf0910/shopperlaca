@@ -87,6 +87,9 @@
         if($_REQUEST['page']=='customers_statistic')
             { include('allpages/customers_statistic/customers_statistic.php'); }
 
+        if($_REQUEST['page']=='crud_slider')
+            { include('allpages/crud_slider/crud_slider.php'); }
+
 
     } else {
         include('allpages/dashboard/dashboard.php');

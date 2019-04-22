@@ -98,6 +98,9 @@
         if($_REQUEST['page']=='dashboard') 
             echo '<script src="allpages/dashboard/dashboard.js"></script>';
 
+         if($_REQUEST['page']=='crud_slider') 
+            echo '<script src="allpages/crud_slider/crud_slider.js"></script>';
+
 
     } else {
         echo '<script src="allpages/dashboard/dashboard.js"></script>';
