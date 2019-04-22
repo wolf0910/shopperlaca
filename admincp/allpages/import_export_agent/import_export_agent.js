@@ -1,8 +1,39 @@
 $(document).ready(function(){
-	$("#import_result_pannel").hide();
-//handle import with ajax
-  $('#button_import').click(function(){
+$("#import_result_pannel").hide();
 
+//   jquery validation rules
+$( "#form_import" ).validate( {
+  ignore: [],
+  rules: {         
+    file: {
+      required: true,
+    },
+  },
+  messages: {        
+    file: {
+      required: "Vui lòng chọn file !",
+    }, 
+  },        
+  errorElement: "em",
+  errorPlacement: function ( error, element ) {
+    // Add the `help-block` class to the error element
+    error.addClass( "help-block" );
+    error.insertAfter( element );
+  },
+  highlight: function ( element, errorClass, validClass ) {
+    $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+  },
+  unhighlight: function (element, errorClass, validClass) {
+    $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+  }
+});
+//end jquery validation rules
+
+
+//handle import with ajax
+$('#button_import').click(function(){
+
+if ( $('#form_import').valid() == true){
   	var form = $('#form_import')[0];
   	var formData = new FormData(form);
 
@@ -24,10 +55,9 @@ $(document).ready(function(){
 		$("#import_result_pannel").show();
 	});
 	request.fail(function(jqXHR, textStatus){
-		alert('fail 2!');
-
+	alert('fail 2!');
 	});
-
+}
   });
 
 });
