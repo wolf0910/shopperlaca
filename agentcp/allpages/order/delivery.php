@@ -29,13 +29,13 @@ INNER JOIN table_customer B ON A.id_customer = B.id_customer WHERE A.delivery_st
                 <tr>
                   <th scope="col">STT</th>
                   <th scope="col">Name</th>
-                  <th scope="col">date created</th>
-                  <th scope="col">delivery status</th>
-                  <th scope="col">customer phone</th>
-                  <th scope="col">customer email</th>
-                  <th scope="col">customer address</th>
-                  <th scope="col">Detail order</th>
-                  <th scope="col">completed order</th>
+                  <th scope="col">Date Created</th>
+                  <th scope="col">Delivery Status</th>
+                  <th scope="col">Customer Phone</th>
+                  <th scope="col">Customer Email</th>
+                  <th scope="col">Customer Address</th>
+                  <th scope="col">Detail Order</th>
+                  <th scope="col">Completed Order</th>
                 </tr>
               </thead>
               <tbody>

@@ -132,7 +132,7 @@
 
                         <li class="<?php if(isset($_REQUEST['page'])){if($_REQUEST['page']=='crud_slider') echo 'active';} ?>">
                             <a href="?page=crud_slider" title="Disabled">
-                                <i class="fas fa-file-invoice"></i> Slider
+                                <i class="fas fa-images"></i> Slider
                             </a>
                         </li>
 

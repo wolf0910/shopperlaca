@@ -7,7 +7,7 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Manage Order By Customer/a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Order By Customer</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
@@ -27,9 +27,9 @@
               <thead>
                 <tr>
                   <th scope="col">STT</th>
-                  <th scope="col">date created</th>
-                  <th scope="col">delivery status</th>
-                  <th scope="col">Detail order</th>
+                  <th scope="col">Date Created</th>
+                  <th scope="col">Delivery Status</th>
+                  <th scope="col">Detail Order</th>
                 </tr>
               </thead>
               <tbody>

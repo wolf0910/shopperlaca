@@ -22,22 +22,25 @@
         $err ="Please Enter The Address";
       }else{
         if($pass == $pass_new){
+
+          move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/avatar/'.$_FILES['avatar']['name']);
+          $hinh = 'images/avatar/'.$_FILES['avatar']['name'];
           $pass_news = md5($pass_new);
-          $sql="INSERT INTO `table_agent`(`agent_name`, `agent_phone`, `agent_email`, `agent_password`,`agent_address`) VALUES ('".$name."','".$phone."','".$email."','".$pass_news."','".$address."')";
+          $sql="INSERT INTO `table_agent`(`agent_name`, `agent_phone`, `agent_email`, `agent_password`,`agent_address`, `agent_avatar`) VALUES ('".$name."','".$phone."','".$email."','".$pass_news."','".$address."','".$hinh."')";
           $result = mysqli_query($conn , $sql);
           mysqli_close($conn);
           if($result == true){
             ?>
               <script>
-                alert("Create True");
-                window.location="?page=list_user";
+                alert("Create Thành Công");
+                window.location="?page=list_users";
               </script>
             <?php
           }else{
             ?>
               <script>
-                alert("Create False");
-                window.location="?page=list_user";
+                alert("Create Thất Bại");
+                window.location="?page=list_users";
               </script>
             <?php
           }
@@ -67,10 +70,16 @@
       </div>
       <div class="table-responsive" style="padding: 50px">
           <h3 style="text-align: center; color: red"><?php if(isset($err))echo $err?></h3>
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Agents Name (*)</label>
-            <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter Name">
+            <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+                echo $_POST['txt_name'];
+            }?>" placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Image (*)</label>
+            <input type="file" name="avatar" class="form-control">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">password (*)</label>
@@ -82,17 +91,23 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Phone (*)</label>
-            <input type="text" name="txt_phone" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter Phone">
+            <input type="text" name="txt_phone" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+                echo $_POST['txt_phone'];
+            }?>" placeholder="Enter Phone">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">email (*)</label>
-            <input type="text" name="txt_email" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter email">
+            <label for="exampleInputEmail1">Email (*)</label>
+            <input type="text" name="txt_email" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+                echo $_POST['txt_email'];
+            }?>" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Address (*)</label>
-            <input type="text" name="txtaddress" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter Address">
+            <input type="text" name="txtaddress" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+                echo $_POST['txtaddress'];
+            }?>" placeholder="Enter Address">
           </div>
-          <button type="submit" name="submit" class="btn btn-primary">Update</button>
+          <button type="submit" name="submit" class="btn btn-primary">Create</button>
         </form>
       </div>
   </div>

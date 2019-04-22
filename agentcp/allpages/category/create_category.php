@@ -5,7 +5,7 @@
       $name = $_POST['txt_name'];
       if ($_FILES['avatar']['error'] > 0)
       {
-          $err =  'File Upload Error';
+          $err =  'Vui Lòng Chọn File Hình !!!';
       }else if(empty($name)){
          $err ="Please enter the category !!!";
       }else{
@@ -14,9 +14,9 @@
         $sql = "INSERT INTO `table_category`(`category_name`, `category_img`) VALUES ('".$name."','".$hinh."')"; 
         $result = mysqli_query($conn,$sql);   
         if($result == true){
-          $err = "Create Category True";
+          $err = "Create Category Thành Công";
         }else{
-          $err="Create Category Fails";
+          $err="Create Category Thất Bại";
         }
       }
   }
@@ -44,7 +44,9 @@
           <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Category Name (*)</label>
-            <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter Name Product">
+            <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+                echo $_POST['txt_name'];
+            }?>" placeholder="Enter Name Product">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Image (*)</label>

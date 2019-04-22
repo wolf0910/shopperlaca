@@ -12,14 +12,14 @@ if($delete != "")
     if($result == true and $result1 == true and $result2 == true){
         ?>
         <script>
-            alert("delete Product True");
+            alert("Delete Product True");
             window.location="?page=list_product";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("delete Product False");
+            alert("Delete Product False");
             window.location="?page=list_product";
         </script>
         <?php

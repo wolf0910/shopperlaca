@@ -69,11 +69,11 @@ $agetns = $_SESSION['id_agent'];
             <input type="text" readonly name="txt_name" class="form-control" id="exampleInputEmail1" value="<?php echo $ley['product_price'] ?>">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Tồn Kho (*)</label>
+            <label for="exampleInputEmail1">Inventory (*)</label>
             <input type="text" name="txt_tonkho" class="form-control" id="exampleInputEmail1" value="" placeholder="Nhập Tồn Kho">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Tồn Kho An Toàn (*)</label>
+            <label for="exampleInputEmail1">Inventory Safe (*)</label>
             <input type="text" name="txt_antoan" class="form-control" id="exampleInputEmail1" value="" placeholder="Nhập Tồn Kho An Toàn">
           </div>
           <button type="submit" name="submit" class="btn btn-primary">Update</button>

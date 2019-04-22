@@ -19,6 +19,8 @@ echo ' <meta charset="utf-8">
     // gan thong tin nguoi dung vao session
     $_SESSION['agent_name']=$row['agent_name'];
     $_SESSION['id_agent']=$row['id_agent'];
+    $_SESSION['agent_avatar']=$row['agent_avatar'];
+    
 
   	echo "<script>
     alert('Đăng nhập thành công !!!');

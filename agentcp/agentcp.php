@@ -91,6 +91,8 @@ if(isset($_SESSION['id_agent']))
             { include('allpages/statistical/inventory_year.php'); }
         if($_REQUEST['page']=='order_history')
             { include('allpages/order/order_history.php'); }
+        if($_REQUEST['page']=='inventory_day')
+            { include('allpages/statistical/inventory_day.php'); }
     } else {
         include('allpages/User/list_user.php');
     }

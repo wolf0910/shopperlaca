@@ -35,7 +35,7 @@
         if($result == true)
         {
           if(empty($file)){
-              $err = "Create Product True";
+              $err = "Create Product Thành Công";
           }else{
             $sql="SELECT * FROM `table_product` WHERE `product_name` = '".$name."' AND`date_created` = '".$ngay."'";
             $result1 = mysqli_query($conn,$sql);
@@ -45,9 +45,9 @@
                $sql="UPDATE `table_product_detail` SET`photo_link`='".$hinh."'  WHERE `id_product` =  '".$id."'";
                $result2 = mysqli_query($conn,$sql);
                if($result2 == true){
-                $err = "Create products True";
+                $err = "Create products Thành Công";
               }else{
-                $err="Insert Image False";
+                $err="Insert Image Thất Bại";
               }
             }
           }
@@ -95,8 +95,10 @@
             <input type="file" name="avatar" class="form-control">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea2">Mô Tả (*)</label>
-            <textarea class="form-control rounded-0" name="txt_mota" id="exampleFormControlTextarea2" rows="3"><?php echo $ley['product_description'] ?></textarea>
+            <label for="exampleFormControlTextarea2">Describe (*)</label>
+            <div class="panel-body">
+              <textarea id="wysiwyg" name="txt_mota" class="form-control" placeholder="Enter message ..." rows="25"><?php echo $ley['product_description'] ?></textarea>
+            </div>
           </div>
           <div class="form-group">
             <label for="txtHoTen">Category</label>
@@ -116,19 +118,19 @@
               </select>                                                                             
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product price (*)</label>
+            <label for="exampleInputEmail1">Product Price (*)</label>
             <input type="text" name="txt_price" class="form-control" id="exampleInputEmail1" value="<?php echo $ley['product_price'] ?>" placeholder="Enter price">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">price Lazada (*)</label>
+            <label for="exampleInputEmail1">Price Lazada (*)</label>
             <input type="text" name="txt_lazada" class="form-control" id="exampleInputEmail1" value="<?php echo $ley['product_price_4compare1'] ?>" placeholder="Enter price Lazada">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">price Tiki (*)</label>
+            <label for="exampleInputEmail1">Price Tiki (*)</label>
             <input type="text" name="txt_tiki" class="form-control" id="exampleInputEmail1" value="<?php echo $ley['product_price_4compare2'] ?>" placeholder="Enter price Tiki">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">price Shopee (*)</label>
+            <label for="exampleInputEmail1">Price Shopee (*)</label>
             <input type="text" name="txt_soppee" class="form-control" id="exampleInputEmail1" value="<?php echo $ley['product_price_4compare3'] ?>" placeholder="Enter price Shopee">
           </div>
           <button type="submit" name="submit" class="btn btn-primary">Create</button>

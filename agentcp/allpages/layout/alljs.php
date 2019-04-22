@@ -32,6 +32,16 @@ function reload(){
 }
 </script>
 
+ <script src="../admin_template/dist/assets/plugins/bootstrap-wysihtml5/js/wysihtml5-0.3.0.min.js"></script>
+<script src="../admin_template/dist/assets/plugins/bootstrap-wysihtml5/js/bootstrap-wysihtml5.js"></script>
+<script>
+    jQuery(function ($) {
+        $('#wysiwyg').wysihtml5({
+            stylesheets: ['../admin_template/dist/assets/plugins/bootstrap-wysihtml5/css/wysiwyg-color.css']
+        });
+        $('.wysihtml5-toolbar .btn-default').removeClass('btn-default').addClass('btn-white');
+    });
+</script>
 <!-- my custom js -->
 <script src="js/jquery_validate/jquery.validate.js"></script>
 <script src="js/jquery_validate/additional-methods.js"></script>

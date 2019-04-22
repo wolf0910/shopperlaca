@@ -1,14 +1,14 @@
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý danh mục</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Category</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
     <div class="panel panel-default">
         <div class="panel-heading">
 
-            <h4 class="panel-title">Quản lý danh mục</h4>
+            <h4 class="panel-title">Manage Category</h4>
 
             <div class="panel-options">
                 <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
@@ -19,7 +19,7 @@
         <div class="panel-body">
           <div class="dt-responsive table-responsive">
           <button type="button" class="button" id="add_company">
-            <i class="fas fa-plus-circle"></i> Tạo danh mục
+            <i class="fas fa-plus-circle"></i> Create Category
           </button>
         </div>
             <div class="table-responsive">
@@ -27,8 +27,8 @@
                 <thead>
                   <tr>
                     <th>Avatar</th>
-                    <th>Tên danh mục</th>
-                    <th>Chức năng</th>
+                    <th>Category Name</th>
+                    <th>Function</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
         <form method="post" class="form add" id="form_company" enctype="multipart/form-data">
 
           <div class="input_container">
-            <label for="category_name">Tên danh mục: <span class="required">*</span></label>
+            <label for="category_name">Category Name : <span class="required">*</span></label>
             <div class="field_container">
               <input type="text" class="text" autocomplete="off" name="category_name" id="category_name" value="" onkeyup="checkAvailability()" >
               <div id="user-availability-status" ></div>
@@ -56,7 +56,7 @@
           </div>
 
           <div class="input_container">
-            <label for="agent_avatar">Hình đại diện: <span class="required">*</span></label>
+            <label for="agent_avatar">Image Avatar: <span class="required">*</span></label>
              <div class="field_container">
                <input type="text" class="text" name="agent_avatar" id="agent_avatar" value="" style="display: none">
                <input type="file" name="img_avatar" id="img_avatar" accept="image/*"  />

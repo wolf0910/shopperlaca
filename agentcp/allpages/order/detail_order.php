@@ -14,7 +14,7 @@
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Manage Order New</h4>
+          <h4 class="panel-title">Manage New Order</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
@@ -29,8 +29,8 @@
                   <th scope="col">STT</th>
                   <th scope="col">Name</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">unit price</th>
-                  <th scope="col">total price</th>
+                  <th scope="col">Unit Price</th>
+                  <th scope="col">Total Price</th>
                   <th scope="col">Image Product</th>
                 </tr>
               </thead>

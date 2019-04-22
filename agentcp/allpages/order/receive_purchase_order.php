@@ -7,14 +7,14 @@
 	if($result == true){
         ?>
         <script>
-            alert("Receiving orders successfully");
+            alert("Receiving Orders Successfully");
             window.location="?page=delivery";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("Receive unsuccessful orders");
+            alert("Receive Unsuccessful Orders");
             window.location="?page=order_new";
         </script>
         <?php

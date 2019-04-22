@@ -23,7 +23,7 @@ INNER JOIN table_category C ON A.`id_category` = C.id_category WHERE 1=1 ORDER B
              <!--  <a href="#" data-rel="close"><i class="fa fa-fw fa-times"></i></a> -->
           </div>
       </div>
-      <div class="table-responsive" style="padding: 50px">
+      <div class="table-responsive">
           <table class="table">
               <thead>
                 <tr>
@@ -31,13 +31,13 @@ INNER JOIN table_category C ON A.`id_category` = C.id_category WHERE 1=1 ORDER B
                   <th scope="col">Image</th>
                   <th scope="col">Product Name</th>
                   <th scope="col">Category</th>
-                  <th scope="col" style="width: 120px;">Product price</th>
+                  <th scope="col" style="width: 120px;">Product Price</th>
                   <th scope="col">Lazada</th>
                   <th scope="col">Tiki</th>
                   <th scope="col">Shopee</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
-                  <th scope="col">enter inventory</th>
+                  <th scope="col">Enter Inventory</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,7 +53,7 @@ INNER JOIN table_category C ON A.`id_category` = C.id_category WHERE 1=1 ORDER B
                     <td><?php echo number_format($key['product_price_4compare3'])?></td>
                     <td style="text-align: center"><a href="?page=update_product&edit=<?php echo $key['id_product'] ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
                     <td style="text-align: center"><a onclick="return ConfirmDelete(<?php echo $key['id_product']?>)" class="btn btn-primary"><i class="fa fa-times" aria-hidden="true"></i></a></td> 
-                    <td style="text-align: center"><a href="?page=enter_inventory&edit=<?php echo $key['id_product'] ?>" class="btn btn-primary">Nhập Tồn Kho</a></td>
+                    <td style="text-align: center"><a href="?page=enter_inventory&edit=<?php echo $key['id_product'] ?>" class="btn btn-primary">Enter Inventory</a></td>
                   </tr>
                 <?php } ?>
               </tbody>

@@ -13,7 +13,7 @@
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Manage Customer close</h4>
+          <h4 class="panel-title">Manage Customer Close</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->
@@ -28,10 +28,10 @@
                   <th scope="col">STT</th>
                   <th scope="col">Name</th>
                   <th scope="col">Phone</th>
-                  <th scope="col">email</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Address</th>
                   <th scope="col">Total Point</th>
-                  <th scope="col">order history</th>
+                  <th scope="col">Order History</th>
                 </tr>
               </thead>
               <tbody>

@@ -28,8 +28,9 @@
                 <tr>
                   <th scope="col">STT</th>
                   <th scope="col">Agents Name</th>
+                  <th scope="col">Image Avatar</th>
                   <th scope="col">Phone</th>
-                  <th scope="col">email</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Address</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
@@ -40,6 +41,7 @@
                   <tr>
                     <th scope="row"><?php echo $key['id_agent']?></th>
                     <td><?php echo $key['agent_name']?></td>
+                    <td><a><img src="../<?php echo $key['agent_avatar']?>" alt="" height="80px"/></a></td>
                     <td><?php echo $key['agent_phone']?></td>
                     <td><?php echo $key['agent_email']?></td>
                     <td><?php echo $key['agent_address']?></td>

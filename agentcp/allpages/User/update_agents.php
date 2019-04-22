@@ -24,23 +24,47 @@
       }else{
         if(md5($pass) == $rows['agent_password'])
         {
-          $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_password`='".$pass_new."',`agent_address`='".$address."' WHERE `id_agent` = '".$edit."'";
-           $results = mysqli_query($conn,$sql);
-            mysqli_close($conn);
-            if($results == true){
-              $err = "Update True !!!";
-            }else{
-              $err = "Update False !!!";
-            }
+          $hinh = $_FILES['avatar']['name'];
+          if($hinh == ""){
+            $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_password`='".$pass_new."',`agent_address`='".$address."' WHERE `id_agent` = '".$edit."'";
+               $results = mysqli_query($conn,$sql);
+                if($results == true){
+                  $err = "Update Thành Công !!!";
+                }else{
+                  $err = "Update Thất Bại !!!";
+                }
+          }else{
+            move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/avatar/'.$_FILES['avatar']['name']);
+            $hinh = 'images/avatar/'.$_FILES['avatar']['name'];
+            $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_password`='".$pass_new."',`agent_address`='".$address."' WHERE `id_agent` = '".$edit."',`agent_avatar`='".$hinh ."'";
+               $results = mysqli_query($conn,$sql);
+                if($results == true){
+                  $err = "Update Thành Công !!!";
+                }else{
+                  $err = "Update Thất Bại !!!";
+                }
+          }
         }else if(empty($pass)){
-          $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_address`='".$address."' WHERE `id_agent` = '".$edit."'";
-           $results = mysqli_query($conn,$sql);
-            mysqli_close($conn);
-            if($results == true){
-              $err = "Update True !!!";
-            }else{
-              $err = "Update False !!!";
-            }
+          $hinh = $_FILES['avatar']['name'];
+          if($hinh == ""){
+              $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_address`='".$address."' WHERE `id_agent` = '".$edit."'";
+             $results = mysqli_query($conn,$sql);
+              if($results == true){
+                $err = "Update Thành Công !!!";
+              }else{
+                $err = "Update Thất Bại !!!";
+              }
+          }else{
+            move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/avatar/'.$_FILES['avatar']['name']);
+            $hinh = 'images/avatar/'.$_FILES['avatar']['name'];
+              $sql = "UPDATE `table_agent` SET `agent_name`='".$name."',`agent_phone`='".$phone."',`agent_email`='".$email."',`agent_address`='".$address."',`agent_avatar`='".$hinh."' WHERE `id_agent` = '".$edit."'";
+             $results = mysqli_query($conn,$sql);
+              if($results == true){
+                $err = "Update Thành Công !!!";
+              }else{
+                $err = "Update Thất Bại !!!";
+              }
+          }
         }else{
           $err = "password incorrect !!!";
         }
@@ -72,18 +96,23 @@
       </div>
       <div class="table-responsive" style="padding: 50px">
           <h3 style="text-align: center; color: red"><?php if(isset($err))echo $err?></h3>
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Agents Name (*)</label>
             <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="<?php
              echo $rows['agent_name']?>" placeholder="Enter Name">
           </div>
+           <div class="form-group"><a><img src="../<?php echo $rows['agent_avatar']?>" alt="" height="150px"/></a></div>
           <div class="form-group">
-            <label for="exampleInputPassword1">password</label>
+            <label for="exampleInputPassword1">Image (*)</label>
+            <input type="file" name="avatar" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
             <input type="password" name="txt_pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">password new</label>
+            <label for="exampleInputPassword1">Password new</label>
             <input type="password" name="txt_pass_new" class="form-control" id="exampleInputPassword1" placeholder="Password new">
           </div>
           <div class="form-group">
@@ -92,7 +121,7 @@
              echo $rows['agent_phone'] ?>" placeholder="Enter Phone">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">email (*)</label>
+            <label for="exampleInputEmail1">Email (*)</label>
             <input type="text" name="txt_email" class="form-control" id="exampleInputEmail1" value="<?php
              echo $rows['agent_email']?>" placeholder="Enter email">
           </div>

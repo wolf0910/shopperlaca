@@ -26,8 +26,8 @@
               <thead>
                 <tr>
                   <th scope="col">STT</th>
-                  <th scope="col">category name</th>
-                  <th scope="col">category image</th>
+                  <th scope="col">Category Name</th>
+                  <th scope="col">Category Image</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
                 </tr>

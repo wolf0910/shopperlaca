@@ -29,8 +29,8 @@ INNER JOIN table_product_detail C ON A.`id_product` = C.id_product WHERE 1=1 ORD
                   <th scope="col">STT</th>
                   <th scope="col">Image</th>
                   <th scope="col">Product Name</th>
-                  <th scope="col" style="width: 120px;">Tồn Kho</th>
-                  <th scope="col" style="width: 150px;">Tồn Kho An Toàn</th>
+                  <th scope="col" style="width: 120px;">Inventory</th>
+                  <th scope="col" style="width: 150px;">Inventory Safe</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
                 </tr>

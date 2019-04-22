@@ -11,9 +11,9 @@ $id=$_GET['edit'];
           $sql = "UPDATE `table_category` SET `category_name`='".$name."' WHERE `id_category` = '".$id."'"; 
           $result = mysqli_query($conn,$sql);   
           if($result == true){
-            $err = "Update Category True";
+            $err = "Update Category Thành Công";
           }else{
-            $err="Update Category False";
+            $err="Update Category Thất Bại";
           }
       }else{
         move_uploaded_file($_FILES['avatar']['tmp_name'], '../images/categories/'.$_FILES['avatar']['name']);
@@ -21,9 +21,9 @@ $id=$_GET['edit'];
         $sql = "UPDATE `table_category` SET `category_name`='".$name."',`category_img`='".$hinh."' WHERE `id_category` = '".$id."'"; 
         $result = mysqli_query($conn,$sql);   
         if($result == true){
-          $err = "Update Category True";
+          $err = "Update Category Thành Công";
         }else{
-          $err="Update Category False";
+          $err="Update Category Thất Bại";
         }
       }
   }
@@ -34,14 +34,14 @@ $id=$_GET['edit'];
 <div class="page-content">
   <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
-        <li class="active"><a href="../admin_template/javascript:;">Quản lý Danh Mục</a></li>
+        <li class="active"><a href="../admin_template/javascript:;">Manage Category</a></li>
     </ol>
 </div>
 <div class="container-fluid-md">
   <div class="panel panel-default">
       <div class="panel-heading">
 
-          <h4 class="panel-title">Update Danh Mục</h4>
+          <h4 class="panel-title">Update Category</h4>
 
           <div class="panel-options">
               <!-- <a href="#" data-rel="collapse"><i class="fa fa-fw fa-minus"></i></a> -->

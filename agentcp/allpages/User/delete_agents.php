@@ -8,14 +8,14 @@ if($delete != "")
     if($result == true){
         ?>
         <script>
-            alert("delete True");
+            alert("Delete Thành Công");
             window.location="?page=list_user";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("delete False");
+            alert("Delete Thất Bại");
             window.location="?page=list_user";
         </script>
         <?php

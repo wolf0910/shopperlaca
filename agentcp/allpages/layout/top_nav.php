@@ -10,16 +10,28 @@
                 </span>
                 <span class="sc-hidden">
                     <span class="bold">Agents</span>
-                    Admin
+                    control panel
                 </span>
             </a>
         </div>
         <ul class="nav navbar-nav navbar-nav-expanded pull-right margin-md-right">
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="#">
-                    <img class="img-circle" src="../admin_template/demo/images/profile.jpg">
-                    <span class="hidden-xs"><?php echo $_SESSION['agent_name']  ?></span>
-                    <b class="caret"></b>
+                    <?php
+                        if($_SESSION['agent_avatar'] == ""){
+                        ?>
+                            <img class="img-circle" src="../images/avatar/user-placeholder.png">
+                            <span class="hidden-xs"><?php echo $_SESSION['agent_name']  ?></span>
+                            <b class="caret"></b>
+                        <?php     
+                        }else{
+                        ?>
+                            <img class="img-circle" src="../<?php echo $_SESSION['agent_avatar']?>">
+                            <span class="hidden-xs"><?php echo $_SESSION['agent_name']  ?></span>
+                            <b class="caret"></b>
+                        <?php
+                        }
+                    ?>
                 </a>
                 <ul class="dropdown-menu pull-right-xs">
                     <li><a href="../agentcp/logout.php">Log Out</a></li>

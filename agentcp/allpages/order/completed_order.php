@@ -6,14 +6,14 @@
 	if($result == true){
         ?>
         <script>
-            alert("Completed order True");
+            alert("Completed Order True");
             window.location="?page=completed";
         </script>
         <?php
     }else{
         ?>
         <script>
-            alert("Completed orderr False");
+            alert("Completed Orderr False");
             window.location="?page=delivery";
         </script>
         <?php

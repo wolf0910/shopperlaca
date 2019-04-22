@@ -12,7 +12,7 @@
       $name = $_POST['txt_name'];
       if ($_FILES['avatar']['error'] > 0)
       {
-          $err =  'File Upload Error';
+          $err =  'Vui Lòng Chọn File Hình';
       }else if(empty($name)){
          $err ="Please Enter The Name products !!!";
       }else if(empty($mota)){
@@ -41,15 +41,15 @@
             $sql="INSERT INTO `table_product_detail`( `id_product`, `photo_link`) VALUES ('".$rows['id_product']."','".$hinh."')";
             $result2 = mysqli_query($conn,$sql);
             if($result2 == true){
-              $err = "Create Product True";
+              $err = "Create Product Thành Công";
             }else{
-              $err="Insert Image false";
+              $err="Insert Image Thất Bại";
             }
            }else{
-            $err="Create Product False";
+            $err="Create Product Thất Bại";
            }
         }else{
-          $err ="Create Product False";
+          $err ="Create Product Thất Bại";
         }
       }
   }
@@ -79,15 +79,21 @@
           <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputEmail1">Product Name (*)</label>
-            <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter Name Product">
+            <input type="text" name="txt_name" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+               echo $_POST['txt_name'];
+            }?>" placeholder="Enter Name Product">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Image (*)</label>
             <input type="file" name="avatar" class="form-control">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea2">Mô Tả (*)</label>
-            <textarea class="form-control rounded-0" name="txt_mota" id="exampleFormControlTextarea2" rows="3"></textarea>
+            <label for="exampleFormControlTextarea2">Describe (*)</label>
+            <div class="panel-body">
+              <textarea id="wysiwyg" name="txt_mota" class="form-control" placeholder="Enter message ..." rows="25"><?php if(isset($_POST['submit'])){
+               echo $_POST['txt_mota'];
+            }?></textarea>
+            </div>
           </div>
           <div class="form-group">
             <label for="txtHoTen">Category</label>
@@ -98,20 +104,28 @@
               </select>                                                                             
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Product price (*)</label>
-            <input type="text" name="txt_price" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter price">
+            <label for="exampleInputEmail1">Product Price (*)</label>
+            <input type="text" name="txt_price" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+               echo $_POST['txt_price'];
+            }?>" placeholder="Enter price">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">price Lazada (*)</label>
-            <input type="text" name="txt_lazada" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter price Lazada">
+            <label for="exampleInputEmail1">Price Lazada (*)</label>
+            <input type="text" name="txt_lazada" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+               echo $_POST['txt_lazada'];
+            }?>" placeholder="Enter price Lazada">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">price Tiki (*)</label>
-            <input type="text" name="txt_tiki" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter price Tiki">
+            <label for="exampleInputEmail1">Price Tiki (*)</label>
+            <input type="text" name="txt_tiki" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+               echo $_POST['txt_tiki'];
+            }?>" placeholder="Enter price Tiki">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">price Shopee (*)</label>
-            <input type="text" name="txt_soppee" class="form-control" id="exampleInputEmail1" value="" placeholder="Enter price Shopee">
+            <label for="exampleInputEmail1">Price Shopee (*)</label>
+            <input type="text" name="txt_soppee" class="form-control" id="exampleInputEmail1" value="<?php if(isset($_POST['submit'])){
+               echo $_POST['txt_soppee'];
+            }?>" placeholder="Enter price Shopee">
           </div>
           <button type="submit" name="submit" class="btn btn-primary">Create</button>
         </form>
