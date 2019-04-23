@@ -66,19 +66,6 @@ if(isset($_REQUEST['id_district']))
   }
 }
 
-if(!isset($_REQUEST['id_district']))
-{
-   echo json_encode(
-      array('success'   => 'false','message' => 'id_district missing !!!')
-    );
-    exit();
-}
-
-
-
-
-
-
 $query_image='';
 if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avatar']['tmp_name'])  )
 {
@@ -136,7 +123,13 @@ if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avat
   $customer_password = md5($_REQUEST['customer_password']);
   $customer_phone = $_REQUEST['customer_phone'];
   $customer_address = $_REQUEST['customer_address'];
-  $id_district = $_REQUEST['id_district'];
+
+  if (isset($_REQUEST['id_district'])){
+     $id_district = $_REQUEST['id_district'];
+   } else {
+    $id_district="";
+   }
+ 
  
   // start check customer_phone
   $sql = "
@@ -178,7 +171,7 @@ if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avat
       $sql = "SELECT * FROM table_customer WHERE id_customer= '".$id_created."'  ";
       $result = $conn->query($sql);
       while($row = $result->fetch_assoc()) {
-          
+          if( $row['id_district'] =="0" ) $id_district_display = ""; else $id_district_display = $row['id_district'];
           $user_item = array(
             'id_customer' => $row['id_customer'],
             'customer_fullname' => $row['customer_fullname'],
@@ -186,7 +179,7 @@ if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avat
             'customer_phone' => $row['customer_phone'],
             'customer_address' => $row['customer_address'],
             'customer_avatar' => $row['customer_avatar'],
-            'id_district' => $row['id_district'],
+            'id_district' => $id_district_display,
             'message' => 'user created'            
           );
 
