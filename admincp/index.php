@@ -15,7 +15,6 @@ if(isset($_SESSION['id_administrator'])){
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Admin Control Panel</title>
       <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
       <link href="css/animate.css" rel="stylesheet">
       <link href="css/style_login.css" rel="stylesheet">
       <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
