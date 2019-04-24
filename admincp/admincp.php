@@ -7,9 +7,8 @@
     {
         echo "
         <script>    
-          window.location='admincp.php';
+          window.location='index.php';
         </script>
-
         ";
     } 
       

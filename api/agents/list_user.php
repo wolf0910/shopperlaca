@@ -65,7 +65,7 @@ if($num > 0) {
 } else {
     // No Categories
     echo json_encode(
-        array('success' => 'success','message' => 'Product  not found !')
+        array('success' => 'false','message' => 'Product  not found !')
     );
 }
 

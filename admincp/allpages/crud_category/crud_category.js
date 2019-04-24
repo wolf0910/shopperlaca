@@ -181,8 +181,9 @@ $(document).ready(function(){
     $('#user-availability-status').html('');
     $("#img_avatar").attr("required", true);
     
+    $("#button_submit").prop("disabled", false); 
+    $("#form_company").validate().resetForm();
 
-    
     show_lightbox();
   });
 
@@ -263,11 +264,10 @@ $(document).ready(function(){
 
         // remove all subcategories input
         $('#div_products_input').children().remove();
+
+        $("#button_submit").prop("disabled", false); 
+        $("#form_company").validate().resetForm();
       
-        
-
-
-        
         hide_loading_message();
         show_lightbox();
       } else {

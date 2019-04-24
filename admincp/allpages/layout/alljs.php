@@ -7,7 +7,6 @@
 <script src="../admin_template/dist/assets/plugins/flot/excanvas.min.js"></script>
 <![endif]-->
 <script src="../admin_template/dist/assets/plugins/jquery-sparkline/jquery.sparkline.js"></script>
-<script src="../admin_template/demo/js/demo.js"></script>
 
 <script src="../admin_template/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="../admin_template/dist/assets/plugins/jquery-jvectormap/maps/world_mill_en.js"></script>
@@ -105,12 +104,5 @@
     } else {
         echo '<script src="allpages/dashboard/dashboard.js"></script>';
     }
-
-
-
-
-
-
-
 
 ?>

@@ -176,7 +176,8 @@ $(document).ready(function(){
     $('#uploaded_img_avatar').html('');
     $('#user-availability-status').html('');
     $("#img_avatar").attr("required", true);
-    
+    $("#button_submit").prop("disabled", false); 
+    $("#form_company").validate().resetForm();
 
     
     show_lightbox();
@@ -251,7 +252,8 @@ $(document).ready(function(){
         $('#form_company #id_producer').val(output.data[0].id_producer);       
         // reset validation form
         $("#form_company").validate().resetForm();
-
+        $("#button_submit").prop("disabled", false); 
+        $("#form_company").validate().resetForm();
 
         hide_loading_message();
         show_lightbox();

@@ -4,7 +4,7 @@
             <a class="navbar-sidebar-toggle navbar-link" data-sidebar-toggle>
                 <i class="fa fa-lg fa-fw fa-bars"></i>
             </a>
-            <a class="navbar-brand hidden-xxs" href="../admin_template/index.html">
+            <a class="navbar-brand hidden-xxs" href="#">
                 <span class="sc-visible">
                     V
                 </span>

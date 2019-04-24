@@ -217,13 +217,10 @@ $(document).ready(function(){
     $('#map_longitude').val('');
     $('#status').val('active');
     $('#status_div').hide();
-    
-    
-     
-    /*
-    // reset validation form
-    $("#form_company").validate().resetForm();  
-    */
+
+    $("#button_submit").prop("disabled", false); 
+    $("#form_company").validate().resetForm();
+
     show_lightbox();
   });
 
@@ -308,7 +305,11 @@ $(document).ready(function(){
         $('#form_company #customer_avatar').val(output.data[0].customer_avatar);
       
         $('#form_company #id_city').val(output.data[0].id_city);
-        
+ 
+        $("#button_submit").prop("disabled", false); 
+        $("#form_company").validate().resetForm();
+
+
 // dumb way to update id_district
         // var id_city = $('#id_city').val();
         // $.ajax({

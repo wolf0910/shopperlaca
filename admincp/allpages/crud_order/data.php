@@ -256,8 +256,14 @@ if ($job != ''){
       { 
         $query .= "receiver_address = '" . mysqli_real_escape_string($conn, $_REQUEST['receiver_address'])         . "', "; 
       }
+
+      if (isset($_REQUEST['delivery_status']))
+      { 
+        $query .= "delivery_status = '" . mysqli_real_escape_string($conn, $_REQUEST['delivery_status'])         . "' "; 
+      }
      
       $query .= "WHERE id_order = '" . mysqli_real_escape_string($conn, $_REQUEST['id_order']) . "'";
+
       $query  = mysqli_query($conn, $query);
 
     // delete old detail of order bill

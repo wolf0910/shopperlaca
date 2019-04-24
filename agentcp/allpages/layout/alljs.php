@@ -7,7 +7,7 @@
 <script src="../admin_template/dist/assets/plugins/flot/excanvas.min.js"></script>
 <![endif]-->
 <script src="../admin_template/dist/assets/plugins/jquery-sparkline/jquery.sparkline.js"></script>
-<script src="../admin_template/demo/js/demo.js"></script>
+
 
 <script src="../admin_template/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="../admin_template/dist/assets/plugins/jquery-jvectormap/maps/world_mill_en.js"></script>
@@ -49,7 +49,7 @@ function reload(){
 	if (isset($_REQUEST['page']))
     { 
         if($_REQUEST['page']=='dashboard') 
-        	echo '<script src="../admin_template/demo/js/dashboard.js"></script>';
+            echo '<script src="allpages/crud_agent/crud_agent.js"></script>';
         if($_REQUEST['page']=='crud_agent') 
         	echo '<script src="allpages/crud_agent/crud_agent.js"></script>';
         if($_REQUEST['page']=='crud_category') 

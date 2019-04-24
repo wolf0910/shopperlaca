@@ -2,7 +2,6 @@
 session_start();
 if(isset($_SESSION['id_administrator'])){
    echo '
-   echo "
    <script>    
       window.location="admincp.php";
    </script>"

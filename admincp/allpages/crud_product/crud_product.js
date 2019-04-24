@@ -325,6 +325,9 @@ $(document).ready(function(){
     CKEDITOR.instances['product_description'].setData('');
     CKEDITOR.instances['product_additional_information'].setData('');
 
+    $("#button_submit").prop("disabled", false); 
+    $("#form_company").validate().resetForm();
+
     /*
     // reset validation form
     $("#form_company").validate().resetForm();  
@@ -422,6 +425,8 @@ $(document).ready(function(){
 
         // reset validation form
         $("#form_company").validate().resetForm();
+        $("#button_submit").prop("disabled", false); 
+
         
         hide_loading_message();
         show_lightbox();

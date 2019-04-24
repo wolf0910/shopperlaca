@@ -4,13 +4,12 @@
             <a class="navbar-sidebar-toggle navbar-link" data-sidebar-toggle>
                 <i class="fa fa-lg fa-fw fa-bars"></i>
             </a>
-            <a class="navbar-brand hidden-xxs" href="../admin_template/index.html">
+            <a class="navbar-brand hidden-xxs" href="?page=dashboard">
                 <span class="sc-visible">
                     A
                 </span>
                 <span class="sc-hidden">
-                    <span class="bold">Admin</span>
-                    Trang quản trị
+                    <span class="bold">Trang quản trị</span>
                 </span>
             </a>
         </div>

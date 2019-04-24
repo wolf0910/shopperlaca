@@ -10,10 +10,7 @@ Allow from all
 # Use UTF-8 encoding for anything served text/plain or text/html
 AddDefaultCharset utf-8
 
-# Force UTF-8 for a number of file formats
-AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+#RewriteEngine on
+#RewriteRule ^([a-zA-Z0-9_-]+)$ admincp.php?page=$1
 
-RewriteEngine on
-RewriteRule ^([a-zA-Z0-9_-]+)$ admincp.php?page=$1
-
-ErrorDocument 404 /haychongiare/admin_template/pages-404.html
+ErrorDocument 404 /admincp/pages-404.html

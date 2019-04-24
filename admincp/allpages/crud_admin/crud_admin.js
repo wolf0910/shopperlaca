@@ -235,6 +235,8 @@ $(document).ready(function(){
     $('#user_uploaded_image').html('');
     $('#status').val('active');
     $('#status_div').hide();
+    $("#button_submit").prop("disabled", false); 
+    $("#form_company").validate().resetForm();
     
     show_lightbox();
   });
@@ -315,7 +317,8 @@ $(document).ready(function(){
         $('#form_company #administrator_avatar').val(output.data[0].administrator_avatar);              
         $('#form_company #id_administrator').val(output.data[0].id_administrator);
         $('#user_uploaded_image').html('<img src="../'+output.data[0].administrator_avatar+'" class="img-thumbnail" width="100" height="100" />');
-        
+        $("#button_submit").prop("disabled", false);
+        $("#form_company").validate().resetForm();
         // reset validation form
         $("#form_company").validate().resetForm();
         

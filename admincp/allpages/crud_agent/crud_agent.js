@@ -267,14 +267,12 @@ $(document).ready(function(){
     $('#map_latitude ').val('');
     $('#map_longitude').val('');
     $('#status').val('active');
-    $('#status_div').hide();
-    
-    
+    $('#status_div').hide();   
+
+
+    $("#button_submit").prop("disabled", false); 
+    $("#form_company").validate().resetForm();
      
-    /*
-    // reset validation form
-    $("#form_company").validate().resetForm();  
-    */
     show_lightbox();
   });
 
@@ -359,6 +357,9 @@ $(document).ready(function(){
         $('#form_company #agent_avatar').val(output.data[0].agent_avatar);
       
         $('#form_company #id_city').val(output.data[0].id_city);
+
+        $("#button_submit").prop("disabled", false);
+        $("#form_company").validate().resetForm(); 
         
 // dumb way to update id_district
         // var id_city = $('#id_city').val();

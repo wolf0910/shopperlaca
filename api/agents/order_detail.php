@@ -10,10 +10,6 @@ mysqli_close($conn);
 // Get row count
 $num = mysqli_num_rows($result);
 
-// Check if any categories
-if($num > 0) {
-    // Cat array
-
     $product_arr['success'] = 'true';
     $product_arr['data'] = array();
 
@@ -38,13 +34,6 @@ if($num > 0) {
     }
     // Turn to JSON & output
     echo json_encode($product_arr);
-
-}else {
-    // No Categories
-    echo json_encode(
-        array('success' => 'success','message' => 'Product  not found !')
-    );
-}
 
 ?>
 

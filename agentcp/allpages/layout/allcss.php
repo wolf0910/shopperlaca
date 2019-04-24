@@ -3,7 +3,6 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="../admin_template/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../admin_template/dist/css/veneto-admin.min.css">
-        <link rel="stylesheet" href="../admin_template/demo/css/demo.css">
         <link rel="stylesheet" href="../admin_template/dist/assets/font-awesome/css/font-awesome.css">
 
         <link rel="stylesheet" href="../admin_template/dist/assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css"/>
