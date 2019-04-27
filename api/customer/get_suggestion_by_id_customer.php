@@ -14,8 +14,7 @@ if(!isset($_REQUEST['id_customer']))
     exit();
 }
 
-
-  // Category read query
+// Category read query
   $sql = "SELECT * FROM table_suggestion WHERE id_customer= '".$_REQUEST['id_customer']."' ";
   $result = $conn->query($sql);
   
@@ -34,7 +33,9 @@ if(!isset($_REQUEST['id_customer']))
         // with each category - get 3 newest product of it
         $sql_tmp = " SELECT * FROM table_product,table_product_detail WHERE table_product.id_product=table_product_detail.id_product AND table_product_detail.is_avatar='yes' AND table_product.id_category = '".$row['id_category']."' ORDER BY table_product.id_product DESC limit 3  ";
         $result_tmp = mysqli_query($conn,$sql_tmp);
-        while( $row3 = mysqli_fetch_array($result_tmp) ){
+
+
+        while( $row3 = mysqli_fetch_array($result_tmp) ){       
             // add to return result
             $product_item = array(
             'id_product' => $row3['id_product'],
@@ -55,6 +56,36 @@ if(!isset($_REQUEST['id_customer']))
             'agent_point' => $row3['agent_point'],
             'avatar_link' => $row3['photo_link']
           );
+
+        // get detail image of this product
+            $sql4='SELECT * FROM table_product_detail WHERE id_product="'.$row3['id_product'].'" AND is_avatar="no" ';
+
+            echo $sql4;
+            $result4 = $conn->query($sql4);  
+            // Get row count
+            $num4 = mysqli_num_rows($result4);
+            $product_photo_item=array();
+            $count_image=1;
+             if($num4 > 0) {
+                $count=0; 
+
+                while($row4= $result4->fetch_assoc()) 
+                    { 
+                      $tmp = array("photo" => $row4['photo_link']);
+                      $product_photo_item[$count] = $tmp;
+                      $count++;
+                      $count_image++;
+                    }
+             }
+            // handle count            
+            $product_item['count_image']=$count_image;           
+            $product_item['product_photo']= $product_photo_item;            
+            
+        //end get detail image
+
+
+
+
 
           // Push to "data"
           array_push($product_arr['data'], $product_item);

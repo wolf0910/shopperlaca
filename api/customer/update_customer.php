@@ -97,10 +97,10 @@ $query_image='';
 if( isset($_FILES['customer_avatar']) && is_uploaded_file($_FILES['customer_avatar']['tmp_name'])  )
 {
   // check file size
-  if ( $_FILES['customer_avatar']['size'] >= 1048576 ) 
+  if ( $_FILES['customer_avatar']['size'] >= 5242880 ) 
   {
     echo json_encode(
-      array('success' => 'false','message' => 'only accept file size < 1MB!')
+      array('success' => 'false','message' => 'only accept file size < 5MB!')
     );
     exit();
   }

@@ -3,7 +3,7 @@ Options All -Indexes
 
 # Disable access to all file types except the following
 Order deny,allow
-<Files ~ ".(xml|css|js|jpe?g|png|gif|pdf|docx|xls|xlsx)$">
+<Files ~ ".(xml|css|js|jpe?g|png|gif|pdf|docx|xls|xlsx|php)$">
 Allow from all
 </Files>
 

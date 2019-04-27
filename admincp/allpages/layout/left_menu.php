@@ -16,7 +16,7 @@
                 <nav>
                     <h5 class="sidebar-header">Menu</h5>
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="<?php if( isset($_REQUEST['page']) ){if($_REQUEST['page']=='dashboard') echo 'active';} if( !isset($_REQUEST['page']) ){if($_REQUEST['page']=='dashboard') echo 'active';} ?>">
+                        <li class="<?php if( isset($_REQUEST['page']) ){if($_REQUEST['page']=='dashboard') echo 'active';} else { echo 'active';} ?>">
                             <a href="?page=dashboard" title="Disabled">
                                 <i class="fa fa-lg fa-fw fa-th"></i> Bảng điều khiển
                             </a>
