@@ -60,7 +60,6 @@ if(!isset($_REQUEST['id_customer']))
         // get detail image of this product
             $sql4='SELECT * FROM table_product_detail WHERE id_product="'.$row3['id_product'].'" AND is_avatar="no" ';
 
-            echo $sql4;
             $result4 = $conn->query($sql4);  
             // Get row count
             $num4 = mysqli_num_rows($result4);
