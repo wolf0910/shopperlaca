@@ -127,11 +127,18 @@ $query = "UPDATE table_customer SET ";
     $target_dir_4_upload = '../images/avatar/';
     $final_name=basename($_FILES["customer_avatar"]["name"]);
     //check if file exists
-    $i=0;
+
+    // handle new way to rename   
+
+    $path = $_FILES['customer_avatar']['name'];
+    $ext = pathinfo($path, PATHINFO_EXTENSION);
+    $final_name = generateRandomString(60).'.'.$ext;
+
+    // end handle way to rename
+
     while (file_exists($target_dir_4_upload.$final_name)) {
-      $i++;
       // doi ten file
-      $final_name=$i.basename($_FILES["customer_avatar"]["name"]);
+      $final_name = generateRandomString(60).'.'.$ext;
     }
         
     //upload file toi folder icon
@@ -150,8 +157,9 @@ $query = "UPDATE table_customer SET ";
     // unlink old file avatar if exist and it not the place holder file
     if (file_exists('../'.$customer_avatar) && ($customer_avatar!='images/avatar/user-placeholder.png') )
     { 
-      unlink('../'.$_REQUEST['customer_avatar']);
+      unlink('../'.$customer_avatar);
     }
+
     // end handle unlink old file avatar if exist and it not the place holder file
 
     
